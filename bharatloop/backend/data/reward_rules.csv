@@ -1,0 +1,12 @@
+material,base_reward_inr_per_kg,min_reward_inr,max_reward_inr,verification_required,active
+PET,250,5,25,true,true
+HDPE,300,5,30,true,true
+PP,275,5,25,true,true
+LDPE,225,5,25,true,true
+PVC,150,5,20,true,true
+Paper,200,5,20,true,true
+Paperboard,200,5,20,true,true
+Aluminium,600,10,50,true,true
+Aluminum,600,10,50,true,true
+Glass,200,5,25,true,true
+Multilayer,100,5,15,true,true

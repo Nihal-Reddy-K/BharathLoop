@@ -1,0 +1,12 @@
+from_material,to_material,co2_saved_per_kg,cost_delta_pct,barrier_ok,recyclability_new
+PET,rPET,1.4,8,yes,82
+HDPE,rHDPE,1.4,6,yes,78
+PP,rPP,1.35,7,yes,65
+Multilayer (plastic + non-plastic),PP,1.5,12,partial,65
+Multilayer (plastic + non-plastic),Multilayer (plastic-plastic),1.2,5,yes,8
+Multilayer (plastic + non-plastic),Paper/Cardboard,3.1,18,no,60
+Multilayer (plastic + non-plastic),Compostable,1.7,35,partial,NA
+Multilayer (plastic-plastic),PP,0.3,6,partial,65
+Multilayer (plastic-plastic),LDPE,0.4,4,partial,35
+PS,PP,0.8,-2,yes,65
+PS,Paper/Cardboard,2.4,15,no,60

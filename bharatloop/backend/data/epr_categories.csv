@@ -1,0 +1,16 @@
+material,epr_category,recyclability_pct,recycled_content_target,penalty_per_tonne
+PET,Cat I,82,30,2900
+rPET,Cat I,82,30,2900
+HDPE,Cat I,78,30,2900
+rHDPE,Cat I,78,30,2900
+PP,Cat I,65,30,2900
+rPP,Cat I,65,30,2900
+PS,Cat I,20,30,2900
+LDPE,Cat II,35,10,5000
+Multilayer (plastic-plastic),Cat II,8,10,5000
+Multilayer (plastic + non-plastic),Cat III,5,5,7900
+Compostable,Cat IV,NA,NA,NA
+Biodegradable,Cat V,NA,NA,NA
+Glass,Not covered (non-plastic),70,NA,NA
+Aluminium,Not covered (non-plastic),90,NA,NA
+Paper/Cardboard,Not covered (non-plastic),60,NA,NA

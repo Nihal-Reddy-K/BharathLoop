@@ -1,0 +1,31 @@
+gtin,brand,product,category,material,weight_g,layers,epr_category
+8909990000019,Bisleri,1L Packaged Drinking Water,bottled water,PET,26,mono,Cat I
+8909990000026,Bisleri,500ml Packaged Drinking Water,bottled water,PET,15,mono,Cat I
+8909990000033,Coca-Cola,750ml Soft Drink Bottle,soft drinks,PET,24,mono,Cat I
+8909990000040,Sprite,250ml Soft Drink Can,soft drinks,Aluminium,11,mono,Not covered (non-plastic)
+8909990000057,Thums Up,300ml Returnable Glass Bottle,soft drinks,Glass,275,mono,Not covered (non-plastic)
+8909990000064,Real,1L Mixed Fruit Juice Carton,juice,Multilayer (plastic + non-plastic),31,multilayer,Cat III
+8909990000071,Amul Taaza,500ml Milk Pouch,milk/dairy,LDPE,6,mono,Cat II
+8909990000088,Amul Gold,1L Milk Bottle,milk/dairy,HDPE,30,mono,Cat I
+8909990000095,Nandini,400g Curd Cup,milk/dairy,PP,18,mono,Cat I
+8909990000101,Amul,100g Butter Wrapper,milk/dairy,Multilayer (plastic + non-plastic),3,multilayer,Cat III
+8909990000118,Head & Shoulders,340ml Shampoo Bottle,shampoo,HDPE,38,mono,Cat I
+8909990000125,Clinic Plus,175ml Shampoo Bottle,shampoo,PET,22,mono,Cat I
+8909990000132,Clinic Plus,7ml Shampoo Sachet,shampoo,Multilayer (plastic + non-plastic),1,multilayer,Cat III
+8909990000149,Lifebuoy,125g Soap Wrapper,soap,Multilayer (plastic-plastic),3,multilayer,Cat II
+8909990000156,Dove,100g Soap Carton,soap,Paper/Cardboard,7,mono,Not covered (non-plastic)
+8909990000163,Colgate,100g Toothpaste Tube,toothpaste,Multilayer (plastic + non-plastic),17,multilayer,Cat III
+8909990000170,Nivea,400ml Body Lotion Bottle,personal care,PET,36,mono,Cat I
+8909990000187,Dettol,200ml Handwash Bottle,personal care,PET,25,mono,Cat I
+8909990000194,Lay's,52g Potato Chips Packet,chips/snacks,Multilayer (plastic + non-plastic),5,multilayer,Cat III
+8909990000200,Kurkure,90g Masala Munch Packet,chips/snacks,Multilayer (plastic-plastic),6,multilayer,Cat II
+8909990000217,Bingo,66g Mad Angles Packet,chips/snacks,Multilayer (plastic-plastic),5,multilayer,Cat II
+8909990000224,Parle-G,100g Biscuit Wrapper,biscuits,Multilayer (plastic-plastic),4,multilayer,Cat II
+8909990000231,Maggi,70g Instant Noodles Pack,noodles,Multilayer (plastic + non-plastic),5,multilayer,Cat III
+8909990000248,Surf Excel,1kg Detergent Powder Pouch,detergent,Multilayer (plastic-plastic),14,multilayer,Cat II
+8909990000255,Harpic,500ml Toilet Cleaner Bottle,household,HDPE,42,mono,Cat I
+8909990000262,Vim,200g Dishwash Bar Wrapper,household,LDPE,4,mono,Cat II
+8909990000279,Tata Salt,1kg Salt Pack,household,LDPE,9,mono,Cat II
+8909990000286,Fortune Sunlite,1L Cooking Oil Bottle,cooking oil,PET,34,mono,Cat I
+8909990000293,Saffola Gold,5L Cooking Oil Jar,cooking oil,HDPE,148,mono,Cat I
+8909990000309,EcoWare,250ml Compostable Cup,household,Compostable,12,mono,Cat IV

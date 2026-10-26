@@ -1,0 +1,16 @@
+material,kg_co2_per_kg,source,notes
+PET,2.95,published-range,Midpoint of published virgin PET range 2.7-3.2 kgCO2e/kg (EcoHedge polymer factors)
+rPET,1.55,published-range,Midpoint of published rPET range 1.3-1.8 kgCO2e/kg (EcoHedge polymer factors)
+HDPE,2.8,published-range,Midpoint of published virgin HDPE range 2.5-3.1 kgCO2e/kg (EcoHedge polymer factors)
+rHDPE,1.4,derived,"Derived: 50% of virgin HDPE, mirroring the published rPET:PET ratio (1.55/2.95=0.53)"
+PP,2.7,synthetic,Project assumption; PP typically reported slightly below HDPE. Verify before external use
+rPP,1.35,derived,"Derived: 50% of virgin PP, mirroring the published rPET:PET ratio"
+LDPE,2.6,synthetic,Project assumption; LDPE typically reported near HDPE. Verify before external use
+PS,3.5,published-range,Published virgin polystyrene figure 3.5 kgCO2e/kg (EcoHedge polymer factors)
+Multilayer (plastic-plastic),3.0,derived,Derived: weighted blend of BOPP/PET layers plus lamination conversion energy
+Multilayer (plastic + non-plastic),4.2,derived,"Derived: plastic layers plus aluminium foil layer, which dominates the footprint"
+Aluminium,8.2,synthetic,Project assumption for primary aluminium; commonly cited near 8.2. Verify before external use
+Glass,1.4,synthetic,Project assumption for container glass. Verify before external use
+Paper/Cardboard,1.1,synthetic,Project assumption for carton board. Verify before external use
+Compostable,2.5,synthetic,Project assumption for PLA-type compostable film. Verify before external use
+Biodegradable,2.5,synthetic,Project assumption; treated as compostable-equivalent pending a real factor
