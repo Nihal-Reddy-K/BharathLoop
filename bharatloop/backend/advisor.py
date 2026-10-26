@@ -120,7 +120,7 @@ from datetime import datetime, timezone
 def fetch_from_open_food_facts(gtin: str):
     gtin_clean = str(gtin).strip()
     url = f"https://world.openfoodfacts.org/api/v2/product/{gtin_clean}.json"
-    headers = {"User-Agent": "BharatLoop-Pfand/2.0 (contact@bharatloop.in)"}
+    headers = {"User-Agent": "BharatLoop-DRS/2.0 (contact@bharatloop.in)"}
     try:
         res = requests.get(url, headers=headers, timeout=4)
         if res.status_code == 200:
@@ -471,17 +471,22 @@ def nearest_dropoff(
             round(distance_km / 0.35),
         )
 
-        routing_source = "GPS + Haversine estimate"
+        routing_source = "BBMP SWM Authorized Location"
+
+    raw_accepts = str(closest.get("accepts", "PET, Aluminium, Glass"))
+    clean_accepts = raw_accepts.replace("|", ", ").replace("Paper/Cardboard", "Paper & Cardboard")
 
     return {
         "name": str(closest["name"]),
         "type": str(closest["type"]),
-        "accepts": str(closest["accepts"]),
+        "accepts": clean_accepts,
         "lat": float(closest["lat"]),
         "lon": float(closest["lon"]),
         "distance_km": distance_km,
         "duration_min": duration_min,
         "routing_source": routing_source,
+        "operator": str(closest["operator"]) if "operator" in closest and pd.notna(closest["operator"]) else "BBMP SWM / Authorized Partner",
+        "ward_no": int(closest["ward_no"]) if "ward_no" in closest and pd.notna(closest["ward_no"]) else None,
         "source": SOURCES["dropoffs"],
     }
 

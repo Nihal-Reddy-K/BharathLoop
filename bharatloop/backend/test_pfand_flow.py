@@ -1,10 +1,14 @@
 import sys
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 from fastapi.testclient import TestClient
 from main import app
 
 client = TestClient(app)
 
-def test_full_pfand_loop():
+def test_full_deposit_loop():
     print("--- 1. Testing Product Lookup ---")
     # A. Seeded product
     res = client.get("/api/products/lookup?code=8909990000019")
@@ -31,7 +35,7 @@ def test_full_pfand_loop():
     else:
         print("Notice: External OFF was offline or not found, handled gracefully.")
 
-    print("\n--- 2. Testing Simulated Purchase (Pfand Recording) ---")
+    print("\n--- 2. Testing Simulated Purchase (Deposit Recording) ---")
     user_id = "test_shopper_01"
     res_buy = client.post("/api/demo/purchases", json={
         "user_id": user_id,
@@ -120,7 +124,7 @@ def test_full_pfand_loop():
     assert res_cp.status_code == 200
     print(f"✓ Active collection points: {res_cp.json()['count']}")
 
-    print("\nALL PFAND LIFECYCLE TESTS PASSED PERFECTLY!")
+    print("\nALL DEPOSIT-RETURN LIFECYCLE TESTS PASSED PERFECTLY!")
 
 if __name__ == "__main__":
-    test_full_pfand_loop()
+    test_full_deposit_loop()

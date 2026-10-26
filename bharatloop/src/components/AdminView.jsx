@@ -180,7 +180,7 @@ export default function AdminView({ apiUrl }) {
         <div className="mt-6 flex flex-wrap gap-2 border-t border-slate-800 pt-4">
           {[
             { id: "metrics", label: "Circular Dashboard", icon: BarChart3 },
-            { id: "rules", label: "Pfand Deposit Rules", icon: Settings },
+            { id: "rules", label: "Deposit Rules", icon: Settings },
             { id: "catalog", label: "Product & Packaging Catalog", icon: Package },
             { id: "epr", label: "EPR Compliance & LCA", icon: Leaf },
           ].map((tab) => {
@@ -298,14 +298,14 @@ export default function AdminView({ apiUrl }) {
       )}
 
       {/* =========================================================
-          TAB 2: PFAND DEPOSIT RULES CONFIGURATOR
+          TAB 2: DEPOSIT RULES CONFIGURATOR
       ========================================================= */}
       {activeTab === "rules" && (
         <div className="mt-8 space-y-6 animate-in fade-in duration-200">
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-slate-100 pb-4">
               <div>
-                <h3 className="text-lg font-bold text-slate-900">Configured Pfand Deposit Rules</h3>
+                <h3 className="text-lg font-bold text-slate-900">Configured Deposit Rules</h3>
                 <p className="text-xs text-slate-500 mt-0.5">
                   Producers and regulators can adjust refundable deposit rates (in INR) per material and category.
                 </p>

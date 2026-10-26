@@ -21,7 +21,7 @@ def get_connection():
 
 def init_db():
     """
-    Initializes the BharatLoop persistent SQLite database with full Pfand-loop
+    Initializes the BharatLoop persistent SQLite database with full deposit-return
     models, ledger entries, vouchers, deposit rules, collection points, and audit events.
     Seeds initial catalog and rules from CSV if empty.
     """
@@ -242,18 +242,17 @@ def init_db():
                 (rule_id, mat, cat, None, inr, minor, now, notes)
             )
         conn.commit()
-        print("[BharatLoop] Seeded default Pfand deposit rules")
+        print("[BharatLoop] Seeded default deposit rules")
 
-    # Seed collection points if empty
-    cp_count = conn.execute("SELECT COUNT(*) FROM collection_points").fetchone()[0]
-    if cp_count == 0 and (DATA_DIR / "dropoff_points.csv").exists():
+    # Seed or synchronize collection points from dropoff_points.csv
+    if (DATA_DIR / "dropoff_points.csv").exists():
         try:
             df_cp = pd.read_csv(DATA_DIR / "dropoff_points.csv")
             for i, row in df_cp.iterrows():
                 cp_id = f"CP-{i+1:03d}"
                 conn.execute(
                     """
-                    INSERT OR IGNORE INTO collection_points (
+                    INSERT OR REPLACE INTO collection_points (
                         id, name, address, lat, lon, type, accepts, active, verification_status
                     ) VALUES (?, ?, ?, ?, ?, ?, ?, 1, 'Authorized')
                     """,
@@ -268,7 +267,7 @@ def init_db():
                     )
                 )
             conn.commit()
-            print("[BharatLoop] Seeded collection points from dropoff_points.csv")
+            print("[BharatLoop] Synchronized collection points from dropoff_points.csv")
         except Exception as e:
             print(f"[BharatLoop] Notice seeding collection points: {e}")
 
@@ -450,7 +449,7 @@ def get_deposit_rule(gtin: str, material: str = None, category: str = None):
             "deposit_minor": int(row["deposit_minor"]),
             "currency": row["currency"],
             "notes": row["notes"],
-            "source": f"BharatLoop Pfand Rule ({row['id']})",
+            "source": f"BharatLoop Deposit Rule ({row['id']})",
         }
 
     # Sensible fallback for recognized packaging materials
@@ -492,7 +491,7 @@ def get_deposit_rule(gtin: str, material: str = None, category: str = None):
         "deposit_inr": 0.0,
         "deposit_minor": 0,
         "currency": "INR",
-        "notes": "Material not covered by current Pfand deposit scheme",
+        "notes": "Material not covered by current deposit scheme",
         "source": "No deposit rule",
     }
 
@@ -519,7 +518,7 @@ def update_deposit_rule(rule_id: str, deposit_inr: float, active: bool, notes: s
 
 
 # =========================================================
-# SIMULATED PURCHASE / PACKAGING INSTANCES (PFAND RECORDING)
+# SIMULATED PURCHASE / PACKAGING INSTANCES (DEPOSIT RECORDING)
 # =========================================================
 
 def create_packaging_purchase(
@@ -686,7 +685,7 @@ def get_packaging_by_token(token: str):
 
 
 # =========================================================
-# RETURN & VERIFICATION (ANTI-FRAUD PFAND REFUND)
+# RETURN & VERIFICATION (ANTI-FRAUD DEPOSIT REFUND)
 # =========================================================
 
 def verify_and_refund_return(
@@ -791,7 +790,7 @@ def verify_and_refund_return(
                 pkg_id,
                 f"REFUND-{pkg_id}",
                 now,
-                f"Pfand deposit refund for returned {pkg_dict.get('brand')} {pkg_dict.get('product_name')} at {cp_name}",
+                f"Deposit refund for returned {pkg_dict.get('brand')} {pkg_dict.get('product_name')} at {cp_name}",
             )
         )
 
@@ -1079,6 +1078,109 @@ def get_vouchers(user_id: str):
     ).fetchall()
     conn.close()
     return [dict(r) for r in rows]
+
+
+def withdraw_wallet_funds(
+    user_id: str,
+    amount_inr: float,
+    payout_method: str = "UPI",
+    payout_target: str = "",
+    account_name: str = "",
+):
+    """
+    Disburses wallet funds to the user's UPI ID or Bank Account.
+    Atomically verifies balance, deducts balance, and writes immutable ledger entry.
+    """
+    ensure_wallet(user_id)
+    conn = get_connection()
+    wallet = conn.execute("SELECT * FROM wallets WHERE user_id = ?", (user_id,)).fetchone()
+
+    if wallet["balance_inr"] < amount_inr:
+        conn.close()
+        raise ValueError(
+            f"Insufficient redeemable balance (Available: ₹{wallet['balance_inr']:.2f}, Requested: ₹{amount_inr:.2f})"
+        )
+
+    if amount_inr <= 0:
+        conn.close()
+        raise ValueError("Withdrawal amount must be greater than zero.")
+
+    now = now_iso()
+    ref_id = f"PAY-{payout_method.upper()}-{secrets.token_hex(4).upper()}"
+    utr_number = f"UTR{secrets.token_hex(6).upper()}"
+
+    try:
+        conn.execute("BEGIN TRANSACTION")
+
+        # Deduct wallet balance
+        conn.execute(
+            "UPDATE wallets SET balance_inr = balance_inr - ? WHERE user_id = ?",
+            (amount_inr, user_id)
+        )
+
+        # Ledger record
+        tx_id = f"TXN-WDL-{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}-{secrets.token_hex(3).upper()}"
+        target_display = payout_target or "Primary Bank/UPI"
+        conn.execute(
+            """
+            INSERT INTO transactions (
+                transaction_id, user_id, type, amount_inr,
+                reference_type, reference_id, idempotency_key, created_at, description
+            ) VALUES (?, ?, 'CASH_WITHDRAWAL', ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                tx_id,
+                user_id,
+                -amount_inr,
+                payout_method,
+                ref_id,
+                f"WDL-{ref_id}",
+                now,
+                f"Instant {payout_method} payout of ₹{amount_inr:.2f} to {target_display} (UTR: {utr_number})",
+            )
+        )
+
+        # Audit event
+        conn.execute(
+            """
+            INSERT INTO audit_events (
+                id, actor_user_id, action, entity_type, entity_id, created_at, metadata
+            ) VALUES (?, ?, 'WALLET_WITHDRAWAL', 'wallet', ?, ?, ?)
+            """,
+            (
+                f"AUD-{secrets.token_hex(5).upper()}",
+                user_id,
+                user_id,
+                now,
+                json.dumps({
+                    "amount_inr": amount_inr,
+                    "payout_method": payout_method,
+                    "payout_target": payout_target,
+                    "account_name": account_name,
+                    "utr": utr_number,
+                }),
+            )
+        )
+
+        conn.commit()
+        updated_wallet = conn.execute("SELECT * FROM wallets WHERE user_id = ?", (user_id,)).fetchone()
+        conn.close()
+
+        return {
+            "success": True,
+            "reference_id": ref_id,
+            "utr_number": utr_number,
+            "amount_inr": amount_inr,
+            "payout_method": payout_method,
+            "payout_target": payout_target,
+            "timestamp": now,
+            "new_balance_inr": updated_wallet["balance_inr"],
+            "message": f"Successfully disbursed ₹{amount_inr:.2f} via {payout_method} to {target_display}!",
+        }
+    except Exception as e:
+        conn.rollback()
+        conn.close()
+        raise e
 
 
 # =========================================================

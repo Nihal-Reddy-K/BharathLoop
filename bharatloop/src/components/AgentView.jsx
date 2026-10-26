@@ -14,6 +14,9 @@ import {
   PackageCheck,
   Gift,
   Wallet,
+  MapPin,
+  ChevronDown,
+  Check,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import CameraScanner from "./CameraScanner";
@@ -26,6 +29,8 @@ export default function AgentView({
   const [tokenInput, setTokenInput] = useState(initialToken);
   const [collectionPoints, setCollectionPoints] = useState([]);
   const [selectedCp, setSelectedCp] = useState("CP-001");
+  const [showCpDropdown, setShowCpDropdown] = useState(false);
+  const [cpSearch, setCpSearch] = useState("");
   const [showScanner, setShowScanner] = useState(false);
   const [inspectLoading, setInspectLoading] = useState(false);
   const [pkgData, setPkgData] = useState(null);
@@ -216,20 +221,92 @@ export default function AgentView({
             </div>
           </div>
 
-          {/* Collection point selector */}
-          <div className="flex flex-col gap-1 min-w-[240px]">
-            <label className="text-[11px] font-semibold text-slate-300">Intake Center</label>
-            <select
-              value={selectedCp}
-              onChange={(e) => setSelectedCp(e.target.value)}
-              className="rounded-xl border border-slate-700 bg-slate-800/90 px-3 py-2 text-xs font-medium text-white focus:outline-none focus:ring-2 focus:ring-emerald-400"
-            >
-              {collectionPoints.map((cp) => (
-                <option key={cp.id} value={cp.id}>
-                  {cp.name} ({cp.type})
-                </option>
-              ))}
-            </select>
+          {/* Collection point selector — Professional custom dropdown */}
+          <div className="relative min-w-[280px]">
+            <label className="text-[11px] font-semibold text-slate-300 block mb-1">
+              Active Intake Center
+            </label>
+
+            {(() => {
+              const current = collectionPoints.find((c) => c.id === selectedCp) || {
+                name: "Select Center",
+                type: "Intake Facility",
+              };
+              return (
+                <button
+                  type="button"
+                  onClick={() => setShowCpDropdown(!showCpDropdown)}
+                  className="w-full flex items-center justify-between gap-2 rounded-2xl border border-slate-700 bg-slate-800/90 px-3.5 py-2.5 text-xs text-white hover:bg-slate-800 transition focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                >
+                  <div className="flex items-center gap-2 truncate">
+                    <MapPin size={14} className="text-emerald-400 shrink-0" />
+                    <span className="font-bold truncate text-left">{current.name}</span>
+                    <span className="rounded-md bg-emerald-500/20 px-1.5 py-0.5 text-[9px] font-extrabold uppercase text-emerald-300 shrink-0">
+                      {current.type}
+                    </span>
+                  </div>
+                  <ChevronDown size={14} className="text-slate-400 shrink-0" />
+                </button>
+              );
+            })()}
+
+            {showCpDropdown && (
+              <>
+                <div
+                  className="fixed inset-0 z-40"
+                  onClick={() => setShowCpDropdown(false)}
+                />
+                <div className="absolute right-0 top-full mt-2 z-50 w-80 rounded-2xl border border-slate-700 bg-slate-900 p-2 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
+                  <div className="p-1.5 border-b border-slate-800">
+                    <input
+                      type="text"
+                      value={cpSearch}
+                      onChange={(e) => setCpSearch(e.target.value)}
+                      placeholder="Search intake centers..."
+                      className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-400"
+                      autoFocus
+                    />
+                  </div>
+
+                  <div className="max-h-60 overflow-y-auto mt-1 space-y-1 pr-1">
+                    {collectionPoints
+                      .filter((cp) =>
+                        cp.name.toLowerCase().includes(cpSearch.toLowerCase()) ||
+                        (cp.type && cp.type.toLowerCase().includes(cpSearch.toLowerCase()))
+                      )
+                      .map((cp) => {
+                        const isSel = cp.id === selectedCp;
+                        return (
+                          <button
+                            key={cp.id}
+                            type="button"
+                            onClick={() => {
+                              setSelectedCp(cp.id);
+                              setShowCpDropdown(false);
+                            }}
+                            className={`w-full flex items-center justify-between gap-2 rounded-xl p-2.5 text-left text-xs transition ${
+                              isSel
+                                ? "bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30"
+                                : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                            }`}
+                          >
+                            <div className="flex-1 truncate">
+                              <div className="font-semibold truncate">{cp.name}</div>
+                              <div className="text-[10px] text-slate-400 flex items-center gap-1.5 mt-0.5">
+                                <span className="rounded bg-slate-800 px-1 py-0.2 text-[9px] uppercase font-bold text-slate-300">
+                                  {cp.type}
+                                </span>
+                                <span className="truncate">{cp.address || "Bengaluru Facility"}</span>
+                              </div>
+                            </div>
+                            {isSel && <Check size={14} className="text-emerald-400 shrink-0" />}
+                          </button>
+                        );
+                      })}
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

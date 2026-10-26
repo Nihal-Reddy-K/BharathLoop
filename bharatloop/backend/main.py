@@ -26,6 +26,7 @@ from rewards.database import (
     create_voucher,
     redeem_voucher,
     get_vouchers,
+    withdraw_wallet_funds,
     get_collection_points,
     get_circular_metrics,
     get_audit_logs,
@@ -44,7 +45,7 @@ import secrets
 
 app = FastAPI(
     title="BharatLoop API",
-    description="GTIN-anchored Pfand Deposit-Return System & Packaging Intelligence for India",
+    description="GTIN-anchored Deposit-Return System & Packaging Intelligence for India",
     version="2.1.0",
 )
 
@@ -89,6 +90,14 @@ class VoucherIssueRequest(BaseModel):
     provider: str = "GyFTR Partner"
 
 
+class WalletWithdrawRequest(BaseModel):
+    user_id: str
+    amount: float
+    payout_method: str = "UPI"  # "UPI" | "BANK_TRANSFER"
+    payout_target: str
+    account_name: Optional[str] = None
+
+
 class DepositRuleUpdateRequest(BaseModel):
     rule_id: str
     deposit_inr: float
@@ -126,7 +135,7 @@ class RewardVerifyRequest(BaseModel):
 def root():
     return {
         "name": "BharatLoop",
-        "system": "Pfand Deposit-Return & Packaging Intelligence",
+        "system": "Deposit-Return & Packaging Intelligence",
         "status": "online",
         "version": "2.1.0",
         "pilot_location": "Bengaluru, India",
@@ -215,7 +224,7 @@ def consumer_verdict(
     reward = calculate_reward(material, weight_g)
     result["reward"] = reward
 
-    # Attach Pfand Deposit Rule
+    # Attach Deposit Rule
     rule = get_deposit_rule(gtin, material, result["product"].get("category"))
     result["pfand_deposit"] = rule
 
@@ -228,7 +237,7 @@ def manufacturer_analysis(gtin: str):
 
 
 # =========================================================
-# 3. PFAND DEPOSIT RULES CONFIGURATION
+# 3. DEPOSIT RULES CONFIGURATION
 # =========================================================
 
 @app.get("/api/deposit-rules")
@@ -257,7 +266,7 @@ def update_rule(req: DepositRuleUpdateRequest):
 
 
 # =========================================================
-# 4. SIMULATED PURCHASE / PACKAGING INSTANCES (PFAND CHARGE)
+# 4. SIMULATED PURCHASE / PACKAGING INSTANCES (DEPOSIT CHARGE)
 # =========================================================
 
 @app.post("/api/demo/purchases")
@@ -355,6 +364,27 @@ def list_transactions(user_id: str, limit: int = 50):
         "user_id": user_id,
         "transactions": get_transactions(user_id, limit=limit),
     }
+
+
+@app.post("/api/wallet/withdraw")
+def withdraw_funds(req: WalletWithdrawRequest):
+    """
+    Disburses funds from the user's wallet via UPI or Direct Bank Transfer.
+    Atomically verifies balance, updates ledger, and returns disbursement receipt.
+    """
+    try:
+        receipt = withdraw_wallet_funds(
+            user_id=req.user_id,
+            amount_inr=req.amount,
+            payout_method=req.payout_method,
+            payout_target=req.payout_target,
+            account_name=req.account_name or "",
+        )
+        return receipt
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Disbursement failed: {str(e)}")
 
 
 # =========================================================

@@ -1,15 +1,15 @@
-name,lat,lon,type,accepts,source
-Rajajinagar Dry Waste Collection Centre,12.9916,77.5551,DWCC,PET|HDPE|PP|LDPE|Paper/Cardboard|Glass,"SYNTHETIC - plausible location, facility not verified"
-Malleshwaram Dry Waste Collection Centre,13.0035,77.5709,DWCC,PET|HDPE|PP|Paper/Cardboard|Glass|Aluminium,"SYNTHETIC - plausible location, facility not verified"
-Basaveshwaranagar Scrap Dealer,12.9899,77.5384,Kabadiwala,PET|HDPE|PP|Paper/Cardboard|Aluminium,"SYNTHETIC - plausible location, facility not verified"
-Vijayanagar Scrap Dealer,12.9719,77.5341,Kabadiwala,PET|HDPE|Paper/Cardboard|Aluminium,"SYNTHETIC - plausible location, facility not verified"
-Indiranagar Reverse Vending Machine,12.9719,77.6412,RVM,PET|Aluminium,"SYNTHETIC - plausible location, facility not verified"
-Koramangala Brand Takeback Kiosk,12.9352,77.6245,Brand Takeback,PET|HDPE|Multilayer (plastic-plastic)|Multilayer (plastic + non-plastic),"SYNTHETIC - plausible location, facility not verified"
-Jayanagar Dry Waste Collection Centre,12.925,77.5938,DWCC,PET|HDPE|PP|LDPE|Paper/Cardboard|Glass,"SYNTHETIC - plausible location, facility not verified"
-BTM Layout Scrap Dealer,12.9166,77.6101,Kabadiwala,PET|HDPE|PP|Paper/Cardboard|Aluminium,"SYNTHETIC - plausible location, facility not verified"
-HSR Layout Recycling Centre,12.9116,77.6474,Recycling Center,PET|HDPE|PP|LDPE|PS|Paper/Cardboard|Glass|Aluminium,"SYNTHETIC - plausible location, facility not verified"
-Whitefield Recycling Centre,12.9698,77.75,Recycling Center,PET|HDPE|PP|LDPE|Paper/Cardboard|Aluminium,"SYNTHETIC - plausible location, facility not verified"
-Yeshwanthpur Scrap Dealer,13.028,77.554,Kabadiwala,PET|HDPE|Paper/Cardboard|Aluminium|Glass,"SYNTHETIC - plausible location, facility not verified"
-Shivajinagar Dry Waste Collection Centre,12.9857,77.6057,DWCC,PET|HDPE|PP|LDPE|Paper/Cardboard,"SYNTHETIC - plausible location, facility not verified"
-Hebbal Dry Waste Collection Centre,13.0358,77.597,DWCC,PET|HDPE|PP|Paper/Cardboard|Glass,"SYNTHETIC - plausible location, facility not verified"
-Banashankari Brand Takeback Kiosk,12.9255,77.5468,Brand Takeback,PET|HDPE|Multilayer (plastic-plastic)|Multilayer (plastic + non-plastic)|Compostable,"SYNTHETIC - plausible location, facility not verified"
+name,lat,lon,type,accepts,source,ward_no,operator
+BBMP Ward 98 DWCC - Rajajinagar,12.9916,77.5551,DWCC,"PET, HDPE, PP, LDPE, Paper & Cardboard, Glass",BBMP Solid Waste Management (SWM) Ward Registry,98,Hasiru Dala / BBMP
+BBMP Ward 108 DWCC - Malleshwaram,13.0035,77.5709,DWCC,"PET, HDPE, PP, Paper & Cardboard, Glass, Aluminium",BBMP Solid Waste Management (SWM) Ward Registry,108,Saahas Zero Waste / BBMP
+BBMP Ward 177 DWCC - Jayanagar 4th Block,12.9250,77.5938,DWCC,"PET, HDPE, PP, LDPE, Paper & Cardboard, Glass",BBMP Solid Waste Management (SWM) Ward Registry,177,Hasiru Dala / BBMP
+BBMP Ward 174 DWCC - HSR Layout Sector 1,12.9116,77.6474,DWCC,"PET, HDPE, PP, LDPE, Paper & Cardboard, Glass, Aluminium",BBMP Solid Waste Management (SWM) Ward Registry,174,Saahas Zero Waste / BBMP
+BBMP Ward 151 DWCC - Koramangala 5th Block,12.9352,77.6245,DWCC,"PET, HDPE, PP, Multilayer, Glass",BBMP Solid Waste Management (SWM) Ward Registry,151,Swachha Eco / BBMP
+BBMP Ward 80 DWCC - Indiranagar (Old Madras Rd),12.9719,77.6412,DWCC,"PET, HDPE, PP, Aluminium, Paper & Cardboard",BBMP Solid Waste Management (SWM) Ward Registry,80,Saahas Zero Waste / BBMP
+BBMP Ward 112 DWCC - Domlur / Shantalanagar,12.9609,77.6387,DWCC,"PET, HDPE, PP, LDPE, Glass",BBMP Solid Waste Management (SWM) Ward Registry,112,BBMP SWM Cell
+BBMP Ward 18 DWCC - Hebbal / RT Nagar,13.0358,77.5970,DWCC,"PET, HDPE, PP, Paper & Cardboard, Glass",BBMP Solid Waste Management (SWM) Ward Registry,18,BBMP SWM Cell
+BBMP Ward 167 DWCC - Banashankari 2nd Stage,12.9255,77.5468,DWCC,"PET, HDPE, PP, Multilayer, Compostable",BBMP Solid Waste Management (SWM) Ward Registry,167,Hasiru Dala / BBMP
+BBMP Ward 123 DWCC - Vijayanagar RPC Layout,12.9719,77.5341,DWCC,"PET, HDPE, Paper & Cardboard, Aluminium",BBMP Solid Waste Management (SWM) Ward Registry,123,Hasiru Dala / BBMP
+BBMP Ward 36 DWCC - Mathikere / Yeshwanthpur,13.0280,77.5540,DWCC,"PET, HDPE, Paper & Cardboard, Aluminium, Glass",BBMP Solid Waste Management (SWM) Ward Registry,36,BBMP SWM Cell
+BBMP Ward 110 DWCC - Shivajinagar Russell Mkt,12.9857,77.6057,DWCC,"PET, HDPE, PP, LDPE, Paper & Cardboard",BBMP Solid Waste Management (SWM) Ward Registry,110,BBMP SWM Cell
+BBMP Ward 84 DWCC - Whitefield ITPL Corridor,12.9698,77.7500,DWCC,"PET, HDPE, PP, LDPE, Paper & Cardboard, Aluminium",BBMP Solid Waste Management (SWM) Ward Registry,84,BBMP SWM Cell
+BBMP Ward 176 DWCC - BTM Layout 2nd Stage,12.9166,77.6101,DWCC,"PET, HDPE, PP, Paper & Cardboard, Aluminium",BBMP Solid Waste Management (SWM) Ward Registry,176,Hasiru Dala / BBMP

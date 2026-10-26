@@ -5,7 +5,7 @@ export default function DemoGuideBar({ currentStep, onSelectStep, onResetDemo })
   const [expanded, setExpanded] = useState(true);
 
   const steps = [
-    { id: 1, label: "1. Scan & Lookup", desc: "GS1 / Open Food Facts resolution with Pfand deposit" },
+    { id: 1, label: "1. Scan & Lookup", desc: "GS1 / Open Food Facts resolution with refundable deposit" },
     { id: 2, label: "2. Simulate Purchase", desc: "Pay deposit & generate unique return QR token" },
     { id: 3, label: "3. Agent Verify Return", desc: "Authorized collection agent scans QR & authorizes refund" },
     { id: 4, label: "4. Wallet & Voucher", desc: "View derived ledger balance & redeem single-use voucher" },
@@ -21,7 +21,7 @@ export default function DemoGuideBar({ currentStep, onSelectStep, onResetDemo })
               <Sparkles size={14} />
             </div>
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">
-              3-Minute Pfand Loop Demonstrator
+              3-Minute Deposit Loop Demonstrator
             </span>
             <span className="hidden sm:inline-block rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-semibold text-emerald-300 border border-emerald-500/30">
               India Pilot

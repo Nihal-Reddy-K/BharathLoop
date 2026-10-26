@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { X, Copy, Check, QrCode, ArrowRight, ShieldCheck, MapPin } from "lucide-react";
 
-export default function ReturnQrModal({ packaging, onClose, onTestInAgentMode }) {
+export default function ReturnQrModal({ packaging, onClose, onTestInAgentMode, onSwitchToAgent }) {
   const [copied, setCopied] = useState(false);
+  const handleAgentSwitch = onSwitchToAgent || onTestInAgentMode;
 
   if (!packaging) return null;
 
@@ -82,11 +83,11 @@ export default function ReturnQrModal({ packaging, onClose, onTestInAgentMode })
         </div>
 
         {/* Demo Fast-Switch Action */}
-        {onTestInAgentMode && (
+        {handleAgentSwitch && (
           <button
             onClick={() => {
               onClose();
-              onTestInAgentMode(packaging.public_token);
+              handleAgentSwitch(packaging.public_token);
             }}
             className="mt-4 w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-800 to-teal-800 px-4 py-3 font-semibold text-white shadow-lg shadow-emerald-900/20 hover:from-emerald-700 hover:to-teal-700 transition active:scale-[0.98]"
           >
