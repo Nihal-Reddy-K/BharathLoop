@@ -38,11 +38,17 @@ const DEFAULT_DEMO_USER = {
 };
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(() => {
+    const saved = loadAuthState();
+    return saved?.user || null;
+  });
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    const saved = loadAuthState();
+    return !!saved?.user;
+  });
   const [walletBalance, setWalletBalance] = useState(0);
 
-  // Initialize demo users registry & load persisted session
+  // Initialize demo users registry & verify persisted session
   useEffect(() => {
     try {
       const existing = localStorage.getItem(USERS_STORAGE_KEY);
@@ -66,7 +72,7 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const signup = (name, email, password, phone = "") => {
+  const signup = (name, email, password, phone = "", role = "consumer") => {
     try {
       const existingUsers = JSON.parse(localStorage.getItem(USERS_STORAGE_KEY) || "[]");
       const cleanEmail = email.trim().toLowerCase();
@@ -81,6 +87,7 @@ export function AuthProvider({ children }) {
         name: name.trim(),
         email: cleanEmail,
         phone: phone.trim(),
+        role: role || "consumer",
         createdAt: new Date().toISOString(),
         isDemo: false,
       };
@@ -121,11 +128,12 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const demoLogin = () => {
-    setUser(DEFAULT_DEMO_USER);
+  const demoLogin = (role = "consumer") => {
+    const demoUser = { ...DEFAULT_DEMO_USER, role };
+    setUser(demoUser);
     setIsAuthenticated(true);
-    saveAuthState({ user: DEFAULT_DEMO_USER });
-    return { success: true, user: DEFAULT_DEMO_USER };
+    saveAuthState({ user: demoUser });
+    return { success: true, user: demoUser };
   };
 
   const logout = () => {

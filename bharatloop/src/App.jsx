@@ -16,6 +16,7 @@ import {
 
 import { useAuth } from "./context/AuthContext";
 import AuthModal from "./components/AuthModal";
+import AuthPortal from "./components/AuthPortal";
 import DemoGuideBar from "./components/DemoGuideBar";
 import ConsumerView from "./components/ConsumerView";
 import AgentView from "./components/AgentView";
@@ -32,6 +33,8 @@ export default function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authModalMode, setAuthModalMode] = useState("login");
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showSignOutModal, setShowSignOutModal] = useState(false);
+  const [isSigningOut, setIsSigningOut] = useState(false);
 
   // Quick switch from Return QR Modal to Agent View
   const handleSwitchToAgentWithToken = (token) => {
@@ -70,6 +73,39 @@ export default function App() {
     setAuthModalMode(mode);
     setShowAuthModal(true);
   };
+
+  const handleAuthenticated = (chosenRole) => {
+    if (chosenRole) {
+      setRole(chosenRole);
+      if (chosenRole === "agent") setDemoStep(3);
+      else if (chosenRole === "admin") setDemoStep(5);
+      else {
+        setDemoStep(1);
+        setConsumerSubTab("scan");
+      }
+    }
+  };
+
+  const handleConfirmSignOut = () => {
+    setIsSigningOut(true);
+    setTimeout(() => {
+      logout();
+      setIsSigningOut(false);
+      setShowSignOutModal(false);
+      setShowUserMenu(false);
+    }, 450);
+  };
+
+  // Gatekeeper: Website does not open up before sign up / sign in.
+  // Sign up page appears first by default, and authenticated users are admitted.
+  if (!isAuthenticated) {
+    return (
+      <AuthPortal
+        initialMode="signup"
+        onAuthenticated={handleAuthenticated}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#f8faf9] text-[#17231d] font-sans antialiased selection:bg-emerald-200 selection:text-emerald-950">
@@ -160,102 +196,101 @@ export default function App() {
           </nav>
 
           {/* Auth / User Area */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {/* Pilot Badge */}
-            <div className="hidden lg:flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-xs font-bold text-emerald-900 shadow-sm">
+            <div className="hidden lg:flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-xs font-bold text-emerald-900 shadow-2xs">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Bengaluru Pilot</span>
             </div>
 
-            {isAuthenticated ? (
-              <div className="flex items-center gap-2">
-                {/* Live Wallet Pill */}
-                <button
-                  onClick={() => {
-                    setRole("consumer");
-                    setConsumerSubTab("wallet");
-                  }}
-                  className="flex items-center gap-1.5 rounded-xl border border-emerald-300/80 bg-emerald-50/90 px-3 py-1.5 text-xs font-bold text-emerald-900 hover:bg-emerald-100 transition shadow-xs"
-                  title="View Wallet & Redeem"
-                >
-                  <Wallet size={14} className="text-emerald-700" />
-                  <span>₹{Number(walletBalance || 0).toFixed(2)}</span>
-                </button>
+            {/* Live Wallet Pill */}
+            <button
+              onClick={() => {
+                setRole("consumer");
+                setConsumerSubTab("wallet");
+              }}
+              className="flex items-center gap-1.5 rounded-xl border border-emerald-300/80 bg-emerald-50/90 px-3 py-1.5 text-xs font-bold text-emerald-900 hover:bg-emerald-100 transition shadow-2xs cursor-pointer"
+              title="View Wallet & Redeem"
+            >
+              <Wallet size={14} className="text-emerald-700" />
+              <span>₹{Number(walletBalance || 0).toFixed(2)}</span>
+            </button>
 
-                <div className="relative">
-                  <button
-                    onClick={() => setShowUserMenu(!showUserMenu)}
-                    className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-sm"
-                  >
-                    <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800 font-bold text-[11px]">
-                      {user?.name?.charAt(0)?.toUpperCase() || "U"}
-                    </div>
-                    <span className="hidden sm:inline max-w-[110px] truncate">
-                      {user?.name || "User"}
-                    </span>
-                    <ChevronDown size={14} className="text-slate-400" />
-                  </button>
-
-                  {showUserMenu && (
-                    <>
-                      <div className="fixed inset-0 z-40" onClick={() => setShowUserMenu(false)} />
-                      <div className="absolute right-0 top-full mt-2 z-50 w-60 rounded-2xl border border-slate-200 bg-white py-2 shadow-xl animate-in fade-in zoom-in-95 duration-100">
-                        <div className="px-4 py-2.5 border-b border-slate-100">
-                          <div className="text-sm font-bold text-slate-900">{user?.name}</div>
-                          <div className="text-xs text-slate-500 truncate">{user?.email}</div>
-                          {user?.phone && (
-                            <div className="text-[11px] text-slate-400 mt-0.5">{user.phone}</div>
-                          )}
-                        </div>
-                        <div className="px-4 py-2 bg-emerald-50/60 border-b border-emerald-100/50 flex items-center justify-between text-xs">
-                          <span className="text-emerald-800 font-semibold">Wallet Balance</span>
-                          <span className="text-emerald-950 font-extrabold font-mono">
-                            ₹{Number(walletBalance || 0).toFixed(2)}
-                          </span>
-                        </div>
-                        <button
-                          onClick={() => {
-                            setShowUserMenu(false);
-                            setRole("consumer");
-                            setConsumerSubTab("wallet");
-                          }}
-                          className="w-full flex items-center gap-2.5 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 transition text-left"
-                        >
-                          <Wallet size={14} className="text-emerald-700" />
-                          <span>Redeem Cashback / Vouchers</span>
-                        </button>
-                        <button
-                          onClick={() => {
-                            setShowUserMenu(false);
-                            logout();
-                          }}
-                          className="w-full flex items-center gap-2.5 px-4 py-2.5 text-xs font-medium text-red-700 hover:bg-red-50 transition text-left"
-                        >
-                          <LogOut size={14} />
-                          <span>Sign Out</span>
-                        </button>
-                      </div>
-                    </>
-                  )}
+            {/* User Profile Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setShowUserMenu(!showUserMenu)}
+                className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-2xs cursor-pointer"
+              >
+                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800 font-bold text-[11px] ring-1 ring-emerald-300">
+                  {user?.name?.charAt(0)?.toUpperCase() || "U"}
                 </div>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => openAuth("login")}
-                  className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-sm"
-                >
-                  <LogIn size={14} />
-                  <span className="hidden sm:inline">Sign In</span>
-                </button>
-                <button
-                  onClick={() => openAuth("signup")}
-                  className="flex items-center gap-1.5 rounded-xl bg-[#173d2b] px-3.5 py-2 text-xs font-bold text-white hover:bg-[#204e38] transition shadow-sm"
-                >
-                  <span>Sign Up</span>
-                </button>
-              </div>
-            )}
+                <span className="hidden sm:inline max-w-[110px] truncate font-medium">
+                  {user?.name || "User"}
+                </span>
+                <ChevronDown size={14} className="text-slate-400" />
+              </button>
+
+              {showUserMenu && (
+                <>
+                  <div className="fixed inset-0 z-40" onClick={() => setShowUserMenu(false)} />
+                  <div className="absolute right-0 top-full mt-2 z-50 w-64 rounded-2xl border border-slate-200 bg-white py-2 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
+                    <div className="px-4 py-3 border-b border-slate-100">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="text-sm font-bold text-slate-900 truncate">{user?.name}</div>
+                        <span className="shrink-0 rounded-md bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 text-[9px] font-bold text-emerald-800 uppercase tracking-wide">
+                          {user?.role === "agent" ? "Agent" : user?.role === "admin" ? "Admin" : "Citizen"}
+                        </span>
+                      </div>
+                      <div className="text-xs text-slate-500 truncate mt-0.5">{user?.email}</div>
+                      {user?.phone && (
+                        <div className="text-[11px] text-slate-400 mt-0.5">{user.phone}</div>
+                      )}
+                    </div>
+
+                    <div className="px-4 py-2.5 bg-emerald-50/70 border-b border-emerald-100/60 flex items-center justify-between text-xs">
+                      <span className="text-emerald-800 font-semibold">Wallet Balance</span>
+                      <span className="text-emerald-950 font-extrabold font-mono text-sm">
+                        ₹{Number(walletBalance || 0).toFixed(2)}
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        setShowUserMenu(false);
+                        setRole("consumer");
+                        setConsumerSubTab("wallet");
+                      }}
+                      className="w-full flex items-center gap-2.5 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer"
+                    >
+                      <Wallet size={14} className="text-emerald-700" />
+                      <span>Redeem Cashback / Vouchers</span>
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setShowUserMenu(false);
+                        setShowSignOutModal(true);
+                      }}
+                      className="w-full flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-red-600 hover:bg-red-50 transition text-left border-t border-slate-100 cursor-pointer"
+                    >
+                      <LogOut size={14} />
+                      <span>Sign Out</span>
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Direct Smooth Sign Out Button */}
+            <button
+              onClick={() => setShowSignOutModal(true)}
+              className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-red-50 hover:text-red-700 hover:border-red-200 transition shadow-2xs cursor-pointer active:scale-95"
+              title="Sign Out of BharathLoop"
+            >
+              <LogOut size={13} className="text-slate-500" />
+              <span className="hidden sm:inline">Sign Out</span>
+            </button>
           </div>
         </div>
       </header>
@@ -422,12 +457,82 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Auth Modal */}
+      {/* Auth Modal (if opened within app) */}
       {showAuthModal && (
         <AuthModal
           onClose={() => setShowAuthModal(false)}
           initialMode={authModalMode}
         />
+      )}
+
+      {/* Professional Smooth Sign Out Confirmation Modal */}
+      {showSignOutModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="relative w-full max-w-md rounded-3xl bg-white p-6 sm:p-7 shadow-2xl border border-slate-200 animate-in zoom-in-95 duration-150">
+            <div className="flex items-start gap-4 mb-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-amber-600 border border-amber-200">
+                <LogOut size={22} />
+              </div>
+              <div>
+                <h3 className="text-lg font-extrabold text-slate-900 tracking-tight">
+                  Sign out of BharathLoop?
+                </h3>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Are you sure you want to end your current session?
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-2xl bg-slate-50/80 p-4 text-xs text-slate-600 border border-slate-200/80 mb-6 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-slate-500">Account</span>
+                <span className="font-bold text-slate-900">{user?.name || "Aarav Sharma"}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-500">Email</span>
+                <span className="font-mono text-slate-700">{user?.email || "aarav.sharma@example.in"}</span>
+              </div>
+              <div className="flex items-center justify-between pt-1 border-t border-slate-200/60">
+                <span className="text-emerald-800 font-semibold">Saved Wallet Balance</span>
+                <span className="font-mono font-extrabold text-emerald-900 text-sm">
+                  ₹{Number(walletBalance || 0).toFixed(2)}
+                </span>
+              </div>
+              <div className="text-[11px] text-slate-400 pt-1 leading-snug">
+                Your returns, verified tokens, and balance will remain safely preserved.
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-3">
+              <button
+                type="button"
+                disabled={isSigningOut}
+                onClick={() => setShowSignOutModal(false)}
+                className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 transition active:scale-95 disabled:opacity-50 cursor-pointer"
+              >
+                Stay Signed In
+              </button>
+              <button
+                type="button"
+                disabled={isSigningOut}
+                onClick={handleConfirmSignOut}
+                className="flex items-center gap-2 rounded-xl bg-red-600 hover:bg-red-700 px-4 py-2.5 text-xs font-bold text-white shadow-md shadow-red-700/20 transition active:scale-95 disabled:opacity-50 cursor-pointer"
+              >
+                {isSigningOut ? (
+                  <>
+                    <span className="h-3.5 w-3.5 rounded-full border-2 border-white/40 border-t-white animate-spin" />
+                    <span>Signing out...</span>
+                  </>
+                ) : (
+                  <>
+                    <LogOut size={14} />
+                    <span>Confirm Sign Out</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
