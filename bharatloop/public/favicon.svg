@@ -1,39 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#273E47"/>
-      <stop offset="100%" stop-color="#1e3037"/>
-    </linearGradient>
-    <linearGradient id="rustGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#e07a3f"/>
-      <stop offset="50%" stop-color="#BD632F"/>
-      <stop offset="100%" stop-color="#9a4d20"/>
-    </linearGradient>
-    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f0bb6b"/>
-      <stop offset="50%" stop-color="#D8973C"/>
-      <stop offset="100%" stop-color="#b87b28"/>
-    </linearGradient>
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.35"/>
-    </filter>
-  </defs>
+  <!-- Brand Dark Petrol Teal Container -->
+  <rect width="64" height="64" rx="18" fill="#273E47"/>
+  <rect x="1" y="1" width="62" height="62" rx="17" stroke="#355070" stroke-width="2" stroke-opacity="0.8"/>
 
-  <!-- Container Badge -->
-  <rect width="64" height="64" rx="16" fill="url(#bgGrad)"/>
-  <rect x="1.5" y="1.5" width="61" height="61" rx="14.5" stroke="#355070" stroke-opacity="0.6" stroke-width="1.5"/>
-
-  <!-- Centered Circular Loop Icon -->
-  <g transform="translate(32, 32) scale(1.15)" filter="url(#shadow)">
-    <!-- Top Arc Arrow (Terracotta / Rust) -->
-    <path d="M -13,-3 A 14,14 0 0,1 12,-7" fill="none" stroke="url(#rustGrad)" stroke-width="3.6" stroke-linecap="round"/>
-    <path d="M 9,-12 L 15.5,-7 L 9.5,-2 Z" fill="#BD632F"/>
-
-    <!-- Bottom Arc Arrow (Amber Gold) -->
-    <path d="M 13,3 A 14,14 0 0,1 -12,7" fill="none" stroke="url(#amberGrad)" stroke-width="3.6" stroke-linecap="round"/>
-    <path d="M -9,12 L -15.5,7 L -9.5,2 Z" fill="#D8973C"/>
-
-    <!-- Center Loop Core Accent -->
-    <circle cx="0" cy="0" r="3" fill="#D8C99B" fill-opacity="0.95"/>
+  <!-- Centered Exact BharathLoop Recycle Symbol (Warm Amber & Terracotta Accent) -->
+  <g transform="translate(12.8, 12.8) scale(1.6)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Bottom & Left Loop in Amber Gold -->
+    <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5" stroke="#D8973C" stroke-width="2.3"/>
+    <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12" stroke="#D8973C" stroke-width="2.3"/>
+    <path d="m14 16-3 3 3 3" stroke="#BD632F" stroke-width="2.5"/>
+    <path d="M8.293 13.596 7.196 9.5 3.1 10.598" stroke="#D8973C" stroke-width="2.3"/>
+    
+    <!-- Top & Right Loop -->
+    <path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843" stroke="#D8973C" stroke-width="2.3"/>
+    <path d="m13.378 9.633 4.096 1.098 1.097-4.096" stroke="#BD632F" stroke-width="2.5"/>
   </g>
 </svg>
