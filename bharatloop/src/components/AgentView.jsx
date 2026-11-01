@@ -199,19 +199,19 @@ export default function AgentView({
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
       {/* Agent Station Banner */}
-      <div className="rounded-3xl border border-emerald-900/10 bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 p-6 text-white shadow-xl">
+      <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 text-white shadow-sm">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-800 text-emerald-400 border border-slate-700">
               <Store size={24} />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+                <span className="text-xs font-bold uppercase tracking-widest text-slate-300">
                   Authorized Collection Agent
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-800 px-2.5 py-0.5 text-[10px] font-semibold text-slate-300 border border-slate-700">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                   Live Operator Mode
                 </span>
               </div>
@@ -489,7 +489,7 @@ export default function AgentView({
                 <button
                   onClick={handleVerifyReturn}
                   disabled={verifyLoading}
-                  className="mt-5 w-full flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-700 to-teal-800 py-4 text-sm font-bold text-white shadow-lg shadow-emerald-900/20 hover:from-emerald-600 hover:to-teal-700 transition active:scale-[0.98] disabled:opacity-50"
+                  className="mt-5 w-full flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 hover:bg-emerald-800 py-3.5 text-sm font-bold text-white shadow-xs transition active:scale-[0.98] disabled:opacity-50 cursor-pointer"
                 >
                   {verifyLoading ? (
                     <>
@@ -519,22 +519,22 @@ export default function AgentView({
         <div className="md:col-span-5 space-y-6">
           {/* Verification Receipt Card */}
           {verifyResult ? (
-            <div className="rounded-3xl border border-emerald-500 bg-emerald-950 p-6 text-white shadow-xl">
+            <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 text-white shadow-sm">
               <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
                 <CheckCircle2 size={16} />
                 Disbursement Successful
               </div>
 
               <div className="mt-4">
-                <div className="text-3xl font-extrabold text-white">
+                <div className="text-3xl font-extrabold text-white font-mono">
                   +₹{verifyResult.refund_amount_inr?.toFixed(2)}
                 </div>
-                <div className="text-xs text-emerald-300 mt-1">
+                <div className="text-xs text-slate-300 mt-1">
                   Refund credited to consumer wallet ({verifyResult.packaging?.user_id})
                 </div>
               </div>
 
-              <div className="mt-5 space-y-2 border-t border-emerald-800/80 pt-4 text-xs text-slate-300">
+              <div className="mt-5 space-y-2 border-t border-slate-800 pt-4 text-xs text-slate-300">
                 <div className="flex justify-between">
                   <span className="text-slate-400">Intake Center:</span>
                   <span className="font-semibold text-white">{verifyResult.collection_point}</span>
@@ -547,13 +547,13 @@ export default function AgentView({
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Token ID:</span>
-                  <span className="font-mono font-semibold text-emerald-300">
+                  <span className="font-mono font-semibold text-emerald-400">
                     {verifyResult.packaging?.public_token}
                   </span>
                 </div>
                 {verifyResult.voucher && (
-                  <div className="mt-3 rounded-xl bg-emerald-900/80 p-3 border border-emerald-700">
-                    <span className="text-[10px] uppercase font-bold text-emerald-300">Voucher Code Issued</span>
+                  <div className="mt-3 rounded-xl bg-slate-800 p-3 border border-slate-700">
+                    <span className="text-[10px] uppercase font-bold text-slate-400">Voucher Code Issued</span>
                     <div className="text-base font-mono font-bold text-white mt-0.5">
                       {verifyResult.voucher.voucher_code}
                     </div>
@@ -589,8 +589,8 @@ export default function AgentView({
             <div
               className={`rounded-2xl border p-4 text-xs font-medium animate-in fade-in duration-200 ${
                 duplicateTestResult.blocked
-                  ? "border-emerald-500/30 bg-emerald-950 text-emerald-200"
-                  : "border-red-500 bg-red-950 text-red-200"
+                  ? "border-emerald-500/30 bg-slate-900 text-emerald-200"
+                  : "border-red-500/40 bg-slate-900 text-red-200"
               }`}
             >
               <div className="flex items-center gap-2 font-bold mb-1">

@@ -5,7 +5,7 @@ import {
   Wallet,
   QrCode,
   MapPin,
-  Sparkles,
+  Play,
   ArrowRight,
   CheckCircle2,
   Lock,
@@ -57,7 +57,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
         particleCount: 60,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ["#10b981", "#059669", "#34d399", "#064e3b", "#a7f3d0"],
+        colors: ["#10b981", "#059669", "#34d399", "#047857", "#a7f3d0"],
       });
     } catch (_) {}
   };
@@ -173,55 +173,55 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#f4f7f5] text-[#17231d] flex flex-col justify-between overflow-x-hidden">
+    <div className="relative min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-between overflow-x-hidden">
       {/* Background Decorative Mesh */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full bg-emerald-200/40 blur-[130px]" />
-        <div className="absolute top-1/2 -left-48 h-[550px] w-[550px] rounded-full bg-teal-100/50 blur-[140px]" />
-        <div className="absolute -bottom-40 right-1/4 h-[500px] w-[500px] rounded-full bg-emerald-100/60 blur-[120px]" />
+        <div className="absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full bg-slate-200/50 blur-[130px]" />
+        <div className="absolute top-1/2 -left-48 h-[550px] w-[550px] rounded-full bg-emerald-100/40 blur-[140px]" />
+        <div className="absolute -bottom-40 right-1/4 h-[500px] w-[500px] rounded-full bg-slate-200/40 blur-[120px]" />
         {/* Subtle grid pattern overlay */}
         <div
           className="absolute inset-0 opacity-[0.035]"
           style={{
-            backgroundImage: `radial-gradient(#064e3b 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(#0f172a 1px, transparent 1px)`,
             backgroundSize: "28px 28px",
           }}
         />
       </div>
 
       {/* Top Branding Navigation */}
-      <header className="relative z-10 w-full border-b border-[#e1eae4] bg-white/80 backdrop-blur-md">
+      <header className="relative z-10 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#173d2b] to-[#0c2419] text-white shadow-md shadow-emerald-950/15">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-emerald-400 shadow-sm">
               <Recycle size={22} className="animate-spin-slow" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-xl font-extrabold tracking-tight text-slate-950">
-                  Bharath<span className="text-emerald-800">Loop</span>
+                <span className="text-xl font-extrabold tracking-tight text-slate-900">
+                  Bharath<span className="text-emerald-700">Loop</span>
                 </span>
-                <span className="rounded-md bg-emerald-100 px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-emerald-900 border border-emerald-300/60">
+                <span className="rounded-md bg-emerald-50 px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-emerald-800 border border-emerald-200/80">
                   DRS 2.0
                 </span>
               </div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#607469]">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
                 Deposit-Return Intelligence &middot; Bengaluru Pilot
               </div>
             </div>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-emerald-200/90 bg-emerald-50/80 px-3 py-1 text-xs font-semibold text-emerald-900">
+            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
               BBMP DWCC &amp; CPCB Aligned
             </span>
 
             <button
               onClick={() => handleQuickDemo("consumer")}
-              className="flex items-center gap-1.5 rounded-xl border border-emerald-600/30 bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-900 hover:bg-emerald-100 hover:border-emerald-600/50 transition-all active:scale-95 shadow-2xs"
+              className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-800 transition-all active:scale-95 shadow-2xs cursor-pointer"
             >
-              <Sparkles size={13} className="text-emerald-700" />
+              <Play size={11} className="text-emerald-600 fill-emerald-600" />
               <span>Instant Demo</span>
             </button>
           </div>
@@ -233,14 +233,14 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
         <div className="grid w-full grid-cols-1 items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
           
           {/* Left Column: Visual Showcase & DRS Value Props (5 cols) */}
-          <div className="hidden lg:flex lg:col-span-5 flex-col justify-between rounded-[32px] bg-gradient-to-br from-[#0c2e1f] via-[#123d29] to-[#071d13] p-8 text-white shadow-[0_24px_60px_rgba(7,29,19,0.28)] border border-emerald-800/40 relative overflow-hidden">
+          <div className="hidden lg:flex lg:col-span-5 flex-col justify-between rounded-[32px] bg-slate-900 p-8 text-white shadow-xl border border-slate-800 relative overflow-hidden">
             {/* Ambient glows inside card */}
-            <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-emerald-400/10 blur-[80px]" />
-            <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-teal-400/10 blur-[90px]" />
+            <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-emerald-500/10 blur-[80px]" />
+            <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-slate-700/20 blur-[90px]" />
 
             {/* Top Showcase Content */}
             <div className="relative space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-emerald-300">
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-slate-300">
                 <Leaf size={12} className="text-emerald-400" />
                 Urban Circular Economy Pilot
               </div>
@@ -248,48 +248,48 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
               <div>
                 <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl leading-[1.18]">
                   India&apos;s Sovereign <br />
-                  <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-100 bg-clip-text text-transparent">
+                  <span className="text-emerald-400">
                     Deposit-Return System
                   </span>
                 </h1>
-                <p className="mt-3 text-sm text-emerald-100/80 leading-relaxed font-normal">
+                <p className="mt-3 text-sm text-slate-300 leading-relaxed font-normal">
                   Turn verified beverage containers into instant digital currency. Return empties at any BBMP Dry Waste Collection Centre or partner retailer across Bengaluru.
                 </p>
               </div>
 
               {/* 3 Core Pillars */}
               <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3 rounded-2xl bg-white/[0.06] p-3.5 border border-white/10 backdrop-blur-sm transition-all hover:bg-white/[0.09]">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                <div className="flex items-start gap-3 rounded-2xl bg-slate-800/60 p-3.5 border border-slate-700/60 transition-all hover:bg-slate-800">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-800 text-emerald-400 border border-slate-700">
                     <Wallet size={18} />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-white">Guaranteed Deposit Refunds</div>
-                    <div className="text-[11px] text-emerald-200/70 mt-0.5 leading-snug">
+                    <div className="text-[11px] text-slate-400 mt-0.5 leading-snug">
                       Claim ₹5.00 – ₹15.00 per item instantly to your UPI or bank wallet upon return verification.
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 rounded-2xl bg-white/[0.06] p-3.5 border border-white/10 backdrop-blur-sm transition-all hover:bg-white/[0.09]">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                <div className="flex items-start gap-3 rounded-2xl bg-slate-800/60 p-3.5 border border-slate-700/60 transition-all hover:bg-slate-800">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-800 text-emerald-400 border border-slate-700">
                     <QrCode size={18} />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-white">Anti-Fraud Dynamic QR</div>
-                    <div className="text-[11px] text-emerald-200/70 mt-0.5 leading-snug">
+                    <div className="text-[11px] text-slate-400 mt-0.5 leading-snug">
                       Time-expiring single-use return tokens prevent duplicate redemption and grey-market leakage.
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 rounded-2xl bg-white/[0.06] p-3.5 border border-white/10 backdrop-blur-sm transition-all hover:bg-white/[0.09]">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                <div className="flex items-start gap-3 rounded-2xl bg-slate-800/60 p-3.5 border border-slate-700/60 transition-all hover:bg-slate-800">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-800 text-emerald-400 border border-slate-700">
                     <MapPin size={18} />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-white">48+ BBMP Urban DWCC Hubs</div>
-                    <div className="text-[11px] text-emerald-200/70 mt-0.5 leading-snug">
+                    <div className="text-[11px] text-slate-400 mt-0.5 leading-snug">
                       Geo-anchored collection centres across Indiranagar, Koramangala, Whitefield &amp; HSR Layout.
                     </div>
                   </div>
@@ -356,16 +356,16 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                 </div>
 
                 {/* Mode Toggle Switcher */}
-                <div className="inline-flex self-start sm:self-auto rounded-2xl bg-[#edf3ef] p-1 border border-[#d6e4db]">
+                <div className="inline-flex self-start sm:self-auto rounded-2xl bg-slate-100 p-1 border border-slate-200/80">
                   <button
                     type="button"
                     onClick={() => {
                       setMode("signup");
                       setError("");
                     }}
-                    className={`rounded-xl px-4 py-2 text-xs font-bold transition-all ${
+                    className={`rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
                       mode === "signup"
-                        ? "bg-[#173d2b] text-white shadow-sm"
+                        ? "bg-slate-900 text-white shadow-xs"
                         : "text-slate-600 hover:text-slate-900"
                     }`}
                   >
@@ -377,9 +377,9 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                       setMode("login");
                       setError("");
                     }}
-                    className={`rounded-xl px-4 py-2 text-xs font-bold transition-all ${
+                    className={`rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
                       mode === "login"
-                        ? "bg-[#173d2b] text-white shadow-sm"
+                        ? "bg-slate-900 text-white shadow-xs"
                         : "text-slate-600 hover:text-slate-900"
                     }`}
                   >
@@ -389,16 +389,16 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
               </div>
 
               {/* Fast 1-Click Demo Evaluation Banner */}
-              <div className="mb-6 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50/70 p-3.5 border border-emerald-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="mb-6 rounded-2xl bg-slate-50 p-3.5 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-xs">
-                    <Sparkles size={15} />
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-slate-800 text-emerald-400 shadow-xs">
+                    <Play size={13} className="fill-emerald-400" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-emerald-950">
+                    <div className="text-xs font-bold text-slate-900">
                       Evaluating BharathLoop?
                     </div>
-                    <div className="text-[11px] text-emerald-800">
+                    <div className="text-[11px] text-slate-500">
                       Skip manual form entry with pre-loaded demo credentials
                     </div>
                   </div>
@@ -408,14 +408,14 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                   <button
                     type="button"
                     onClick={() => handleQuickDemo("consumer")}
-                    className="rounded-xl bg-[#173d2b] hover:bg-[#204e38] text-white px-3 py-1.5 text-xs font-bold transition shadow-xs active:scale-95 flex items-center gap-1"
+                    className="rounded-xl bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 text-xs font-bold transition shadow-xs active:scale-95 flex items-center gap-1 cursor-pointer"
                   >
                     <span>Citizen Demo</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => handleQuickDemo("agent")}
-                    className="rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 px-3 py-1.5 text-xs font-bold transition shadow-2xs active:scale-95"
+                    className="rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 px-3 py-1.5 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer"
                     title="Collection Agent View"
                   >
                     Agent
@@ -423,7 +423,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                   <button
                     type="button"
                     onClick={() => handleQuickDemo("admin")}
-                    className="rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 px-3 py-1.5 text-xs font-bold transition shadow-2xs active:scale-95"
+                    className="rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 px-3 py-1.5 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer"
                     title="Producer / Admin View"
                   >
                     Admin
@@ -478,7 +478,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                               <div
                                 className={`flex h-7 w-7 items-center justify-center rounded-lg ${
                                   isSelected
-                                    ? "bg-[#173d2b] text-white"
+                                    ? "bg-slate-900 text-white"
                                     : "bg-white text-slate-600 border border-slate-200"
                                 }`}
                               >
@@ -640,7 +640,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                 <button
                   type="submit"
                   disabled={loading || !!successData}
-                  className="w-full mt-2 flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#173d2b] to-[#0d2a1c] py-3.5 px-4 text-xs font-extrabold text-white shadow-lg shadow-emerald-950/20 hover:from-[#1e4d36] hover:to-[#133a28] transition-all active:scale-[0.99] disabled:opacity-50 cursor-pointer"
+                  className="w-full mt-2 flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 hover:bg-emerald-800 py-3.5 px-4 text-xs font-bold text-white shadow-xs transition-all active:scale-[0.99] disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? (
                     <span className="flex items-center gap-2">

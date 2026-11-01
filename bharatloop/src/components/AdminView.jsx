@@ -145,14 +145,14 @@ export default function AdminView({ apiUrl }) {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
       {/* Header */}
-      <div className="rounded-3xl border border-emerald-900/10 bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 p-6 text-white shadow-xl">
+      <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 text-white shadow-sm">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-800 text-emerald-400 border border-slate-700">
               <Factory size={24} />
             </div>
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-300">
                 Producer &amp; Administrator Portal
               </span>
               <h1 className="text-2xl font-bold tracking-tight text-white mt-0.5">
@@ -168,7 +168,7 @@ export default function AdminView({ apiUrl }) {
                 fetchRules();
                 fetchCatalog();
               }}
-              className="flex items-center gap-1.5 rounded-xl bg-white/10 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:bg-white/20 transition"
+              className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition cursor-pointer"
             >
               <RotateCcw size={14} />
               <span>Refresh Stats</span>
@@ -190,10 +190,10 @@ export default function AdminView({ apiUrl }) {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition ${
+                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition cursor-pointer ${
                   active
-                    ? "bg-emerald-500 text-slate-950 shadow-sm"
-                    : "bg-slate-800/80 text-slate-300 hover:bg-slate-700"
+                    ? "bg-emerald-600 text-white shadow-xs"
+                    : "bg-slate-800 text-slate-300 hover:bg-slate-700"
                 }`}
               >
                 <Icon size={14} />
@@ -494,7 +494,7 @@ export default function AdminView({ apiUrl }) {
               />
               <button
                 onClick={() => runAnalysis(analyzeGtin)}
-                className="rounded-xl bg-[#173d2b] px-4 py-2 text-xs font-bold text-white hover:bg-[#204e38]"
+                className="rounded-xl bg-emerald-700 hover:bg-emerald-800 px-4 py-2 text-xs font-bold text-white shadow-xs transition cursor-pointer"
               >
                 Analyze EPR
               </button>

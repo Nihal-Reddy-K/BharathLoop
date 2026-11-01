@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
   X, Mail, Lock, User, Eye, EyeOff, ArrowRight, Recycle,
-  Sparkles, Phone, CheckCircle2, Shield, Leaf, Wallet,
+  Play, Phone, CheckCircle2, Shield, Leaf, Wallet,
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
@@ -98,21 +98,17 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
         )}
 
         {/* Top Gradient Header */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-[#0c2e1f] via-[#133d2a] to-[#0a1f16] px-7 pt-7 pb-6">
-          {/* Decorative circles */}
-          <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-emerald-500/8" />
-          <div className="absolute -left-4 -bottom-12 h-32 w-32 rounded-full bg-teal-500/8" />
-
+        <div className="relative overflow-hidden bg-slate-900 border-b border-slate-800 px-7 pt-7 pb-6">
           <div className="relative flex items-start justify-between">
             <div className="flex items-center gap-3.5">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/15 border border-emerald-500/25 text-emerald-400 shadow-lg shadow-emerald-900/20">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-800 border border-slate-700 text-emerald-400 shadow-sm">
                 <Recycle size={24} />
               </div>
               <div>
                 <h2 className="text-[17px] font-bold text-white tracking-tight leading-snug">
                   {mode === "login" ? "Welcome Back" : "Join BharathLoop"}
                 </h2>
-                <p className="text-[12px] text-emerald-300/70 mt-0.5 leading-relaxed">
+                <p className="text-[12px] text-slate-300 mt-0.5 leading-relaxed">
                   {mode === "login"
                     ? "Access your deposit balance & claim cashbacks"
                     : "Start earning rewards for responsible recycling"}
@@ -122,7 +118,7 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
 
             <button
               onClick={onClose}
-              className="rounded-xl bg-white/8 p-2 text-slate-400 hover:bg-white/15 hover:text-white transition-all"
+              className="rounded-xl bg-slate-800 p-2 text-slate-400 hover:bg-slate-700 hover:text-white transition-all cursor-pointer"
               aria-label="Close"
             >
               <X size={18} />
@@ -136,25 +132,25 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
               return (
                 <div
                   key={i}
-                  className="flex items-center gap-1.5 rounded-lg bg-white/6 px-2.5 py-1.5 border border-white/8"
+                  className="flex items-center gap-1.5 rounded-lg bg-slate-800/80 px-2.5 py-1.5 border border-slate-700"
                 >
                   <Icon size={12} className="text-emerald-400 shrink-0" />
-                  <span className="text-[10px] text-emerald-200/80 leading-tight">{b.text}</span>
+                  <span className="text-[10px] text-slate-300 leading-tight">{b.text}</span>
                 </div>
               );
             })}
           </div>
 
           {/* Demo Login CTA */}
-          <div className="relative mt-4 flex items-center justify-between gap-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-2.5">
-            <div className="flex items-center gap-2 text-[11px] text-emerald-200/90">
-              <Sparkles size={13} className="text-emerald-400" />
+          <div className="relative mt-4 flex items-center justify-between gap-3 rounded-xl bg-slate-800 border border-slate-700 px-3.5 py-2.5">
+            <div className="flex items-center gap-2 text-[11px] text-slate-300">
+              <Play size={11} className="text-emerald-400 fill-emerald-400" />
               <span>Quick evaluation? Try a pre-configured account</span>
             </div>
             <button
               type="button"
               onClick={handleDemoSignIn}
-              className="shrink-0 rounded-lg bg-emerald-500/25 hover:bg-emerald-500/35 border border-emerald-400/30 px-3 py-1.5 text-[11px] font-bold text-emerald-300 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="shrink-0 rounded-lg bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 text-[11px] font-bold text-white transition-all cursor-pointer"
             >
               Demo Login
             </button>
@@ -162,13 +158,13 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
         </div>
 
         {/* Tab Switcher */}
-        <div className="relative grid grid-cols-2 bg-slate-50 border-b border-slate-100">
+        <div className="relative grid grid-cols-2 bg-slate-50 border-b border-slate-200">
           <button
             type="button"
             onClick={() => switchMode("login")}
-            className={`relative py-3.5 text-[13px] font-bold transition-all text-center ${
+            className={`relative py-3.5 text-[13px] font-bold transition-all text-center cursor-pointer ${
               mode === "login"
-                ? "text-emerald-900 bg-white"
+                ? "text-slate-900 bg-white"
                 : "text-slate-500 hover:text-slate-700"
             }`}
           >
@@ -180,9 +176,9 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
           <button
             type="button"
             onClick={() => switchMode("signup")}
-            className={`relative py-3.5 text-[13px] font-bold transition-all text-center ${
+            className={`relative py-3.5 text-[13px] font-bold transition-all text-center cursor-pointer ${
               mode === "signup"
-                ? "text-emerald-900 bg-white"
+                ? "text-slate-900 bg-white"
                 : "text-slate-500 hover:text-slate-700"
             }`}
           >
@@ -295,7 +291,7 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
           <button
             type="submit"
             disabled={loading || success}
-            className="w-full mt-1 flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-[#064e3b] to-[#0a6e4f] py-3.5 text-[13px] font-bold text-white shadow-lg shadow-emerald-900/15 hover:from-[#085a44] hover:to-[#0c7d59] transition-all active:scale-[0.98] disabled:opacity-50"
+            className="w-full mt-1 flex items-center justify-center gap-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 py-3.5 text-[13px] font-bold text-white shadow-xs transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer"
           >
             {loading ? (
               <span className="flex items-center gap-2">

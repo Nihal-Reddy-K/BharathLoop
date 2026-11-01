@@ -110,11 +110,11 @@ export default function CameraScanner({ onScan, onClose, title = "Scan Barcode o
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
-      <div className="relative w-full max-w-md overflow-hidden rounded-3xl border border-emerald-500/20 bg-slate-950 p-6 text-white shadow-2xl">
+      <div className="relative w-full max-w-md overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 p-6 text-white shadow-2xl">
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-800">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-800 text-slate-200 border border-slate-700">
               <Camera size={18} />
             </div>
             <div>

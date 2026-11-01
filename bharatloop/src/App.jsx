@@ -108,7 +108,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8faf9] text-[#17231d] font-sans antialiased selection:bg-emerald-200 selection:text-emerald-950">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900">
       {/* 1. Interactive 3-Minute Guided Demo Tour Bar */}
       <DemoGuideBar
         currentStep={demoStep}
@@ -117,45 +117,45 @@ export default function App() {
       />
 
       {/* 2. Top Navigation Bar */}
-      <header className="sticky top-0 z-40 border-b border-[#dfe9e2] bg-white/90 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6">
+      <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur-md shadow-2xs">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 overflow-x-auto scrollbar-none">
           {/* Brand Logo */}
           <button
             onClick={() => {
               setRole("consumer");
               setConsumerSubTab("scan");
             }}
-            className="group flex items-center gap-3 text-left transition focus:outline-none"
+            className="group flex shrink-0 items-center gap-3 text-left transition focus:outline-none cursor-pointer"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#173d2b] to-[#0c2419] text-white shadow-[0_6px_20px_rgba(23,61,43,0.2)] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-emerald-400 shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105">
               <Recycle size={22} className="transition-transform duration-500 group-hover:rotate-180" />
             </div>
 
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-xl font-extrabold tracking-tight text-slate-950">
-                  Bharath<span className="text-emerald-800">Loop</span>
+                <span className="text-xl font-extrabold tracking-tight text-slate-900">
+                  Bharath<span className="text-emerald-700">Loop</span>
                 </span>
-                <span className="rounded-md bg-emerald-100/80 px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-emerald-900 border border-emerald-300/60">
+                <span className="rounded-md bg-emerald-50 px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-emerald-800 border border-emerald-200/70">
                   DRS 2.0
                 </span>
               </div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#6b7b72]">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
                 Deposit-Return Intelligence
               </div>
             </div>
           </button>
 
           {/* Role Mode Switcher */}
-          <nav className="flex items-center rounded-2xl bg-[#ecf2ee] p-1 border border-[#d8e5dc]">
+          <nav className="flex shrink-0 items-center rounded-2xl bg-slate-100 p-1 border border-slate-200/80 shadow-2xs">
             <button
               onClick={() => {
                 setRole("consumer");
                 setDemoStep(1);
               }}
-              className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold transition-all cursor-pointer ${
                 role === "consumer"
-                  ? "bg-[#173d2b] text-white shadow-sm"
+                  ? "bg-slate-900 text-white shadow-xs"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
@@ -168,9 +168,9 @@ export default function App() {
                 setRole("agent");
                 setDemoStep(3);
               }}
-              className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold transition-all cursor-pointer ${
                 role === "agent"
-                  ? "bg-[#173d2b] text-white shadow-sm"
+                  ? "bg-slate-900 text-white shadow-xs"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
@@ -183,9 +183,9 @@ export default function App() {
               onClick={() => {
                 setRole("admin");
               }}
-              className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold transition-all ${
+              className={`flex items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-bold transition-all cursor-pointer ${
                 role === "admin"
-                  ? "bg-[#173d2b] text-white shadow-sm"
+                  ? "bg-slate-900 text-white shadow-xs"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
@@ -196,9 +196,9 @@ export default function App() {
           </nav>
 
           {/* Auth / User Area */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
             {/* Pilot Badge */}
-            <div className="hidden lg:flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-xs font-bold text-emerald-900 shadow-2xs">
+            <div className="hidden lg:flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-2xs">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>Bengaluru Pilot</span>
             </div>
@@ -209,10 +209,10 @@ export default function App() {
                 setRole("consumer");
                 setConsumerSubTab("wallet");
               }}
-              className="flex items-center gap-1.5 rounded-xl border border-emerald-300/80 bg-emerald-50/90 px-3 py-1.5 text-xs font-bold text-emerald-900 hover:bg-emerald-100 transition shadow-2xs cursor-pointer"
+              className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-800 hover:bg-slate-50 hover:border-slate-300 transition shadow-2xs cursor-pointer"
               title="View Wallet & Redeem"
             >
-              <Wallet size={14} className="text-emerald-700" />
+              <Wallet size={14} className="text-emerald-600" />
               <span>₹{Number(walletBalance || 0).toFixed(2)}</span>
             </button>
 
@@ -220,9 +220,9 @@ export default function App() {
             <div className="relative">
               <button
                 onClick={() => setShowUserMenu(!showUserMenu)}
-                className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-2xs cursor-pointer"
+                className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition shadow-2xs cursor-pointer"
               >
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-100 text-emerald-800 font-bold text-[11px] ring-1 ring-emerald-300">
+                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-100 text-slate-800 font-bold text-[11px] ring-1 ring-slate-200">
                   {user?.name?.charAt(0)?.toUpperCase() || "U"}
                 </div>
                 <span className="hidden sm:inline max-w-[110px] truncate font-medium">
@@ -238,7 +238,7 @@ export default function App() {
                     <div className="px-4 py-3 border-b border-slate-100">
                       <div className="flex items-center justify-between gap-2">
                         <div className="text-sm font-bold text-slate-900 truncate">{user?.name}</div>
-                        <span className="shrink-0 rounded-md bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 text-[9px] font-bold text-emerald-800 uppercase tracking-wide">
+                        <span className="shrink-0 rounded-md bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.5 text-[9px] font-bold text-emerald-800 uppercase tracking-wide">
                           {user?.role === "agent" ? "Agent" : user?.role === "admin" ? "Admin" : "Citizen"}
                         </span>
                       </div>
@@ -248,9 +248,9 @@ export default function App() {
                       )}
                     </div>
 
-                    <div className="px-4 py-2.5 bg-emerald-50/70 border-b border-emerald-100/60 flex items-center justify-between text-xs">
-                      <span className="text-emerald-800 font-semibold">Wallet Balance</span>
-                      <span className="text-emerald-950 font-extrabold font-mono text-sm">
+                    <div className="px-4 py-2.5 bg-slate-50 border-b border-slate-100 flex items-center justify-between text-xs">
+                      <span className="text-slate-600 font-semibold">Wallet Balance</span>
+                      <span className="text-emerald-700 font-extrabold font-mono text-sm">
                         ₹{Number(walletBalance || 0).toFixed(2)}
                       </span>
                     </div>
@@ -263,7 +263,7 @@ export default function App() {
                       }}
                       className="w-full flex items-center gap-2.5 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 transition text-left cursor-pointer"
                     >
-                      <Wallet size={14} className="text-emerald-700" />
+                      <Wallet size={14} className="text-emerald-600" />
                       <span>Redeem Cashback / Vouchers</span>
                     </button>
 
@@ -321,17 +321,17 @@ export default function App() {
       </main>
 
       {/* 4. Footer & Regulatory / BBMP Data Sources */}
-      <footer className="border-t border-[#dce7df] bg-white px-6 py-12">
+      <footer className="border-t border-slate-200 bg-white px-6 py-12">
         <div className="mx-auto max-w-7xl space-y-8">
           {/* Main Footer Brand Header */}
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center border-b border-slate-100 pb-8">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#064e3b] text-white shadow-sm">
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-emerald-400 shadow-sm">
                 <Recycle size={20} />
               </div>
               <div>
                 <div className="text-base font-extrabold text-slate-900">
-                  Bharath<span className="text-emerald-800">Loop</span> DRS Architecture
+                  Bharath<span className="text-emerald-700">Loop</span> DRS Architecture
                 </div>
                 <div className="text-xs text-slate-500">
                   GTIN-anchored digital deposit-return system (DRS) tailored for Indian urban municipal ecosystems
@@ -340,8 +340,8 @@ export default function App() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-900">
-                <ShieldCheck size={14} className="text-emerald-700" />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
+                <ShieldCheck size={14} className="text-emerald-600" />
                 BBMP Pilot Verified &middot; Bengaluru, Karnataka
               </span>
             </div>
@@ -350,20 +350,20 @@ export default function App() {
           {/* Official Data Sources & Regulatory Provenance Section */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 flex items-center gap-1.5">
-              <Building2 size={14} className="text-emerald-700" />
+              <Building2 size={14} className="text-slate-700" />
               <span>Official Datasets &amp; Verification Sources</span>
             </h4>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {/* Source 1: BBMP SWM */}
-              <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
+              <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4 hover:border-slate-300 transition">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-slate-900">BBMP SWM Network</span>
                   <a
                     href="https://site.bbmp.gov.in"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-emerald-800 hover:text-emerald-950"
+                    className="text-emerald-700 hover:text-emerald-800"
                     title="Visit BBMP Portal"
                   >
                     <ExternalLink size={13} />
@@ -372,20 +372,20 @@ export default function App() {
                 <div className="text-[11px] text-slate-600 mt-1 leading-relaxed">
                   Ward-level Dry Waste Collection Centres (DWCCs) operated under BBMP Solid Waste Management Bye-Laws with partners <em>Hasiru Dala</em>, <em>Saahas Zero Waste</em>, and <em>Swachha Eco</em>.
                 </div>
-                <div className="mt-2 text-[10px] font-semibold text-emerald-800 uppercase tracking-wide">
+                <div className="mt-2 text-[10px] font-semibold text-emerald-700 uppercase tracking-wide">
                   Intake Centers &amp; GPS Anchor
                 </div>
               </div>
 
               {/* Source 2: CPCB / EPR */}
-              <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
+              <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4 hover:border-slate-300 transition">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-slate-900">CPCB &amp; MoEFCC EPR</span>
                   <a
                     href="https://cpcb.nic.in"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-emerald-800 hover:text-emerald-950"
+                    className="text-emerald-700 hover:text-emerald-800"
                     title="Visit CPCB Portal"
                   >
                     <ExternalLink size={13} />
@@ -394,20 +394,20 @@ export default function App() {
                 <div className="text-[11px] text-slate-600 mt-1 leading-relaxed">
                   Plastic Waste Management Rules (PWM 2016, amended 2022). Packaging categories (Cat I Rigid, Cat II Flexible, Cat III Multilayer) and EPR compliance obligations.
                 </div>
-                <div className="mt-2 text-[10px] font-semibold text-emerald-800 uppercase tracking-wide">
+                <div className="mt-2 text-[10px] font-semibold text-emerald-700 uppercase tracking-wide">
                   EPR Target Rules &amp; Categories
                 </div>
               </div>
 
               {/* Source 3: GS1 India */}
-              <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
+              <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4 hover:border-slate-300 transition">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-slate-900">GS1 India DataKart</span>
                   <a
                     href="https://www.gs1india.org"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-emerald-800 hover:text-emerald-950"
+                    className="text-emerald-700 hover:text-emerald-800"
                     title="Visit GS1 India"
                   >
                     <ExternalLink size={13} />
@@ -416,20 +416,20 @@ export default function App() {
                 <div className="text-[11px] text-slate-600 mt-1 leading-relaxed">
                   Global Trade Item Number (GTIN-13 / EAN) barcode standards providing authoritative brand ownership, SKU specifications, and packaging material attributes.
                 </div>
-                <div className="mt-2 text-[10px] font-semibold text-emerald-800 uppercase tracking-wide">
+                <div className="mt-2 text-[10px] font-semibold text-emerald-700 uppercase tracking-wide">
                   GTIN Product Identity
                 </div>
               </div>
 
               {/* Source 4: Open Food Facts & LCA */}
-              <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
+              <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4 hover:border-slate-300 transition">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-slate-900">Open Packaging Taxonomy</span>
                   <a
                     href="https://openfoodfacts.org"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-emerald-800 hover:text-emerald-950"
+                    className="text-emerald-700 hover:text-emerald-800"
                     title="Visit Open Food Facts"
                   >
                     <ExternalLink size={13} />
@@ -438,7 +438,7 @@ export default function App() {
                 <div className="text-[11px] text-slate-600 mt-1 leading-relaxed">
                   Crowdsourced Indian packaged product repository combined with published cradle-to-gate Life Cycle Assessment (LCA) emission coefficients.
                 </div>
-                <div className="mt-2 text-[10px] font-semibold text-emerald-800 uppercase tracking-wide">
+                <div className="mt-2 text-[10px] font-semibold text-emerald-700 uppercase tracking-wide">
                   Material CO₂e Footprint
                 </div>
               </div>

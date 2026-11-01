@@ -116,7 +116,7 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
       .addTo(map)
       .bindPopup(
         `<div style="font-family: inherit; font-size: 13px; line-height: 1.4; padding: 2px;">
-          <strong style="color: #064e3b; font-size: 14px;">${dropoff?.name || "Intake Center"}</strong><br/>
+          <strong style="color: #0f172a; font-size: 14px;">${dropoff?.name || "Intake Center"}</strong><br/>
           <span style="color: #475569; font-size: 11px;">Facility: ${dropoff?.type || "BBMP DWCC"}</span><br/>
           <span style="color: #059669; font-weight: 600; font-size: 11px;">Accepts: ${String(dropoff?.accepts || "PET, Aluminium, Glass").replace(/Paper\/Cardboard/gi, "Paper & Cardboard").replace(/\|/g, ", ")}</span>
         </div>`
@@ -237,9 +237,9 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-md p-4 animate-in fade-in duration-200">
       <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl border border-slate-100 flex flex-col max-h-[92vh]">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4.5 bg-gradient-to-r from-emerald-50/50 to-white">
+        <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4.5 bg-slate-50/70">
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-md shadow-emerald-600/20">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-emerald-400 shadow-sm">
               <MapPin size={22} />
             </div>
             <div>
@@ -247,7 +247,7 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
                 <h3 className="text-base font-bold text-slate-900 leading-tight">
                   {dropoff?.name || "Authorized Intake Center"}
                 </h3>
-                <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
+                <span className="rounded-full bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
                   {dropoff?.type || "DWCC"}
                 </span>
               </div>
@@ -258,7 +258,7 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
           </div>
           <button
             onClick={onClose}
-            className="rounded-full bg-slate-100 p-2 text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition"
+            className="rounded-full bg-slate-100 p-2 text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition cursor-pointer"
             aria-label="Close"
           >
             <X size={18} />
@@ -332,7 +332,7 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
         <div className="flex items-center gap-3 px-6 py-4 border-t border-slate-100 bg-white">
           <button
             onClick={handleGetDirections}
-            className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-[#064e3b] py-3 px-4 text-sm font-bold text-white shadow-lg shadow-emerald-950/15 hover:bg-[#085a44] transition active:scale-[0.98]"
+            className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 py-3 px-4 text-sm font-bold text-white shadow-xs transition active:scale-[0.98] cursor-pointer"
           >
             <Navigation size={17} />
             <span>Turn-by-Turn Navigation (Google Maps)</span>
@@ -340,7 +340,7 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
           </button>
           <button
             onClick={onClose}
-            className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition"
+            className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition cursor-pointer"
           >
             Close
           </button>
