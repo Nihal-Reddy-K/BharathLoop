@@ -75,40 +75,40 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-slate-950/60 backdrop-blur-lg"
+        className="absolute inset-0 bg-[#273E47]/70 backdrop-blur-md"
         onClick={onClose}
       />
 
       {/* Modal Panel */}
       <div
-        className="relative w-full max-w-[460px] overflow-hidden rounded-[28px] bg-white shadow-[0_32px_80px_rgba(0,0,0,0.25)] border border-slate-200/60"
+        className="relative w-full max-w-[460px] overflow-hidden rounded-[28px] bg-white shadow-[0_32px_80px_rgba(39,62,71,0.25)] border border-[#E5DEC9]"
         style={{ animation: "scaleIn 0.25s ease-out" }}
       >
         {/* Success Overlay */}
         {success && (
           <div className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-white/95 backdrop-blur-sm rounded-[28px]">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 mb-3">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#D8C99B]/30 text-[#BD632F] mb-3">
               <CheckCircle2 size={32} />
             </div>
-            <h3 className="text-lg font-bold text-slate-900">
+            <h3 className="text-lg font-bold text-[#273E47]">
               {mode === "login" ? "Welcome back!" : "Account created!"}
             </h3>
-            <p className="text-sm text-slate-500 mt-1">Redirecting to dashboard...</p>
+            <p className="text-sm text-[#355070] mt-1">Redirecting to dashboard...</p>
           </div>
         )}
 
         {/* Top Gradient Header */}
-        <div className="relative overflow-hidden bg-slate-900 border-b border-slate-800 px-7 pt-7 pb-6">
+        <div className="relative overflow-hidden bg-[#273E47] border-b border-[#355070]/60 px-7 pt-7 pb-6">
           <div className="relative flex items-start justify-between">
             <div className="flex items-center gap-3.5">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-800 border border-slate-700 text-emerald-400 shadow-sm">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#355070] border border-[#355070]/80 text-[#D8973C] shadow-sm">
                 <Recycle size={24} />
               </div>
               <div>
                 <h2 className="text-[17px] font-bold text-white tracking-tight leading-snug">
                   {mode === "login" ? "Welcome Back" : "Join BharathLoop"}
                 </h2>
-                <p className="text-[12px] text-slate-300 mt-0.5 leading-relaxed">
+                <p className="text-[12px] text-[#D8C99B] mt-0.5 leading-relaxed">
                   {mode === "login"
                     ? "Access your deposit balance & claim cashbacks"
                     : "Start earning rewards for responsible recycling"}
@@ -118,7 +118,7 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
 
             <button
               onClick={onClose}
-              className="rounded-xl bg-slate-800 p-2 text-slate-400 hover:bg-slate-700 hover:text-white transition-all cursor-pointer"
+              className="rounded-xl bg-[#355070] p-2 text-[#D8C99B] hover:bg-[#1e3037] hover:text-white transition-all cursor-pointer"
               aria-label="Close"
             >
               <X size={18} />
@@ -132,25 +132,25 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
               return (
                 <div
                   key={i}
-                  className="flex items-center gap-1.5 rounded-lg bg-slate-800/80 px-2.5 py-1.5 border border-slate-700"
+                  className="flex items-center gap-1.5 rounded-lg bg-[#1e3037]/70 px-2.5 py-1.5 border border-[#355070]/50"
                 >
-                  <Icon size={12} className="text-emerald-400 shrink-0" />
-                  <span className="text-[10px] text-slate-300 leading-tight">{b.text}</span>
+                  <Icon size={12} className="text-[#D8973C] shrink-0" />
+                  <span className="text-[10px] text-[#E0D7C6] leading-tight">{b.text}</span>
                 </div>
               );
             })}
           </div>
 
           {/* Demo Login CTA */}
-          <div className="relative mt-4 flex items-center justify-between gap-3 rounded-xl bg-slate-800 border border-slate-700 px-3.5 py-2.5">
-            <div className="flex items-center gap-2 text-[11px] text-slate-300">
-              <Play size={11} className="text-emerald-400 fill-emerald-400" />
+          <div className="relative mt-4 flex items-center justify-between gap-3 rounded-xl bg-[#1e3037] border border-[#355070]/60 px-3.5 py-2.5">
+            <div className="flex items-center gap-2 text-[11px] text-[#E0D7C6]">
+              <Play size={11} className="text-[#D8973C] fill-[#D8973C]" />
               <span>Quick evaluation? Try a pre-configured account</span>
             </div>
             <button
               type="button"
               onClick={handleDemoSignIn}
-              className="shrink-0 rounded-lg bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 text-[11px] font-bold text-white transition-all cursor-pointer"
+              className="shrink-0 rounded-lg bg-[#BD632F] hover:bg-[#a85527] px-3 py-1.5 text-[11px] font-bold text-white transition-all cursor-pointer shadow-sm"
             >
               Demo Login
             </button>
@@ -158,19 +158,19 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
         </div>
 
         {/* Tab Switcher */}
-        <div className="relative grid grid-cols-2 bg-slate-50 border-b border-slate-200">
+        <div className="relative grid grid-cols-2 bg-[#FAF8F5] border-b border-[#E5DEC9]">
           <button
             type="button"
             onClick={() => switchMode("login")}
             className={`relative py-3.5 text-[13px] font-bold transition-all text-center cursor-pointer ${
               mode === "login"
-                ? "text-slate-900 bg-white"
-                : "text-slate-500 hover:text-slate-700"
+                ? "text-[#273E47] bg-white"
+                : "text-[#355070] hover:text-[#273E47]"
             }`}
           >
             Sign In
             {mode === "login" && (
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2.5px] w-12 rounded-full bg-emerald-700" />
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2.5px] w-12 rounded-full bg-[#BD632F]" />
             )}
           </button>
           <button
@@ -178,13 +178,13 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
             onClick={() => switchMode("signup")}
             className={`relative py-3.5 text-[13px] font-bold transition-all text-center cursor-pointer ${
               mode === "signup"
-                ? "text-slate-900 bg-white"
-                : "text-slate-500 hover:text-slate-700"
+                ? "text-[#273E47] bg-white"
+                : "text-[#355070] hover:text-[#273E47]"
             }`}
           >
             Create Account
             {mode === "signup" && (
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2.5px] w-12 rounded-full bg-emerald-700" />
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2.5px] w-12 rounded-full bg-[#BD632F]" />
             )}
           </button>
         </div>
@@ -204,9 +204,9 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
             <>
               {/* Full Name */}
               <div>
-                <label className="block text-[12px] font-semibold text-slate-700 mb-1.5">Full Name</label>
+                <label className="block text-[12px] font-semibold text-[#273E47] mb-1.5">Full Name</label>
                 <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#355070]">
                     <User size={16} />
                   </div>
                   <input
@@ -216,18 +216,18 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Priya Sharma"
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50/80 py-3 pl-10 pr-4 text-[13px] text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-500/40 transition-all"
+                    className="w-full rounded-xl border border-[#E5DEC9] bg-[#FAF8F5] py-3 pl-10 pr-4 text-[13px] text-[#273E47] placeholder:text-[#355070]/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 focus:border-[#BD632F] transition-all"
                   />
                 </div>
               </div>
 
               {/* Phone Number */}
               <div>
-                <label className="block text-[12px] font-semibold text-slate-700 mb-1.5">
-                  Phone Number <span className="text-slate-400 font-normal">(Optional, for UPI)</span>
+                <label className="block text-[12px] font-semibold text-[#273E47] mb-1.5">
+                  Phone Number <span className="text-[#355070]/80 font-normal">(Optional, for UPI)</span>
                 </label>
                 <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#355070]">
                     <Phone size={16} />
                   </div>
                   <input
@@ -235,7 +235,7 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+91 98765 43210"
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50/80 py-3 pl-10 pr-4 text-[13px] text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-500/40 transition-all"
+                    className="w-full rounded-xl border border-[#E5DEC9] bg-[#FAF8F5] py-3 pl-10 pr-4 text-[13px] text-[#273E47] placeholder:text-[#355070]/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 focus:border-[#BD632F] transition-all"
                   />
                 </div>
               </div>
@@ -244,9 +244,9 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
 
           {/* Email */}
           <div>
-            <label className="block text-[12px] font-semibold text-slate-700 mb-1.5">Email Address</label>
+            <label className="block text-[12px] font-semibold text-[#273E47] mb-1.5">Email Address</label>
             <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#355070]">
                 <Mail size={16} />
               </div>
               <input
@@ -256,16 +256,16 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full rounded-xl border border-slate-200 bg-slate-50/80 py-3 pl-10 pr-4 text-[13px] text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-500/40 transition-all"
+                className="w-full rounded-xl border border-[#E5DEC9] bg-[#FAF8F5] py-3 pl-10 pr-4 text-[13px] text-[#273E47] placeholder:text-[#355070]/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 focus:border-[#BD632F] transition-all"
               />
             </div>
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-[12px] font-semibold text-slate-700 mb-1.5">Password</label>
+            <label className="block text-[12px] font-semibold text-[#273E47] mb-1.5">Password</label>
             <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#355070]">
                 <Lock size={16} />
               </div>
               <input
@@ -274,12 +274,12 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder={mode === "signup" ? "At least 6 characters" : "Enter your password"}
-                className="w-full rounded-xl border border-slate-200 bg-slate-50/80 py-3 pl-10 pr-11 text-[13px] text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-500/40 transition-all"
+                className="w-full rounded-xl border border-[#E5DEC9] bg-[#FAF8F5] py-3 pl-10 pr-11 text-[13px] text-[#273E47] placeholder:text-[#355070]/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 focus:border-[#BD632F] transition-all"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400 hover:text-slate-600 transition"
+                className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-[#355070] hover:text-[#273E47] transition cursor-pointer"
                 tabIndex={-1}
               >
                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -291,7 +291,7 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
           <button
             type="submit"
             disabled={loading || success}
-            className="w-full mt-1 flex items-center justify-center gap-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 py-3.5 text-[13px] font-bold text-white shadow-xs transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer"
+            className="w-full mt-1 flex items-center justify-center gap-2.5 rounded-xl bg-[#BD632F] hover:bg-[#a85527] py-3.5 text-[13px] font-bold text-white shadow-xs transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer"
           >
             {loading ? (
               <span className="flex items-center gap-2">
@@ -308,8 +308,8 @@ export default function AuthModal({ onClose, initialMode = "login" }) {
         </form>
 
         {/* Bottom Security Note */}
-        <div className="px-7 py-3.5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-center gap-2 text-[11px] text-slate-500">
-          <Shield size={12} className="text-emerald-600" />
+        <div className="px-7 py-3.5 bg-[#FAF8F5] border-t border-[#E5DEC9] flex items-center justify-center gap-2 text-[11px] text-[#355070]">
+          <Shield size={12} className="text-[#BD632F]" />
           <span>Encrypted local storage &middot; No third-party tracking</span>
         </div>
       </div>

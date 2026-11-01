@@ -145,10 +145,10 @@ export default function AdminView({ apiUrl }) {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
       {/* Header */}
-      <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 text-white shadow-sm">
+      <div className="rounded-3xl border border-[#355070] bg-[#273E47] p-6 text-white shadow-sm">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-800 text-emerald-400 border border-slate-700">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#355070] text-[#D8C99B] border border-[#355070]">
               <Factory size={24} />
             </div>
             <div>
@@ -168,7 +168,7 @@ export default function AdminView({ apiUrl }) {
                 fetchRules();
                 fetchCatalog();
               }}
-              className="flex items-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800 px-3.5 py-2 text-xs font-semibold text-slate-200 hover:bg-slate-700 transition cursor-pointer"
+              className="flex items-center gap-1.5 rounded-xl border border-[#355070] bg-[#1e3037] px-3.5 py-2 text-xs font-semibold text-slate-200 hover:bg-[#273E47] transition cursor-pointer"
             >
               <RotateCcw size={14} />
               <span>Refresh Stats</span>
@@ -177,7 +177,7 @@ export default function AdminView({ apiUrl }) {
         </div>
 
         {/* Sub-tabs */}
-        <div className="mt-6 flex flex-wrap gap-2 border-t border-slate-800 pt-4">
+        <div className="mt-6 flex flex-wrap gap-2 border-t border-[#355070]/60 pt-4">
           {[
             { id: "metrics", label: "Circular Dashboard", icon: BarChart3 },
             { id: "rules", label: "Deposit Rules", icon: Settings },
@@ -192,8 +192,8 @@ export default function AdminView({ apiUrl }) {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition cursor-pointer ${
                   active
-                    ? "bg-emerald-600 text-white shadow-xs"
-                    : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                    ? "bg-[#BD632F] text-white shadow-xs"
+                    : "bg-[#355070]/70 text-[#f5f1e8] hover:bg-[#355070]"
                 }`}
               >
                 <Icon size={14} />
@@ -211,16 +211,16 @@ export default function AdminView({ apiUrl }) {
         <div className="mt-8 space-y-6 animate-in fade-in duration-200">
           {/* Key KPI Stats */}
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                 Circular Recovery Rate
               </span>
-              <div className="text-4xl font-extrabold text-emerald-800 mt-2">
+              <div className="text-4xl font-extrabold text-[#BD632F] mt-2">
                 {metrics?.recovery_rate_pct || 0}%
               </div>
-              <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-slate-100">
+              <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-[#EFEAE1]">
                 <div
-                  className="h-full rounded-full bg-emerald-600 transition-all duration-500"
+                  className="h-full rounded-full bg-[#BD632F] transition-all duration-500"
                   style={{ width: `${Math.min(100, metrics?.recovery_rate_pct || 0)}%` }}
                 />
               </div>
@@ -229,11 +229,11 @@ export default function AdminView({ apiUrl }) {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                 Deposits in Circulation
               </span>
-              <div className="text-4xl font-extrabold text-slate-900 mt-2">
+              <div className="text-4xl font-extrabold text-[#273E47] mt-2 font-mono">
                 ₹{metrics?.deposits_held_inr?.toFixed(2) || "0.00"}
               </div>
               <div className="text-xs text-slate-500 mt-2">
@@ -241,11 +241,11 @@ export default function AdminView({ apiUrl }) {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                 Refunds Distributed
               </span>
-              <div className="text-4xl font-extrabold text-teal-800 mt-2">
+              <div className="text-4xl font-extrabold text-[#355070] mt-2 font-mono">
                 ₹{metrics?.refunds_paid_inr?.toFixed(2) || "0.00"}
               </div>
               <div className="text-xs text-slate-500 mt-2">
@@ -253,11 +253,11 @@ export default function AdminView({ apiUrl }) {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                 Environmental Diverted
               </span>
-              <div className="text-4xl font-extrabold text-emerald-700 mt-2">
+              <div className="text-4xl font-extrabold text-[#D8973C] mt-2">
                 {metrics?.plastic_recovered_kg || 0} kg
               </div>
               <div className="text-xs text-slate-500 mt-2">
@@ -267,8 +267,8 @@ export default function AdminView({ apiUrl }) {
           </div>
 
           {/* Material Intake Breakdown */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 className="text-base font-bold text-slate-900 mb-1">
+          <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
+            <h3 className="text-base font-bold text-[#273E47] mb-1">
               Material Recovery by Packaging Type
             </h3>
             <p className="text-xs text-slate-500 mb-4">
@@ -281,13 +281,13 @@ export default function AdminView({ apiUrl }) {
                 { mat: "Aluminium Cans", share: "18%", count: 0, deposit: "₹10.00/unit" },
                 { mat: "Glass Bottles", share: "10%", count: 0, deposit: "₹5.00/unit" },
               ].map((m, i) => (
-                <div key={i} className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                  <div className="flex justify-between items-center font-bold text-xs text-slate-900">
+                <div key={i} className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
+                  <div className="flex justify-between items-center font-bold text-xs text-[#273E47]">
                     <span>{m.mat}</span>
-                    <span className="text-emerald-800">{m.share}</span>
+                    <span className="text-[#BD632F]">{m.share}</span>
                   </div>
                   <div className="text-xs text-slate-500 mt-2">
-                    Verified units: <span className="font-bold text-slate-800">{m.count}</span>
+                    Verified units: <span className="font-bold text-[#273E47]">{m.count}</span>
                   </div>
                   <div className="text-[11px] text-slate-400 mt-0.5">Deposit rate: {m.deposit}</div>
                 </div>
@@ -302,17 +302,17 @@ export default function AdminView({ apiUrl }) {
       ========================================================= */}
       {activeTab === "rules" && (
         <div className="mt-8 space-y-6 animate-in fade-in duration-200">
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-slate-100 pb-4">
+          <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-[#EFEAE1] pb-4">
               <div>
-                <h3 className="text-lg font-bold text-slate-900">Configured Deposit Rules</h3>
+                <h3 className="text-lg font-bold text-[#273E47]">Configured Deposit Rules</h3>
                 <p className="text-xs text-slate-500 mt-0.5">
                   Producers and regulators can adjust refundable deposit rates (in INR) per material and category.
                 </p>
               </div>
               {ruleSaveMessage && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
-                  <CheckCircle2 size={13} />
+                <span className="inline-flex items-center gap-1 rounded-full bg-[#D8C99B]/30 px-3 py-1 text-xs font-bold text-[#273E47] border border-[#D8C99B]">
+                  <CheckCircle2 size={13} className="text-[#355070]" />
                   {ruleSaveMessage}
                 </span>
               )}
@@ -321,7 +321,7 @@ export default function AdminView({ apiUrl }) {
             <div className="mt-4 overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-slate-100 text-slate-400 font-semibold uppercase text-[10px]">
+                  <tr className="border-b border-[#EFEAE1] text-slate-400 font-semibold uppercase text-[10px]">
                     <th className="py-2.5">Rule ID</th>
                     <th className="py-2.5">Material</th>
                     <th className="py-2.5">Category</th>
@@ -331,22 +331,22 @@ export default function AdminView({ apiUrl }) {
                     <th className="py-2.5 text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-slate-700">
+                <tbody className="divide-y divide-[#EFEAE1] text-slate-700">
                   {rules.map((rule) => {
                     const isEditing = editingRuleId === rule.id;
                     return (
-                      <tr key={rule.id} className="hover:bg-slate-50/60 transition">
+                      <tr key={rule.id} className="hover:bg-[#FAF8F5] transition">
                         <td className="py-3 font-mono text-slate-500 font-bold">{rule.id}</td>
-                        <td className="py-3 font-bold text-slate-900">{rule.material || "General"}</td>
+                        <td className="py-3 font-bold text-[#273E47]">{rule.material || "General"}</td>
                         <td className="py-3 text-slate-600">{rule.category || "All Categories"}</td>
-                        <td className="py-3 font-bold text-emerald-800">
+                        <td className="py-3 font-bold text-[#BD632F] font-mono">
                           {isEditing ? (
                             <input
                               type="number"
                               step="0.5"
                               value={editDepositInr}
                               onChange={(e) => setEditDepositInr(e.target.value)}
-                              className="w-20 rounded-lg border border-slate-300 p-1 text-xs font-bold text-slate-900"
+                              className="w-20 rounded-lg border border-[#E0D7C6] bg-white p-1 text-xs font-bold text-[#273E47]"
                             />
                           ) : (
                             `₹${rule.deposit_inr.toFixed(2)}`
@@ -357,7 +357,7 @@ export default function AdminView({ apiUrl }) {
                             <select
                               value={editActive ? "1" : "0"}
                               onChange={(e) => setEditActive(e.target.value === "1")}
-                              className="rounded-lg border border-slate-300 p-1 text-xs"
+                              className="rounded-lg border border-[#E0D7C6] bg-white p-1 text-xs"
                             >
                               <option value="1">Active</option>
                               <option value="0">Inactive</option>
@@ -365,7 +365,7 @@ export default function AdminView({ apiUrl }) {
                           ) : (
                             <span
                               className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
-                                rule.active ? "bg-emerald-100 text-emerald-800" : "bg-slate-200 text-slate-600"
+                                rule.active ? "bg-[#D8C99B]/30 text-[#273E47] border border-[#D8C99B]" : "bg-[#EFEAE1] text-slate-600"
                               }`}
                             >
                               {rule.active ? "Active" : "Inactive"}
@@ -378,13 +378,13 @@ export default function AdminView({ apiUrl }) {
                             <div className="flex items-center justify-end gap-1.5">
                               <button
                                 onClick={() => handleSaveRule(rule.id)}
-                                className="rounded-lg bg-emerald-800 px-2.5 py-1 text-[11px] font-bold text-white hover:bg-emerald-700"
+                                className="rounded-lg bg-[#BD632F] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[#a85527] cursor-pointer"
                               >
                                 Save
                               </button>
                               <button
                                 onClick={() => setEditingRuleId(null)}
-                                className="rounded-lg bg-slate-200 px-2.5 py-1 text-[11px] font-semibold text-slate-700 hover:bg-slate-300"
+                                className="rounded-lg bg-[#EFEAE1] px-2.5 py-1 text-[11px] font-semibold text-slate-700 hover:bg-[#E0D7C6] cursor-pointer"
                               >
                                 Cancel
                               </button>
@@ -396,7 +396,7 @@ export default function AdminView({ apiUrl }) {
                                 setEditDepositInr(rule.deposit_inr);
                                 setEditActive(Boolean(rule.active));
                               }}
-                              className="text-xs font-bold text-emerald-800 hover:underline"
+                              className="text-xs font-bold text-[#BD632F] hover:underline cursor-pointer"
                             >
                               Edit Rule
                             </button>
@@ -417,10 +417,10 @@ export default function AdminView({ apiUrl }) {
       ========================================================= */}
       {activeTab === "catalog" && (
         <div className="mt-8 space-y-6 animate-in fade-in duration-200">
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-4">
+          <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#EFEAE1] pb-4">
               <div>
-                <h3 className="text-lg font-bold text-slate-900">Verified Product Catalog</h3>
+                <h3 className="text-lg font-bold text-[#273E47]">Verified Product Catalog</h3>
                 <p className="text-xs text-slate-500 mt-0.5">
                   Indexed GTINs from GS1 India seed and runtime Open Food Facts lookups.
                 </p>
@@ -432,7 +432,7 @@ export default function AdminView({ apiUrl }) {
                   value={catalogSearch}
                   onChange={(e) => setCatalogSearch(e.target.value)}
                   placeholder="Filter by brand, material, GTIN..."
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2 pl-3 pr-8 text-xs text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+                  className="w-full rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] py-2 pl-3 pr-8 text-xs text-[#273E47] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20"
                 />
               </div>
             </div>
@@ -440,7 +440,7 @@ export default function AdminView({ apiUrl }) {
             <div className="mt-4 overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-slate-100 text-slate-400 font-semibold uppercase text-[10px]">
+                  <tr className="border-b border-[#EFEAE1] text-slate-400 font-semibold uppercase text-[10px]">
                     <th className="py-2.5">GTIN</th>
                     <th className="py-2.5">Brand</th>
                     <th className="py-2.5">Product</th>
@@ -450,17 +450,17 @@ export default function AdminView({ apiUrl }) {
                     <th className="py-2.5">Source</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-slate-700">
+                <tbody className="divide-y divide-[#EFEAE1] text-slate-700">
                   {filteredProducts.slice(0, 30).map((p) => (
-                    <tr key={p.gtin} className="hover:bg-slate-50/60 transition">
+                    <tr key={p.gtin} className="hover:bg-[#FAF8F5] transition">
                       <td className="py-3 font-mono text-slate-500 font-bold">{p.gtin}</td>
-                      <td className="py-3 font-bold text-slate-900">{p.brand}</td>
+                      <td className="py-3 font-bold text-[#273E47]">{p.brand}</td>
                       <td className="py-3 text-slate-800">{p.product}</td>
-                      <td className="py-3 font-semibold text-emerald-900">{p.material}</td>
+                      <td className="py-3 font-semibold text-[#355070]">{p.material}</td>
                       <td className="py-3 text-slate-600">{p.weight_g}g</td>
                       <td className="py-3">{p.epr_category || "Cat I"}</td>
                       <td className="py-3">
-                        <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600">
+                        <span className="rounded-full bg-[#EFEAE1] px-2 py-0.5 text-[10px] font-medium text-slate-600">
                           {p.product_identity_source}
                         </span>
                       </td>
@@ -478,8 +478,8 @@ export default function AdminView({ apiUrl }) {
       ========================================================= */}
       {activeTab === "epr" && (
         <div className="mt-8 space-y-6 animate-in fade-in duration-200">
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 className="text-lg font-bold text-slate-900">Plastic Waste Management EPR Analysis</h3>
+          <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-[#273E47]">Plastic Waste Management EPR Analysis</h3>
             <p className="text-xs text-slate-500 mt-0.5">
               CPCB PWM Framework compliance rules, penalty risks, and sustainable material alternatives.
             </p>
@@ -490,11 +490,11 @@ export default function AdminView({ apiUrl }) {
                 value={analyzeGtin}
                 onChange={(e) => setAnalyzeGtin(e.target.value)}
                 placeholder="Enter GTIN for EPR audit"
-                className="w-64 rounded-xl border border-slate-200 p-2.5 text-xs text-slate-900"
+                className="w-64 rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] p-2.5 text-xs text-[#273E47] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20"
               />
               <button
                 onClick={() => runAnalysis(analyzeGtin)}
-                className="rounded-xl bg-emerald-700 hover:bg-emerald-800 px-4 py-2 text-xs font-bold text-white shadow-xs transition cursor-pointer"
+                className="rounded-xl bg-[#BD632F] hover:bg-[#a85527] px-4 py-2 text-xs font-bold text-white shadow-xs transition cursor-pointer"
               >
                 Analyze EPR
               </button>
@@ -502,9 +502,9 @@ export default function AdminView({ apiUrl }) {
 
             {analysisResult && (
               <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
                   <span className="text-xs font-semibold text-slate-500">EPR Category</span>
-                  <div className="text-xl font-bold text-slate-900 mt-1">
+                  <div className="text-xl font-bold text-[#273E47] mt-1">
                     {analysisResult.epr?.category || "Category I"}
                   </div>
                   <div className="text-xs text-slate-500 mt-1">
@@ -512,7 +512,7 @@ export default function AdminView({ apiUrl }) {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
                   <span className="text-xs font-semibold text-slate-500">Non-Compliance Penalty</span>
                   <div className="text-xl font-bold text-red-800 mt-1">
                     ₹{analysisResult.epr?.penalty_per_tonne?.toLocaleString() || "5,000"} / tonne
@@ -520,9 +520,9 @@ export default function AdminView({ apiUrl }) {
                   <div className="text-xs text-slate-500 mt-1">CPCB PWM regulatory rate</div>
                 </div>
 
-                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
                   <span className="text-xs font-semibold text-slate-500">Recommended Alternative</span>
-                  <div className="text-xl font-bold text-emerald-800 mt-1">
+                  <div className="text-xl font-bold text-[#355070] mt-1">
                     {analysisResult.substitute?.name || "100% rPET / Aluminium"}
                   </div>
                   <div className="text-xs text-slate-500 mt-1">Lower EPR liability</div>

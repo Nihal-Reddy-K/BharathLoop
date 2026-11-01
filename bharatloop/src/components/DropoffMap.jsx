@@ -90,14 +90,14 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
       maxZoom: 19,
     }).addTo(map);
 
-    // Custom Collection Center Marker (Emerald with SVG icon)
+    // Custom Collection Center Marker (Terracotta with SVG icon)
     const centerIcon = L.divIcon({
       className: "custom-center-marker",
       html: `
         <div style="
           width: 36px; height: 36px; border-radius: 50%;
-          background: linear-gradient(135deg, #059669, #047857);
-          border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.45);
+          background: linear-gradient(135deg, #BD632F, #a85527);
+          border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(189, 99, 47, 0.45);
           display: flex; align-items: center; justify-content: center;
           color: white;
         ">
@@ -116,9 +116,9 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
       .addTo(map)
       .bindPopup(
         `<div style="font-family: inherit; font-size: 13px; line-height: 1.4; padding: 2px;">
-          <strong style="color: #0f172a; font-size: 14px;">${dropoff?.name || "Intake Center"}</strong><br/>
-          <span style="color: #475569; font-size: 11px;">Facility: ${dropoff?.type || "BBMP DWCC"}</span><br/>
-          <span style="color: #059669; font-weight: 600; font-size: 11px;">Accepts: ${String(dropoff?.accepts || "PET, Aluminium, Glass").replace(/Paper\/Cardboard/gi, "Paper & Cardboard").replace(/\|/g, ", ")}</span>
+          <strong style="color: #273E47; font-size: 14px;">${dropoff?.name || "Intake Center"}</strong><br/>
+          <span style="color: #355070; font-size: 11px;">Facility: ${dropoff?.type || "BBMP DWCC"}</span><br/>
+          <span style="color: #BD632F; font-weight: 600; font-size: 11px;">Accepts: ${String(dropoff?.accepts || "PET, Aluminium, Glass").replace(/Paper\/Cardboard/gi, "Paper & Cardboard").replace(/\|/g, ", ")}</span>
         </div>`
       );
 
@@ -135,10 +135,10 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
           html: `
             <div style="
               width: 24px; height: 24px; border-radius: 50%;
-              background: #0f766e; border: 2px solid #ffffff;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+              background: #355070; border: 2px solid #ffffff;
+              box-shadow: 0 2px 8px rgba(39,62,71,0.25);
               display: flex; align-items: center; justify-content: center;
-              color: white; opacity: 0.85; cursor: pointer;
+              color: white; opacity: 0.9; cursor: pointer;
             ">
               <div style="width: 8px; height: 8px; border-radius: 50%; background: #ffffff;"></div>
             </div>
@@ -150,8 +150,8 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
         const secMarker = L.marker([cLat, cLng], { icon: secondaryIcon }).addTo(map);
         secMarker.bindPopup(
           `<div style="font-family: inherit; font-size: 12px; line-height: 1.3;">
-            <strong>${c.name}</strong><br/>
-            <span style="color: #64748b; font-size: 11px;">${c.type || "Collection Point"}</span>
+            <strong style="color: #273E47;">${c.name}</strong><br/>
+            <span style="color: #355070; font-size: 11px;">${c.type || "Collection Point"}</span>
           </div>`
         );
         if (onSelectCenter) {
@@ -168,12 +168,12 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
           <div style="position: relative; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
             <div style="
               position: absolute; width: 28px; height: 28px; border-radius: 50%;
-              background: rgba(37, 99, 235, 0.25); animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+              background: rgba(53, 80, 112, 0.25); animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
             "></div>
             <div style="
               width: 20px; height: 20px; border-radius: 50%;
-              background: #2563eb; border: 3px solid #ffffff;
-              box-shadow: 0 2px 10px rgba(37, 99, 235, 0.5);
+              background: #355070; border: 3px solid #ffffff;
+              box-shadow: 0 2px 10px rgba(53, 80, 112, 0.5);
             "></div>
           </div>
         `,
@@ -185,8 +185,8 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
         .addTo(map)
         .bindPopup(
           `<div style="font-family: inherit; font-size: 12px; padding: 2px;">
-            <strong style="color: #1e3a8a;">Your Current Location</strong><br/>
-            <span style="color: #64748b; font-size: 11px;">GPS Anchor</span>
+            <strong style="color: #273E47;">Your Current Location</strong><br/>
+            <span style="color: #355070; font-size: 11px;">GPS Anchor</span>
           </div>`
         );
 
@@ -197,7 +197,7 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
           [centerLat, centerLng],
         ],
         {
-          color: "#059669",
+          color: "#BD632F",
           weight: 3.5,
           opacity: 0.85,
           dashArray: "6, 8",
@@ -234,31 +234,31 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-md p-4 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl border border-slate-100 flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#273E47]/70 backdrop-blur-md p-4 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-[#FAF8F5] shadow-2xl border border-[#E5DEC9] flex flex-col max-h-[92vh]">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4.5 bg-slate-50/70">
+        <div className="flex items-center justify-between border-b border-[#E5DEC9] px-6 py-4.5 bg-[#FAF8F5]">
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-emerald-400 shadow-sm">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#273E47] text-[#D8973C] shadow-sm">
               <MapPin size={22} />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-slate-900 leading-tight">
+                <h3 className="text-base font-bold text-[#273E47] leading-tight">
                   {dropoff?.name || "Authorized Intake Center"}
                 </h3>
-                <span className="rounded-full bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
+                <span className="rounded-full bg-[#D8C99B]/30 border border-[#D8C99B] px-2 py-0.5 text-[10px] font-bold text-[#BD632F]">
                   {dropoff?.type || "DWCC"}
                 </span>
               </div>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-[#355070] mt-0.5">
                 {dropoff?.address || dropoff?.routing_source || "BBMP Authorized Deposit-Return Point"}
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="rounded-full bg-slate-100 p-2 text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition cursor-pointer"
+            className="rounded-full bg-[#EFEAE1] p-2 text-[#355070] hover:bg-[#E0D7C6] hover:text-[#273E47] transition cursor-pointer"
             aria-label="Close"
           >
             <X size={18} />
@@ -266,51 +266,51 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
         </div>
 
         {/* Real distance & travel metrics stats bar */}
-        <div className="grid grid-cols-3 divide-x divide-slate-100 border-b border-slate-100 bg-slate-50/80">
+        <div className="grid grid-cols-3 divide-x divide-[#E5DEC9] border-b border-[#E5DEC9] bg-[#FAF8F5]/80">
           <div className="px-4 py-3 text-center">
-            <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-slate-500 mb-0.5">
-              <Route size={14} className="text-emerald-600" />
+            <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-[#355070] mb-0.5">
+              <Route size={14} className="text-[#BD632F]" />
               <span>Real Distance</span>
             </div>
-            <div className="text-xl font-extrabold text-slate-900">
+            <div className="text-xl font-extrabold text-[#273E47]">
               {distance !== null ? `${distance.toFixed(1)} km` : "Calculating..."}
             </div>
-            <div className="text-[10px] font-medium text-emerald-700">
+            <div className="text-[10px] font-medium text-[#BD632F]">
               {userLocation ? "From current location" : "Bengaluru Central"}
             </div>
           </div>
 
           <div className="px-4 py-3 text-center">
-            <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-slate-500 mb-0.5">
-              <Clock size={14} className="text-teal-600" />
+            <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-[#355070] mb-0.5">
+              <Clock size={14} className="text-[#355070]" />
               <span>Travel Time</span>
             </div>
-            <div className="text-xl font-extrabold text-slate-900">
+            <div className="text-xl font-extrabold text-[#273E47]">
               {duration !== null ? `~${duration} min` : "Calculating..."}
             </div>
-            <div className="text-[10px] text-slate-500">Normal city traffic</div>
+            <div className="text-[10px] text-[#355070]">Normal city traffic</div>
           </div>
 
           <div className="px-4 py-3 text-center">
-            <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-slate-500 mb-0.5">
-              <Locate size={14} className="text-blue-600" />
+            <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-[#355070] mb-0.5">
+              <Locate size={14} className="text-[#D8973C]" />
               <span>Intake Materials</span>
             </div>
-            <div className="text-xs font-bold text-slate-800 truncate px-2 mt-1">
+            <div className="text-xs font-bold text-[#273E47] truncate px-2 mt-1">
               {String(dropoff?.accepts || "PET, Aluminium, Glass").replace(/Paper\/Cardboard/gi, "Paper & Cardboard").replace(/\|/g, ", ")}
             </div>
-            <div className="text-[10px] font-medium text-emerald-600">Active & Ready</div>
+            <div className="text-[10px] font-medium text-[#BD632F]">Active & Ready</div>
           </div>
         </div>
 
         {/* Interactive OpenStreetMap Container */}
         <div className="relative flex-1 min-h-[300px]">
           {isLocating && (
-            <div className="absolute inset-0 z-20 flex items-center justify-center bg-slate-50/90 backdrop-blur-sm">
+            <div className="absolute inset-0 z-20 flex items-center justify-center bg-[#FAF8F5]/90 backdrop-blur-sm">
               <div className="text-center">
-                <div className="h-9 w-9 rounded-full border-3 border-emerald-600 border-t-transparent animate-spin mx-auto mb-2" />
-                <p className="text-xs font-semibold text-slate-700">Acquiring current GPS location...</p>
-                <p className="text-[11px] text-slate-400 mt-0.5">Calculating live routing trajectory</p>
+                <div className="h-9 w-9 rounded-full border-3 border-[#BD632F] border-t-transparent animate-spin mx-auto mb-2" />
+                <p className="text-xs font-semibold text-[#273E47]">Acquiring current GPS location...</p>
+                <p className="text-[11px] text-[#355070] mt-0.5">Calculating live routing trajectory</p>
               </div>
             </div>
           )}
@@ -322,17 +322,17 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
         </div>
 
         {locationError && (
-          <div className="px-5 py-2 text-xs text-amber-800 bg-amber-50/90 border-t border-amber-200/50 flex items-center gap-2">
-            <Compass size={14} className="shrink-0 text-amber-600" />
+          <div className="px-5 py-2 text-xs text-[#BD632F] bg-[#FAF8F5] border-t border-[#E5DEC9] flex items-center gap-2">
+            <Compass size={14} className="shrink-0 text-[#BD632F]" />
             <span>{locationError}</span>
           </div>
         )}
 
         {/* Footer actions */}
-        <div className="flex items-center gap-3 px-6 py-4 border-t border-slate-100 bg-white">
+        <div className="flex items-center gap-3 px-6 py-4 border-t border-[#E5DEC9] bg-[#FAF8F5]">
           <button
             onClick={handleGetDirections}
-            className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 py-3 px-4 text-sm font-bold text-white shadow-xs transition active:scale-[0.98] cursor-pointer"
+            className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-[#BD632F] hover:bg-[#a85527] py-3 px-4 text-sm font-bold text-white shadow-xs transition active:scale-[0.98] cursor-pointer"
           >
             <Navigation size={17} />
             <span>Turn-by-Turn Navigation (Google Maps)</span>
@@ -340,7 +340,7 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
           </button>
           <button
             onClick={onClose}
-            className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition cursor-pointer"
+            className="rounded-xl border border-[#E5DEC9] bg-[#EFEAE1] px-5 py-3 text-sm font-semibold text-[#273E47] hover:bg-[#E0D7C6] transition cursor-pointer"
           >
             Close
           </button>

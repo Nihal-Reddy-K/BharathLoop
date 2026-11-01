@@ -199,10 +199,10 @@ export default function AgentView({
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
       {/* Agent Station Banner */}
-      <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 text-white shadow-sm">
+      <div className="rounded-3xl border border-[#355070] bg-[#273E47] p-6 text-white shadow-sm">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-800 text-emerald-400 border border-slate-700">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#355070] text-[#D8C99B] border border-[#355070]">
               <Store size={24} />
             </div>
             <div>
@@ -210,8 +210,8 @@ export default function AgentView({
                 <span className="text-xs font-bold uppercase tracking-widest text-slate-300">
                   Authorized Collection Agent
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-800 px-2.5 py-0.5 text-[10px] font-semibold text-slate-300 border border-slate-700">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#355070]/80 px-2.5 py-0.5 text-[10px] font-semibold text-[#D8C99B] border border-[#355070]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#D8973C]" />
                   Live Operator Mode
                 </span>
               </div>
@@ -236,12 +236,12 @@ export default function AgentView({
                 <button
                   type="button"
                   onClick={() => setShowCpDropdown(!showCpDropdown)}
-                  className="w-full flex items-center justify-between gap-2 rounded-2xl border border-slate-700 bg-slate-800/90 px-3.5 py-2.5 text-xs text-white hover:bg-slate-800 transition focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                  className="w-full flex items-center justify-between gap-2 rounded-2xl border border-[#355070] bg-[#1e3037] px-3.5 py-2.5 text-xs text-white hover:bg-[#203740] transition focus:outline-none focus:ring-2 focus:ring-[#D8973C]"
                 >
                   <div className="flex items-center gap-2 truncate">
-                    <MapPin size={14} className="text-emerald-400 shrink-0" />
+                    <MapPin size={14} className="text-[#D8973C] shrink-0" />
                     <span className="font-bold truncate text-left">{current.name}</span>
-                    <span className="rounded-md bg-emerald-500/20 px-1.5 py-0.5 text-[9px] font-extrabold uppercase text-emerald-300 shrink-0">
+                    <span className="rounded-md bg-[#D8C99B]/30 px-1.5 py-0.5 text-[9px] font-extrabold uppercase text-[#D8C99B] shrink-0">
                       {current.type}
                     </span>
                   </div>
@@ -256,14 +256,14 @@ export default function AgentView({
                   className="fixed inset-0 z-40"
                   onClick={() => setShowCpDropdown(false)}
                 />
-                <div className="absolute right-0 top-full mt-2 z-50 w-80 rounded-2xl border border-slate-700 bg-slate-900 p-2 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
-                  <div className="p-1.5 border-b border-slate-800">
+                <div className="absolute right-0 top-full mt-2 z-50 w-80 rounded-2xl border border-[#355070] bg-[#273E47] p-2 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
+                  <div className="p-1.5 border-b border-[#355070]/60">
                     <input
                       type="text"
                       value={cpSearch}
                       onChange={(e) => setCpSearch(e.target.value)}
                       placeholder="Search intake centers..."
-                      className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-emerald-400"
+                      className="w-full rounded-xl border border-[#355070] bg-[#1e3037] px-3 py-1.5 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-[#D8973C]"
                       autoFocus
                     />
                   </div>
@@ -286,20 +286,20 @@ export default function AgentView({
                             }}
                             className={`w-full flex items-center justify-between gap-2 rounded-xl p-2.5 text-left text-xs transition ${
                               isSel
-                                ? "bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30"
-                                : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                                ? "bg-[#355070] text-[#D8C99B] font-bold border border-[#D8973C]"
+                                : "text-slate-300 hover:bg-[#1e3037] hover:text-white"
                             }`}
                           >
                             <div className="flex-1 truncate">
                               <div className="font-semibold truncate">{cp.name}</div>
                               <div className="text-[10px] text-slate-400 flex items-center gap-1.5 mt-0.5">
-                                <span className="rounded bg-slate-800 px-1 py-0.2 text-[9px] uppercase font-bold text-slate-300">
+                                <span className="rounded bg-[#355070]/60 px-1 py-0.2 text-[9px] uppercase font-bold text-slate-200">
                                   {cp.type}
                                 </span>
                                 <span className="truncate">{cp.address || "Bengaluru Facility"}</span>
                               </div>
                             </div>
-                            {isSel && <Check size={14} className="text-emerald-400 shrink-0" />}
+                            {isSel && <Check size={14} className="text-[#D8973C] shrink-0" />}
                           </button>
                         );
                       })}
@@ -315,8 +315,8 @@ export default function AgentView({
       <div className="mt-8 grid gap-8 md:grid-cols-12">
         {/* Left Column: Token Input & Inspection */}
         <div className="md:col-span-7 space-y-6">
-          <div className="rounded-3xl border border-[#dce7df] bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-bold text-slate-900">1. Scan or Enter Consumer Return QR</h2>
+          <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
+            <h2 className="text-lg font-bold text-[#273E47]">1. Scan or Enter Consumer Return QR</h2>
             <p className="text-xs text-slate-500 mt-1">
               Consumers generate this return token upon simulated purchase in BharathLoop.
             </p>
@@ -329,14 +329,14 @@ export default function AgentView({
                   value={tokenInput}
                   onChange={(e) => setTokenInput(e.target.value.toUpperCase())}
                   placeholder="Enter Return Token (e.g. BLP-77C9B76F)"
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm font-mono font-bold tracking-wider uppercase text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+                  className="w-full rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] px-4 py-3.5 text-sm font-mono font-bold tracking-wider uppercase text-[#273E47] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20"
                   onKeyDown={(e) => e.key === "Enter" && inspectToken()}
                 />
               </div>
 
               <button
                 onClick={() => setShowScanner(true)}
-                className="flex items-center gap-1.5 rounded-2xl bg-emerald-800 px-4 py-3.5 text-xs font-bold text-white shadow-sm hover:bg-emerald-700 transition active:scale-[0.98]"
+                className="flex items-center gap-1.5 rounded-2xl bg-[#355070] px-4 py-3.5 text-xs font-bold text-white shadow-sm hover:bg-[#273E47] transition active:scale-[0.98] cursor-pointer"
                 title="Open Camera Scanner"
               >
                 <Camera size={16} />
@@ -348,7 +348,7 @@ export default function AgentView({
               <button
                 onClick={() => inspectToken()}
                 disabled={inspectLoading || !tokenInput.trim()}
-                className="flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-bold text-white hover:bg-slate-800 disabled:opacity-50 transition"
+                className="flex items-center gap-2 rounded-xl bg-[#273E47] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#1e3037] disabled:opacity-50 transition cursor-pointer"
               >
                 {inspectLoading ? (
                   <>
@@ -366,7 +366,7 @@ export default function AgentView({
               {onSwitchToConsumer && (
                 <button
                   onClick={onSwitchToConsumer}
-                  className="text-xs font-medium text-emerald-800 hover:underline"
+                  className="text-xs font-medium text-[#BD632F] hover:underline cursor-pointer"
                 >
                   Need a token? Go to Consumer purchases →
                 </button>
@@ -386,17 +386,17 @@ export default function AgentView({
 
           {/* Inspected Packaging Card */}
           {pkgData && (
-            <div className="rounded-3xl border border-emerald-500/30 bg-gradient-to-b from-white to-emerald-50/30 p-6 shadow-sm">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800">
-                  <PackageCheck size={16} className="text-emerald-600" />
+            <div className="rounded-3xl border border-[#E0D7C6] bg-gradient-to-b from-white to-[#FAF8F5] p-6 shadow-sm">
+              <div className="flex items-center justify-between border-b border-[#EFEAE1] pb-3">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#273E47]">
+                  <PackageCheck size={16} className="text-[#355070]" />
                   Packaging Instance Verified
                 </div>
                 <span
                   className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${
                     pkgData.status === "deposit_recorded"
                       ? "bg-amber-100 text-amber-800 border border-amber-300"
-                      : "bg-emerald-100 text-emerald-800 border border-emerald-300"
+                      : "bg-[#D8C99B]/30 text-[#273E47] border border-[#D8C99B]"
                   }`}
                 >
                   {pkgData.status === "deposit_recorded"
@@ -408,7 +408,7 @@ export default function AgentView({
               <div className="mt-4 grid grid-cols-2 gap-4">
                 <div>
                   <span className="text-[11px] font-semibold text-slate-500 uppercase">Product</span>
-                  <div className="text-base font-bold text-slate-900 mt-0.5">
+                  <div className="text-base font-bold text-[#273E47] mt-0.5">
                     {pkgData.brand} {pkgData.product_name}
                   </div>
                   <div className="text-xs text-slate-600 mt-0.5">GTIN: {pkgData.gtin}</div>
@@ -416,29 +416,29 @@ export default function AgentView({
 
                 <div className="text-right">
                   <span className="text-[11px] font-semibold text-slate-500 uppercase">Refundable Deposit</span>
-                  <div className="text-2xl font-bold text-emerald-800 mt-0.5">
+                  <div className="text-2xl font-bold text-[#BD632F] mt-0.5 font-mono">
                     ₹{pkgData.deposit_inr?.toFixed(2)}
                   </div>
-                  <div className="text-xs text-emerald-700 font-medium">Guaranteed Producer Deposit</div>
+                  <div className="text-xs text-[#355070] font-medium">Guaranteed Producer Deposit</div>
                 </div>
               </div>
 
               {/* Physical Verification Checklist */}
-              <div className="mt-4 rounded-2xl bg-white border border-slate-200 p-4">
-                <div className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+              <div className="mt-4 rounded-2xl bg-white border border-[#E0D7C6] p-4">
+                <div className="text-xs font-bold text-[#273E47] uppercase tracking-wider mb-2">
                   Physical Acceptance Checklist
                 </div>
                 <div className="space-y-1.5 text-xs text-slate-600">
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" defaultChecked className="rounded text-emerald-600 focus:ring-emerald-500" />
+                    <input type="checkbox" defaultChecked className="rounded text-[#BD632F] focus:ring-[#BD632F]" />
                     <span>Packaging container is intact, uncrushed, and empty</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" defaultChecked className="rounded text-emerald-600 focus:ring-emerald-500" />
+                    <input type="checkbox" defaultChecked className="rounded text-[#BD632F] focus:ring-[#BD632F]" />
                     <span>Material ({pkgData.material}) matches product specifications</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" defaultChecked className="rounded text-emerald-600 focus:ring-emerald-500" />
+                    <input type="checkbox" defaultChecked className="rounded text-[#BD632F] focus:ring-[#BD632F]" />
                     <span>Return token ({pkgData.public_token}) authenticated in database</span>
                   </label>
                 </div>
@@ -446,20 +446,20 @@ export default function AgentView({
 
               {/* Reward Method Picker */}
               <div className="mt-4">
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-2">
+                <label className="text-xs font-bold text-[#273E47] uppercase tracking-wider block mb-2">
                   Consumer Reward Preference
                 </label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={() => setRewardMethod("cashback")}
-                    className={`flex items-center gap-2.5 rounded-2xl p-3 border text-left transition ${
+                    className={`flex items-center gap-2.5 rounded-2xl p-3 border text-left transition cursor-pointer ${
                       rewardMethod === "cashback"
-                        ? "border-emerald-600 bg-emerald-50 text-emerald-950 font-bold shadow-sm"
-                        : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
+                        ? "border-[#BD632F] bg-[#FAF8F5] text-[#273E47] font-bold shadow-sm"
+                        : "border-[#E0D7C6] bg-white text-slate-600 hover:bg-[#FAF8F5]"
                     }`}
                   >
-                    <Wallet size={18} className={rewardMethod === "cashback" ? "text-emerald-700" : "text-slate-400"} />
+                    <Wallet size={18} className={rewardMethod === "cashback" ? "text-[#BD632F]" : "text-slate-400"} />
                     <div>
                       <div className="text-xs">Demo Wallet Cashback</div>
                       <div className="text-[10px] text-slate-500 font-normal">Direct in-app balance credit</div>
@@ -469,13 +469,13 @@ export default function AgentView({
                   <button
                     type="button"
                     onClick={() => setRewardMethod("voucher")}
-                    className={`flex items-center gap-2.5 rounded-2xl p-3 border text-left transition ${
+                    className={`flex items-center gap-2.5 rounded-2xl p-3 border text-left transition cursor-pointer ${
                       rewardMethod === "voucher"
-                        ? "border-emerald-600 bg-emerald-50 text-emerald-950 font-bold shadow-sm"
-                        : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
+                        ? "border-[#BD632F] bg-[#FAF8F5] text-[#273E47] font-bold shadow-sm"
+                        : "border-[#E0D7C6] bg-white text-slate-600 hover:bg-[#FAF8F5]"
                     }`}
                   >
-                    <Gift size={18} className={rewardMethod === "voucher" ? "text-emerald-700" : "text-slate-400"} />
+                    <Gift size={18} className={rewardMethod === "voucher" ? "text-[#BD632F]" : "text-slate-400"} />
                     <div>
                       <div className="text-xs">Instant Partner Voucher</div>
                       <div className="text-[10px] text-slate-500 font-normal">Single-use retail coupon</div>
@@ -489,7 +489,7 @@ export default function AgentView({
                 <button
                   onClick={handleVerifyReturn}
                   disabled={verifyLoading}
-                  className="mt-5 w-full flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 hover:bg-emerald-800 py-3.5 text-sm font-bold text-white shadow-xs transition active:scale-[0.98] disabled:opacity-50 cursor-pointer"
+                  className="mt-5 w-full flex items-center justify-center gap-2 rounded-2xl bg-[#BD632F] hover:bg-[#a85527] py-3.5 text-sm font-bold text-white shadow-xs transition active:scale-[0.98] disabled:opacity-50 cursor-pointer"
                 >
                   {verifyLoading ? (
                     <>
@@ -504,8 +504,8 @@ export default function AgentView({
                   )}
                 </button>
               ) : (
-                <div className="mt-5 rounded-2xl bg-slate-100 p-4 text-center">
-                  <div className="text-xs font-bold text-slate-700">This container has already been processed</div>
+                <div className="mt-5 rounded-2xl bg-[#EFEAE1] p-4 text-center">
+                  <div className="text-xs font-bold text-[#273E47]">This container has already been processed</div>
                   <div className="text-xs text-slate-500 mt-1">
                     Returned on {pkgData.returned_at} at {pkgData.collection_point_name || "Authorized Center"}.
                   </div>
@@ -519,8 +519,8 @@ export default function AgentView({
         <div className="md:col-span-5 space-y-6">
           {/* Verification Receipt Card */}
           {verifyResult ? (
-            <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 text-white shadow-sm">
-              <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            <div className="rounded-3xl border border-[#355070] bg-[#273E47] p-6 text-white shadow-sm">
+              <div className="flex items-center gap-2 text-[#D8973C] text-xs font-bold uppercase tracking-wider">
                 <CheckCircle2 size={16} />
                 Disbursement Successful
               </div>
@@ -534,7 +534,7 @@ export default function AgentView({
                 </div>
               </div>
 
-              <div className="mt-5 space-y-2 border-t border-slate-800 pt-4 text-xs text-slate-300">
+              <div className="mt-5 space-y-2 border-t border-[#355070] pt-4 text-xs text-slate-300">
                 <div className="flex justify-between">
                   <span className="text-slate-400">Intake Center:</span>
                   <span className="font-semibold text-white">{verifyResult.collection_point}</span>
@@ -547,12 +547,12 @@ export default function AgentView({
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Token ID:</span>
-                  <span className="font-mono font-semibold text-emerald-400">
+                  <span className="font-mono font-semibold text-[#D8973C]">
                     {verifyResult.packaging?.public_token}
                   </span>
                 </div>
                 {verifyResult.voucher && (
-                  <div className="mt-3 rounded-xl bg-slate-800 p-3 border border-slate-700">
+                  <div className="mt-3 rounded-xl bg-[#1e3037] p-3 border border-[#355070]">
                     <span className="text-[10px] uppercase font-bold text-slate-400">Voucher Code Issued</span>
                     <div className="text-base font-mono font-bold text-white mt-0.5">
                       {verifyResult.voucher.voucher_code}
@@ -562,12 +562,12 @@ export default function AgentView({
               </div>
 
               {/* Anti-Fraud Proof Test Trigger */}
-              <div className="mt-6 border-t border-emerald-800/80 pt-4">
-                <div className="text-xs font-bold text-emerald-300 mb-2">Anti-Fraud Proof Demo:</div>
+              <div className="mt-6 border-t border-[#355070] pt-4">
+                <div className="text-xs font-bold text-[#D8C99B] mb-2">Anti-Fraud Proof Demo:</div>
                 <button
                   onClick={testDuplicateReturn}
                   disabled={verifyLoading}
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-amber-500/20 border border-amber-400/40 py-2.5 text-xs font-bold text-amber-200 hover:bg-amber-500/30 transition"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#D8973C]/20 border border-[#D8973C]/40 py-2.5 text-xs font-bold text-[#D8C99B] hover:bg-[#D8973C]/30 transition cursor-pointer"
                 >
                   <ShieldAlert size={14} />
                   <span>Test Duplicate Return (Try refunding again)</span>
@@ -575,9 +575,9 @@ export default function AgentView({
               </div>
             </div>
           ) : (
-            <div className="rounded-3xl border border-dashed border-slate-300 bg-white p-6 text-center text-slate-500">
-              <ShieldCheck size={36} className="mx-auto text-emerald-600 mb-2 opacity-60" />
-              <h3 className="font-bold text-sm text-slate-700">Safe Against Duplicate Refunds</h3>
+            <div className="rounded-3xl border border-dashed border-[#E0D7C6] bg-white p-6 text-center text-slate-500">
+              <ShieldCheck size={36} className="mx-auto text-[#355070] mb-2 opacity-60" />
+              <h3 className="font-bold text-sm text-[#273E47]">Safe Against Duplicate Refunds</h3>
               <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">
                 Every packaging unit has a cryptographic token. Once verified, the database prevents any secondary refund attempt.
               </p>
@@ -589,15 +589,15 @@ export default function AgentView({
             <div
               className={`rounded-2xl border p-4 text-xs font-medium animate-in fade-in duration-200 ${
                 duplicateTestResult.blocked
-                  ? "border-emerald-500/30 bg-slate-900 text-emerald-200"
-                  : "border-red-500/40 bg-slate-900 text-red-200"
+                  ? "border-[#D8C99B]/40 bg-[#273E47] text-[#D8C99B]"
+                  : "border-red-500/40 bg-[#273E47] text-red-200"
               }`}
             >
               <div className="flex items-center gap-2 font-bold mb-1">
                 {duplicateTestResult.blocked ? (
                   <>
-                    <ShieldCheck size={16} className="text-emerald-400" />
-                    <span className="text-emerald-400 font-bold">Fraud Prevention Passed (HTTP 400)</span>
+                    <ShieldCheck size={16} className="text-[#D8973C]" />
+                    <span className="text-[#D8973C] font-bold">Fraud Prevention Passed (HTTP 400)</span>
                   </>
                 ) : (
                   <>
@@ -614,19 +614,19 @@ export default function AgentView({
 
           {/* Recent Verifications Feed */}
           {recentVerifications.length > 0 && (
-            <div className="rounded-3xl border border-[#dce7df] bg-white p-5 shadow-sm">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">
+            <div className="rounded-3xl border border-[#E0D7C6] bg-white p-5 shadow-sm">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[#273E47] mb-3">
                 Recent Intake Activity
               </h3>
               <div className="space-y-2.5">
                 {recentVerifications.map((item, idx) => (
-                  <div key={idx} className="flex items-center justify-between border-b border-slate-100 pb-2 text-xs">
+                  <div key={idx} className="flex items-center justify-between border-b border-[#EFEAE1] pb-2 text-xs">
                     <div>
-                      <div className="font-semibold text-slate-800">{item.product}</div>
+                      <div className="font-semibold text-[#273E47]">{item.product}</div>
                       <div className="text-[10px] font-mono text-slate-400">{item.token} · {item.time}</div>
                     </div>
                     <div className="text-right">
-                      <div className="font-bold text-emerald-700">+₹{item.amount.toFixed(2)}</div>
+                      <div className="font-bold text-[#BD632F]">+₹{item.amount.toFixed(2)}</div>
                       <div className="text-[10px] text-slate-500 capitalize">{item.method}</div>
                     </div>
                   </div>

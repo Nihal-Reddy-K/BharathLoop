@@ -500,17 +500,17 @@ export default function ConsumerView({
   return (
     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
       {/* Sub-navigation tabs */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200/80 pb-4">
-        <div className="flex items-center gap-1 overflow-x-auto max-w-full rounded-2xl bg-slate-100 p-1 border border-slate-200/80 shadow-2xs scrollbar-none">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#E5DEC9] pb-4">
+        <div className="flex items-center gap-1 overflow-x-auto max-w-full rounded-2xl bg-[#EFEAE1] p-1 border border-[#E0D7C6] shadow-2xs scrollbar-none">
           <button
             onClick={() => handleSubTabChange("scan")}
             className={`flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-bold transition cursor-pointer shrink-0 ${
               subTab === "scan"
-                ? "bg-white text-slate-900 shadow-xs border border-slate-200/50"
-                : "text-slate-600 hover:text-slate-900"
+                ? "bg-white text-[#273E47] shadow-xs border border-[#E0D7C6]"
+                : "text-[#355070] hover:text-[#273E47]"
             }`}
           >
-            <Camera size={15} className={subTab === "scan" ? "text-emerald-700" : "text-slate-400"} />
+            <Camera size={15} className={subTab === "scan" ? "text-[#BD632F]" : "text-slate-400"} />
             <span>Scan &amp; Verify</span>
           </button>
 
@@ -518,11 +518,11 @@ export default function ConsumerView({
             onClick={() => handleSubTabChange("centers")}
             className={`flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-bold transition cursor-pointer shrink-0 ${
               subTab === "centers"
-                ? "bg-white text-slate-900 shadow-xs border border-slate-200/50"
-                : "text-slate-600 hover:text-slate-900"
+                ? "bg-white text-[#273E47] shadow-xs border border-[#E0D7C6]"
+                : "text-[#355070] hover:text-[#273E47]"
             }`}
           >
-            <MapPin size={15} className={subTab === "centers" ? "text-emerald-700" : "text-slate-400"} />
+            <MapPin size={15} className={subTab === "centers" ? "text-[#BD632F]" : "text-slate-400"} />
             <span>Drop-off Centers ({enrichedCenters.length})</span>
           </button>
 
@@ -530,11 +530,11 @@ export default function ConsumerView({
             onClick={() => handleSubTabChange("packagings")}
             className={`flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-bold transition cursor-pointer shrink-0 ${
               subTab === "packagings"
-                ? "bg-white text-slate-900 shadow-xs border border-slate-200/50"
-                : "text-slate-600 hover:text-slate-900"
+                ? "bg-white text-[#273E47] shadow-xs border border-[#E0D7C6]"
+                : "text-[#355070] hover:text-[#273E47]"
             }`}
           >
-            <Package size={15} className={subTab === "packagings" ? "text-emerald-700" : "text-slate-400"} />
+            <Package size={15} className={subTab === "packagings" ? "text-[#BD632F]" : "text-slate-400"} />
             <span>My Passports ({userPackagings.length})</span>
           </button>
 
@@ -542,14 +542,14 @@ export default function ConsumerView({
             onClick={() => handleSubTabChange("wallet")}
             className={`flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-bold transition cursor-pointer shrink-0 ${
               subTab === "wallet"
-                ? "bg-white text-slate-900 shadow-xs border border-slate-200/50"
-                : "text-slate-600 hover:text-slate-900"
+                ? "bg-white text-[#273E47] shadow-xs border border-[#E0D7C6]"
+                : "text-[#355070] hover:text-[#273E47]"
             }`}
           >
-            <Wallet size={15} className={subTab === "wallet" ? "text-emerald-700" : "text-slate-400"} />
+            <Wallet size={15} className={subTab === "wallet" ? "text-[#BD632F]" : "text-slate-400"} />
             <span>Wallet &amp; Redeem</span>
             {walletData?.wallet?.balance_inr > 0 && (
-              <span className="rounded-full bg-emerald-50 border border-emerald-200/80 px-2 py-0.2 text-[10px] font-extrabold text-emerald-800">
+              <span className="rounded-full bg-[#D8C99B]/30 border border-[#D8C99B] px-2 py-0.2 text-[10px] font-extrabold text-[#273E47]">
                 ₹{walletData.wallet.balance_inr.toFixed(0)}
               </span>
             )}
@@ -558,13 +558,13 @@ export default function ConsumerView({
 
         {/* Live Wallet Quick Summary Pill */}
         <div className="flex items-center justify-between sm:justify-end gap-3 shrink-0">
-          <div className="flex items-center gap-2.5 rounded-2xl border border-slate-200/90 bg-white px-3.5 py-1.5 shadow-2xs">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50 border border-emerald-200/60 text-emerald-700 font-bold text-xs">
+          <div className="flex items-center gap-2.5 rounded-2xl border border-[#E0D7C6] bg-white px-3.5 py-1.5 shadow-2xs">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#FAF8F5] border border-[#E0D7C6] text-[#BD632F] font-bold text-xs">
               ₹
             </div>
             <div>
-              <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">Available Cashback</div>
-              <div className="text-sm font-extrabold text-slate-900 font-mono">
+              <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">Available Cashback</div>
+              <div className="text-sm font-extrabold text-[#273E47] font-mono">
                 ₹{walletData?.wallet?.balance_inr?.toFixed(2) || "0.00"}
               </div>
             </div>
@@ -575,7 +575,7 @@ export default function ConsumerView({
               handleSubTabChange("wallet");
               setShowCashoutModal(true);
             }}
-            className="flex items-center gap-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 px-3.5 py-2 text-xs font-bold text-white shadow-xs transition active:scale-95 cursor-pointer"
+            className="flex items-center gap-1.5 rounded-xl bg-[#BD632F] hover:bg-[#a85527] px-3.5 py-2 text-xs font-bold text-white shadow-xs transition active:scale-95 cursor-pointer"
           >
             <Send size={13} />
             <span>Redeem Money</span>
@@ -589,13 +589,13 @@ export default function ConsumerView({
       {subTab === "scan" && (
         <div className="mt-6 space-y-6">
           {/* Barcode Search Header Card */}
-          <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-2xs">
+          <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 sm:p-8 shadow-2xs">
             <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200/80 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
-                <ShieldCheck size={14} className="text-emerald-600" />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#D8C99B] bg-[#D8C99B]/30 px-3 py-1 text-xs font-semibold text-[#273E47]">
+                <ShieldCheck size={14} className="text-[#355070]" />
                 GS1 GTIN &amp; EPR Deposit Intelligence
               </span>
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 mt-2.5">
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#273E47] mt-2.5">
                 Scan Real Barcodes to Reveal Refundable Deposits
               </h1>
               <p className="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">
@@ -615,7 +615,7 @@ export default function ConsumerView({
                   onChange={(e) => setGtin(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleLookup()}
                   placeholder="Enter 13-digit GTIN (e.g. 8901030000000 or 8909990000019)"
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50/70 py-3.5 pl-11 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600/20 font-mono transition"
+                  className="w-full rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] py-3.5 pl-11 pr-4 text-sm text-[#273E47] placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 font-mono transition"
                 />
               </div>
 
@@ -623,7 +623,7 @@ export default function ConsumerView({
                 <button
                   onClick={() => handleLookup()}
                   disabled={searchLoading}
-                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 hover:bg-emerald-800 px-6 py-3.5 text-sm font-bold text-white shadow-xs transition active:scale-[0.98] disabled:opacity-50 cursor-pointer"
+                  className="flex-1 sm:flex-none flex items-center justify-center gap-2 rounded-2xl bg-[#BD632F] hover:bg-[#a85527] px-6 py-3.5 text-sm font-bold text-white shadow-xs transition active:scale-[0.98] disabled:opacity-50 cursor-pointer"
                 >
                   {searchLoading ? (
                     <>
@@ -640,10 +640,10 @@ export default function ConsumerView({
 
                 <button
                   onClick={() => setShowScanner(true)}
-                  className="flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-sm font-bold text-slate-700 hover:bg-slate-100 transition active:scale-[0.98] cursor-pointer"
+                  className="flex items-center justify-center gap-2 rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] px-4 py-3.5 text-sm font-bold text-[#355070] hover:bg-[#EFEAE1] transition active:scale-[0.98] cursor-pointer"
                   title="Open live camera barcode scanner"
                 >
-                  <Camera size={18} className="text-slate-600" />
+                  <Camera size={18} className="text-[#355070]" />
                   <span className="hidden sm:inline">Camera</span>
                 </button>
               </div>
@@ -664,7 +664,7 @@ export default function ConsumerView({
                     setGtin(item.code);
                     handleLookup(item.code);
                   }}
-                  className="rounded-xl border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-semibold text-slate-700 hover:border-emerald-500 hover:bg-emerald-50/50 hover:text-emerald-900 transition"
+                  className="rounded-xl border border-[#E0D7C6] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#273E47] hover:border-[#BD632F] hover:bg-[#FAF8F5] hover:text-[#BD632F] transition cursor-pointer"
                 >
                   {item.label}
                 </button>
@@ -693,36 +693,36 @@ export default function ConsumerView({
 
           {/* Product Lookup Result Section */}
           {productResult && !productResult.notFound && (
-            <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-2xs space-y-6">
+            <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 sm:p-8 shadow-2xs space-y-6">
               {/* Product Identity Header */}
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-slate-100 pb-6">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-[#EFEAE1] pb-6">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 rounded-full border border-emerald-200/80 bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-800">
-                      <CheckCircle2 size={13} className="text-emerald-600" />
+                    <span className="inline-flex items-center gap-1 rounded-full border border-[#D8C99B] bg-[#D8C99B]/30 px-2.5 py-0.5 text-xs font-semibold text-[#273E47]">
+                      <CheckCircle2 size={13} className="text-[#355070]" />
                       Product Resolved
                     </span>
-                    <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-medium text-slate-600">
+                    <span className="rounded-full bg-[#EFEAE1] px-2.5 py-0.5 text-[11px] font-medium text-[#355070]">
                       Source: {productResult.product?.product_identity_source || "Verified Catalog"}
                     </span>
                   </div>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-[#273E47] mt-2">
                     {productResult.product?.brand} {productResult.product?.product}
                   </h2>
                   <div className="text-xs text-slate-500 mt-1">
-                    GTIN: <span className="font-mono font-bold text-slate-700">{productResult.product?.gtin}</span> &middot; Category: {productResult.product?.category}
+                    GTIN: <span className="font-mono font-bold text-[#273E47]">{productResult.product?.gtin}</span> &middot; Category: {productResult.product?.category}
                   </div>
                 </div>
 
                 {/* Deposit Highlight Card */}
-                <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-4 text-right min-w-[200px] shadow-2xs">
+                <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4 text-right min-w-[200px] shadow-2xs">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
                     Refundable Deposit
                   </span>
-                  <div className="text-3xl font-extrabold text-slate-900 mt-0.5 font-mono">
+                  <div className="text-3xl font-extrabold text-[#273E47] mt-0.5 font-mono">
                     ₹{productResult.pfand_deposit?.deposit_inr?.toFixed(2) || "5.00"}
                   </div>
-                  <span className="text-[10px] text-emerald-700 font-semibold">
+                  <span className="text-[10px] text-[#355070] font-semibold">
                     100% Refundable on physical return
                   </span>
                 </div>
@@ -730,43 +730,43 @@ export default function ConsumerView({
 
               {/* Material & Circular Spec Cards */}
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                  <span className="text-xs font-semibold text-slate-500 flex items-center gap-1.5">
-                    <Package size={15} className="text-slate-700" />
+                <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
+                  <span className="text-xs font-semibold text-[#355070] flex items-center gap-1.5">
+                    <Package size={15} className="text-[#355070]" />
                     Packaging Material
                   </span>
-                  <div className="text-lg font-bold text-slate-900 mt-1">{productResult.product?.material}</div>
+                  <div className="text-lg font-bold text-[#273E47] mt-1">{productResult.product?.material}</div>
                   <div className="text-xs text-slate-500">{productResult.product?.weight_g}g ({productResult.product?.layers || "mono-layer"})</div>
                 </div>
 
-                <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                  <span className="text-xs font-semibold text-slate-500 flex items-center gap-1.5">
-                    <Recycle size={15} className="text-slate-700" />
+                <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
+                  <span className="text-xs font-semibold text-[#355070] flex items-center gap-1.5">
+                    <Recycle size={15} className="text-[#355070]" />
                     Recyclability &amp; EPR
                   </span>
-                  <div className="text-lg font-bold text-slate-900 mt-1">
+                  <div className="text-lg font-bold text-[#273E47] mt-1">
                     {productResult.epr?.recyclability_pct || "85"}%
                   </div>
                   <div className="text-xs text-slate-500">{productResult.epr?.category || "Cat I Rigid"}</div>
                 </div>
 
-                <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                  <span className="text-xs font-semibold text-slate-500 flex items-center gap-1.5">
-                    <Leaf size={15} className="text-slate-700" />
+                <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
+                  <span className="text-xs font-semibold text-[#355070] flex items-center gap-1.5">
+                    <Leaf size={15} className="text-[#355070]" />
                     CO₂e Footprint
                   </span>
-                  <div className="text-lg font-bold text-slate-900 mt-1">
+                  <div className="text-lg font-bold text-[#273E47] mt-1">
                     {Math.round((productResult.environment?.co2e_kg || 0.065) * 1000)}g
                   </div>
                   <div className="text-xs text-slate-500">Material lifecycle impact</div>
                 </div>
 
-                <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                  <span className="text-xs font-semibold text-slate-500 flex items-center gap-1.5">
-                    <Gift size={15} className="text-slate-700" />
+                <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
+                  <span className="text-xs font-semibold text-[#355070] flex items-center gap-1.5">
+                    <Gift size={15} className="text-[#355070]" />
                     Refund Method
                   </span>
-                  <div className="text-lg font-bold text-slate-900 mt-1">
+                  <div className="text-lg font-bold text-[#273E47] mt-1">
                     UPI / Voucher
                   </div>
                   <div className="text-xs text-slate-500">Instant on agent verification</div>
@@ -774,11 +774,11 @@ export default function ConsumerView({
               </div>
 
               {/* Action Banner: Simulate Purchase & Generate Return Pass */}
-              <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 text-white shadow-sm">
+              <div className="rounded-3xl border border-[#355070] bg-[#273E47] p-6 text-white shadow-sm">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="rounded-full bg-slate-800 px-3 py-1 text-xs font-semibold text-slate-300 border border-slate-700">
+                      <span className="rounded-full bg-[#355070] px-3 py-1 text-xs font-semibold text-[#D8C99B] border border-[#355070]">
                         Interactive Step 1: Simulate Purchase
                       </span>
                     </div>
@@ -793,7 +793,7 @@ export default function ConsumerView({
                   <button
                     onClick={handleSimulatePurchase}
                     disabled={purchaseLoading}
-                    className="flex shrink-0 items-center justify-center gap-2 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-4 text-sm font-bold shadow-xs transition active:scale-[0.98] disabled:opacity-50 cursor-pointer"
+                    className="flex shrink-0 items-center justify-center gap-2 rounded-2xl bg-[#BD632F] hover:bg-[#a85527] text-white px-6 py-4 text-sm font-bold shadow-xs transition active:scale-[0.98] disabled:opacity-50 cursor-pointer"
                   >
                     {purchaseLoading ? (
                       <>
@@ -811,15 +811,15 @@ export default function ConsumerView({
               </div>
 
               {/* Nearest Drop-off Center Preview Card */}
-              <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
-                <div className="bg-slate-50 px-5 py-3 border-b border-slate-200 flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800">
-                    <MapPin size={15} className="text-emerald-700" />
+              <div className="rounded-2xl border border-[#E0D7C6] bg-white overflow-hidden shadow-xs">
+                <div className="bg-[#FAF8F5] px-5 py-3 border-b border-[#E0D7C6] flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#273E47]">
+                    <MapPin size={15} className="text-[#BD632F]" />
                     <span>Nearest Authorized Intake Center</span>
                   </div>
                   <button
                     onClick={() => handleSubTabChange("centers")}
-                    className="text-xs font-bold text-emerald-800 hover:underline flex items-center gap-1"
+                    className="text-xs font-bold text-[#355070] hover:text-[#273E47] hover:underline flex items-center gap-1"
                   >
                     Browse all {enrichedCenters.length} centres
                     <ChevronRight size={13} />
@@ -830,15 +830,15 @@ export default function ConsumerView({
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-slate-900 text-sm">
+                        <span className="font-bold text-[#273E47] text-sm">
                           {productResult?.dropoff?.name || currentCenter.name}
                         </span>
-                        <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
+                        <span className="rounded-full bg-[#D8C99B]/30 px-2 py-0.5 text-[10px] font-bold text-[#273E47] border border-[#D8C99B]">
                           {productResult?.dropoff?.type || currentCenter.type || "BBMP DWCC"}
                         </span>
                       </div>
                       <div className="text-[11px] text-slate-500 flex items-center gap-1.5 mt-1">
-                        <span className="font-semibold text-emerald-800">BBMP Solid Waste Management (SWM)</span>
+                        <span className="font-semibold text-[#355070]">BBMP Solid Waste Management (SWM)</span>
                         <span>&middot;</span>
                         <span>{productResult?.dropoff?.address || currentCenter.address || "Bengaluru Ward Intake Point"}</span>
                       </div>
@@ -860,7 +860,7 @@ export default function ConsumerView({
                           return cleaned.map((mat, idx) => (
                             <span
                               key={idx}
-                              className="inline-flex items-center rounded-lg bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-900 shadow-2xs"
+                              className="inline-flex items-center rounded-lg bg-[#FAF8F5] border border-[#E0D7C6] px-2.5 py-0.5 text-[11px] font-semibold text-[#273E47] shadow-2xs"
                             >
                               {mat}
                             </span>
@@ -871,7 +871,7 @@ export default function ConsumerView({
 
                     <div className="flex items-center gap-6">
                       <div className="text-center">
-                        <div className="text-xl font-extrabold text-emerald-800 font-mono">
+                        <div className="text-xl font-extrabold text-[#BD632F] font-mono">
                           {currentCenter.distanceKm.toFixed(1)} km
                         </div>
                         <div className="text-[10px] text-slate-500">
@@ -879,10 +879,10 @@ export default function ConsumerView({
                         </div>
                       </div>
 
-                      <div className="h-9 w-px bg-slate-200" />
+                      <div className="h-9 w-px bg-[#E0D7C6]" />
 
                       <div className="text-center">
-                        <div className="text-xl font-extrabold text-slate-700 font-mono">
+                        <div className="text-xl font-extrabold text-[#273E47] font-mono">
                           ~{currentCenter.durationMin} min
                         </div>
                         <div className="text-[10px] text-slate-500">Drive time</div>
@@ -891,10 +891,10 @@ export default function ConsumerView({
                   </div>
 
                   {/* Actions */}
-                  <div className="mt-4 flex gap-3 pt-3 border-t border-slate-100">
+                  <div className="mt-4 flex gap-3 pt-3 border-t border-[#EFEAE1]">
                     <button
                       onClick={() => setActiveMapCenter(currentCenter)}
-                      className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 py-2.5 text-xs font-bold text-white shadow-xs transition active:scale-[0.98] cursor-pointer"
+                      className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-[#BD632F] hover:bg-[#a85527] py-2.5 text-xs font-bold text-white shadow-xs transition active:scale-[0.98] cursor-pointer"
                     >
                       <Map size={14} />
                       View Interactive Map &amp; Route
@@ -904,7 +904,7 @@ export default function ConsumerView({
                         const url = `https://www.google.com/maps/dir/?api=1&destination=${currentCenter.lat},${currentCenter.lon}&travelmode=driving`;
                         window.open(url, "_blank");
                       }}
-                      className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
+                      className="flex items-center justify-center gap-2 rounded-xl border border-[#E0D7C6] bg-white px-4 py-2.5 text-xs font-bold text-[#355070] hover:bg-[#FAF8F5] transition cursor-pointer"
                     >
                       <Navigation size={14} />
                       Directions
@@ -923,14 +923,14 @@ export default function ConsumerView({
       {subTab === "centers" && (
         <div className="mt-6 space-y-6">
           {/* Header Banner */}
-          <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-2xs">
+          <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 sm:p-8 shadow-2xs">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200/80 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
-                  <Compass size={14} className="text-emerald-600" />
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#D8C99B] bg-[#D8C99B]/30 px-3 py-1 text-xs font-semibold text-[#273E47]">
+                  <Compass size={14} className="text-[#355070]" />
                   Live Geolocation Distance Engine
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#273E47] mt-2">
                   Find Nearest Authorized Drop-off Centres
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl leading-relaxed">
@@ -941,7 +941,7 @@ export default function ConsumerView({
               {/* Open Map for All Centers Button */}
               <button
                 onClick={() => setActiveMapCenter(currentCenter)}
-                className="flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 hover:bg-emerald-800 px-5 py-3.5 text-xs font-bold text-white shadow-xs transition shrink-0 active:scale-95 cursor-pointer"
+                className="flex items-center justify-center gap-2 rounded-2xl bg-[#BD632F] hover:bg-[#a85527] px-5 py-3.5 text-xs font-bold text-white shadow-xs transition shrink-0 active:scale-95 cursor-pointer"
               >
                 <Map size={16} />
                 <span>Open Full Interactive Map</span>
@@ -959,12 +959,12 @@ export default function ConsumerView({
                   value={centerSearchQuery}
                   onChange={(e) => setCenterSearchQuery(e.target.value)}
                   placeholder="Search by center name, locality (e.g. Indiranagar, Malleshwaram, Koramangala)..."
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-4 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600/30 transition"
+                  className="w-full rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] py-3 pl-10 pr-4 text-xs sm:text-sm text-[#273E47] placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 transition"
                 />
               </div>
 
               {/* Type Filter Chips */}
-              <div className="flex flex-wrap items-center gap-1.5 bg-slate-50 p-1 rounded-2xl border border-slate-200">
+              <div className="flex flex-wrap items-center gap-1.5 bg-[#EFEAE1] p-1 rounded-2xl border border-[#E0D7C6]">
                 {[
                   { id: "ALL", label: "All Facilities" },
                   { id: "DWCC", label: "BBMP DWCC" },
@@ -977,8 +977,8 @@ export default function ConsumerView({
                     onClick={() => setCenterFilterType(f.id)}
                     className={`rounded-xl px-3 py-1.5 text-xs font-bold transition cursor-pointer ${
                       centerFilterType === f.id
-                        ? "bg-slate-900 text-white shadow-xs"
-                        : "text-slate-600 hover:text-slate-900"
+                        ? "bg-[#273E47] text-white shadow-xs"
+                        : "text-[#355070] hover:text-[#273E47]"
                     }`}
                   >
                     {f.label}
@@ -999,10 +999,10 @@ export default function ConsumerView({
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {filteredCenters.map((cp) => {
               const isSelected = cp.id === selectedCenterId;
-              let badgeColor = "bg-emerald-50 text-emerald-800 border-emerald-200";
-              if (cp.type === "RVM") badgeColor = "bg-blue-50 text-blue-800 border-blue-200";
-              if (cp.type === "Brand Takeback") badgeColor = "bg-purple-50 text-purple-800 border-purple-200";
-              if (cp.type === "Kabadiwala") badgeColor = "bg-amber-50 text-amber-800 border-amber-200";
+              let badgeColor = "bg-[#D8C99B]/30 text-[#273E47] border-[#D8C99B]";
+              if (cp.type === "RVM") badgeColor = "bg-[#355070]/15 text-[#355070] border-[#355070]/30";
+              if (cp.type === "Brand Takeback") badgeColor = "bg-[#BD632F]/15 text-[#BD632F] border-[#BD632F]/30";
+              if (cp.type === "Kabadiwala") badgeColor = "bg-[#D8973C]/20 text-[#8C5814] border-[#D8973C]/40";
 
               return (
                 <div
@@ -1010,8 +1010,8 @@ export default function ConsumerView({
                   onClick={() => setSelectedCenterId(cp.id)}
                   className={`rounded-3xl border bg-white p-5 transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? "border-emerald-600 shadow-sm ring-1 ring-emerald-500/30"
-                      : "border-slate-200 hover:border-slate-300 shadow-2xs hover:shadow-xs"
+                      ? "border-[#BD632F] shadow-sm ring-1 ring-[#BD632F]/40"
+                      : "border-[#E0D7C6] hover:border-[#355070] shadow-2xs hover:shadow-xs"
                   }`}
                 >
                   <div>
@@ -1020,14 +1020,14 @@ export default function ConsumerView({
                         {cp.type}
                       </span>
                       <div className="text-right">
-                        <span className="text-base font-extrabold text-slate-800 font-mono">
+                        <span className="text-base font-extrabold text-[#BD632F] font-mono">
                           {cp.distanceKm.toFixed(1)} km
                         </span>
                         <div className="text-[10px] text-slate-400">~{cp.durationMin} min drive</div>
                       </div>
                     </div>
 
-                    <h3 className="text-sm font-bold text-slate-900 mt-2.5 leading-snug">
+                    <h3 className="text-sm font-bold text-[#273E47] mt-2.5 leading-snug">
                       {cp.name}
                     </h3>
                     <p className="text-xs text-slate-500 mt-1 line-clamp-2">
@@ -1045,7 +1045,7 @@ export default function ConsumerView({
                         .map((mat, i) => (
                           <span
                             key={i}
-                            className="rounded-md bg-slate-100 border border-slate-200 px-2 py-0.5 text-[10px] font-semibold text-slate-700"
+                            className="rounded-md bg-[#FAF8F5] border border-[#E0D7C6] px-2 py-0.5 text-[10px] font-semibold text-[#273E47]"
                           >
                             {mat}
                           </span>
@@ -1054,13 +1054,13 @@ export default function ConsumerView({
                   </div>
 
                   {/* Actions for this card */}
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2">
+                  <div className="mt-4 pt-3 border-t border-[#EFEAE1] flex items-center gap-2">
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         setActiveMapCenter(cp);
                       }}
-                      className="flex-1 flex items-center justify-center gap-1.5 rounded-xl bg-slate-100 py-2 text-xs font-bold text-slate-700 hover:bg-slate-900 hover:text-white transition cursor-pointer"
+                      className="flex-1 flex items-center justify-center gap-1.5 rounded-xl bg-[#FAF8F5] border border-[#E0D7C6] py-2 text-xs font-bold text-[#273E47] hover:bg-[#273E47] hover:text-white transition cursor-pointer"
                     >
                       <Map size={13} />
                       <span>Interactive Map</span>
@@ -1072,7 +1072,7 @@ export default function ConsumerView({
                         const url = `https://www.google.com/maps/dir/?api=1&destination=${cp.lat},${cp.lon}&travelmode=driving`;
                         window.open(url, "_blank");
                       }}
-                      className="flex items-center justify-center gap-1 rounded-xl border border-slate-200 p-2 text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition"
+                      className="flex items-center justify-center gap-1 rounded-xl border border-[#E0D7C6] p-2 text-[#355070] hover:bg-[#FAF8F5] hover:text-[#273E47] transition"
                       title="Open Turn-by-Turn Navigation in Google Maps"
                     >
                       <Navigation size={14} />
@@ -1084,9 +1084,9 @@ export default function ConsumerView({
           </div>
 
           {filteredCenters.length === 0 && (
-            <div className="text-center py-12 rounded-3xl border border-dashed border-slate-200 bg-white p-6">
+            <div className="text-center py-12 rounded-3xl border border-dashed border-[#E0D7C6] bg-white p-6">
               <Building2 size={36} className="mx-auto text-slate-300 mb-2" />
-              <div className="text-sm font-bold text-slate-800">No centers found matching criteria</div>
+              <div className="text-sm font-bold text-[#273E47]">No centers found matching criteria</div>
               <div className="text-xs text-slate-500 mt-1">Try relaxing your search terms or filter tags.</div>
             </div>
           )}
@@ -1098,14 +1098,14 @@ export default function ConsumerView({
       {/* ======================================================== */}
       {subTab === "packagings" && (
         <div className="mt-6 space-y-6">
-          <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-2xs">
+          <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 sm:p-8 shadow-2xs">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200/80 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
-                  <ShieldCheck size={14} className="text-emerald-600" />
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#D8C99B] bg-[#D8C99B]/30 px-3 py-1 text-xs font-semibold text-[#273E47]">
+                  <ShieldCheck size={14} className="text-[#355070]" />
                   Tamper-proof Digital Packaging Passports
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#273E47] mt-2">
                   My Active Packaging Instances &amp; Return QR Codes
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl leading-relaxed">
@@ -1115,7 +1115,7 @@ export default function ConsumerView({
 
               <button
                 onClick={() => handleSubTabChange("scan")}
-                className="flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 hover:bg-emerald-800 px-5 py-3 text-xs font-bold text-white shadow-xs transition shrink-0 cursor-pointer"
+                className="flex items-center justify-center gap-2 rounded-2xl bg-[#BD632F] hover:bg-[#a85527] px-5 py-3 text-xs font-bold text-white shadow-xs transition shrink-0 cursor-pointer"
               >
                 <PlusCircle size={15} />
                 <span>Simulate Another Purchase</span>
@@ -1126,15 +1126,15 @@ export default function ConsumerView({
           {/* List of User's Packaging Passports */}
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {userPackagings.length === 0 ? (
-              <div className="col-span-full py-16 text-center rounded-3xl border border-dashed border-slate-200 bg-white p-8">
+              <div className="col-span-full py-16 text-center rounded-3xl border border-dashed border-[#E0D7C6] bg-white p-8">
                 <Package size={40} className="mx-auto text-slate-300 mb-3" />
-                <h3 className="text-base font-bold text-slate-800">No Packaging Tokens Yet</h3>
+                <h3 className="text-base font-bold text-[#273E47]">No Packaging Tokens Yet</h3>
                 <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
                   Scan any product barcode in the Scan tab and click "Simulate Purchase" to generate your first verified return pass!
                 </p>
                 <button
                   onClick={() => handleSubTabChange("scan")}
-                  className="mt-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 px-4 py-2 text-xs font-bold text-white shadow-xs transition cursor-pointer"
+                  className="mt-4 rounded-xl bg-[#BD632F] hover:bg-[#a85527] px-4 py-2 text-xs font-bold text-white shadow-xs transition cursor-pointer"
                 >
                   Go to Scan Tab
                 </button>
@@ -1147,22 +1147,22 @@ export default function ConsumerView({
                     key={pkg.id}
                     className={`rounded-3xl border bg-white p-5 shadow-2xs transition ${
                       isReturned
-                        ? "border-slate-200 opacity-80"
-                        : "border-slate-200 hover:border-slate-300"
+                        ? "border-[#E0D7C6] opacity-80"
+                        : "border-[#E0D7C6] hover:border-[#355070]"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-2">
                       <span
                         className={`rounded-full px-2.5 py-0.5 text-[10px] font-extrabold uppercase ${
                           isReturned
-                            ? "bg-slate-100 text-slate-600"
-                            : "bg-emerald-50 text-emerald-800 border border-emerald-200/80"
+                            ? "bg-[#EFEAE1] text-[#355070]"
+                            : "bg-[#D8C99B]/30 text-[#273E47] border border-[#D8C99B]"
                         }`}
                       >
                         {isReturned ? "Returned & Refunded" : "Active Return Pass"}
                       </span>
                       <div className="text-right">
-                        <span className="text-lg font-extrabold text-slate-900 font-mono">
+                        <span className="text-lg font-extrabold text-[#BD632F] font-mono">
                           ₹{pkg.deposit_inr?.toFixed(2)}
                         </span>
                         <div className="text-[10px] text-slate-400">Refund value</div>
@@ -1170,7 +1170,7 @@ export default function ConsumerView({
                     </div>
 
                     <div className="mt-3">
-                      <h4 className="text-sm font-bold text-slate-900 leading-tight">
+                      <h4 className="text-sm font-bold text-[#273E47] leading-tight">
                         {pkg.brand} {pkg.product_name}
                       </h4>
                       <div className="text-xs text-slate-500 mt-1">
@@ -1181,27 +1181,27 @@ export default function ConsumerView({
                       </div>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                    <div className="mt-4 pt-3 border-t border-[#EFEAE1] flex items-center justify-between gap-2">
                       {!isReturned ? (
                         <>
                           <button
                             onClick={() => setActiveQrModalPkg(pkg)}
-                            className="flex-1 flex items-center justify-center gap-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 py-2.5 text-xs font-bold text-white shadow-xs transition cursor-pointer"
+                            className="flex-1 flex items-center justify-center gap-1.5 rounded-xl bg-[#BD632F] hover:bg-[#a85527] py-2.5 text-xs font-bold text-white shadow-xs transition cursor-pointer"
                           >
                             <QrCode size={14} />
                             <span>Show Return QR</span>
                           </button>
                           <button
                             onClick={() => onSwitchToAgent(pkg.public_token)}
-                            className="rounded-xl border border-slate-200 bg-slate-50 p-2.5 text-xs font-bold text-slate-700 hover:bg-slate-100 transition cursor-pointer"
+                            className="rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] p-2.5 text-xs font-bold text-[#355070] hover:bg-[#EFEAE1] transition cursor-pointer"
                             title="Verify directly in collection agent mode"
                           >
                             <ChevronRight size={15} />
                           </button>
                         </>
                       ) : (
-                        <div className="text-xs text-emerald-700 font-medium flex items-center gap-1">
-                          <CheckCircle2 size={14} />
+                        <div className="text-xs text-[#355070] font-medium flex items-center gap-1">
+                          <CheckCircle2 size={14} className="text-[#BD632F]" />
                           <span>Disbursed at {pkg.collection_point_name || "Intake Center"}</span>
                         </div>
                       )}
@@ -1221,12 +1221,12 @@ export default function ConsumerView({
         <div className="mt-6 space-y-6">
           {/* Top Financial Dashboard Overview */}
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 text-white shadow-sm">
+            <div className="rounded-3xl border border-[#355070] bg-[#273E47] p-6 text-white shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
                   Available Redeemable Balance
                 </span>
-                <Wallet size={20} className="text-emerald-400" />
+                <Wallet size={20} className="text-[#D8973C]" />
               </div>
               <div className="text-3xl sm:text-4xl font-extrabold text-white mt-2 font-mono">
                 ₹{walletData?.wallet?.balance_inr?.toFixed(2) || "0.00"}
@@ -1234,19 +1234,19 @@ export default function ConsumerView({
               <div className="mt-3 flex items-center gap-2">
                 <button
                   onClick={() => setShowCashoutModal(true)}
-                  className="rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white px-3.5 py-1.5 text-xs font-bold shadow-xs transition active:scale-95 cursor-pointer"
+                  className="rounded-xl bg-[#BD632F] hover:bg-[#a85527] text-white px-3.5 py-1.5 text-xs font-bold shadow-xs transition active:scale-95 cursor-pointer"
                 >
                   Redeem via UPI
                 </button>
-                <span className="text-[10px] text-slate-400">Instant payout</span>
+                <span className="text-[10px] text-slate-300">Instant payout</span>
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xs">
+            <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-xs">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                 Deposits Currently Held
               </span>
-              <div className="text-3xl font-extrabold text-slate-900 mt-2 font-mono">
+              <div className="text-3xl font-extrabold text-[#273E47] mt-2 font-mono">
                 ₹{walletData?.wallet?.deposits_held_inr?.toFixed(2) || "0.00"}
               </div>
               <div className="text-xs text-slate-500 mt-2">
@@ -1254,11 +1254,11 @@ export default function ConsumerView({
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xs">
+            <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-xs">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                 Total Lifetime Refunds
               </span>
-              <div className="text-3xl font-extrabold text-emerald-800 mt-2 font-mono">
+              <div className="text-3xl font-extrabold text-[#BD632F] mt-2 font-mono">
                 ₹{walletData?.wallet?.total_refunded_inr?.toFixed(2) || "0.00"}
               </div>
               <div className="text-xs text-slate-500 mt-2">
@@ -1266,11 +1266,11 @@ export default function ConsumerView({
               </div>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xs">
+            <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-xs">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
                 Single-Use Vouchers
               </span>
-              <div className="text-3xl font-extrabold text-slate-900 mt-2 font-mono">
+              <div className="text-3xl font-extrabold text-[#273E47] mt-2 font-mono">
                 {walletData?.vouchers?.length || 0}
               </div>
               <div className="text-xs text-slate-500 mt-2">
@@ -1284,12 +1284,12 @@ export default function ConsumerView({
             <div
               className={`rounded-2xl p-4 text-xs font-medium border flex items-center justify-between gap-2 shadow-xs ${
                 redeemFeedback.success
-                  ? "border-emerald-200 bg-emerald-50 text-emerald-900"
+                  ? "border-[#D8C99B] bg-[#D8C99B]/30 text-[#273E47]"
                   : "border-red-200 bg-red-50 text-red-900"
               }`}
             >
               <div className="flex items-center gap-2">
-                {redeemFeedback.success ? <CheckCircle2 size={16} className="text-emerald-700" /> : <AlertCircle size={16} className="text-red-700" />}
+                {redeemFeedback.success ? <CheckCircle2 size={16} className="text-[#355070]" /> : <AlertCircle size={16} className="text-red-700" />}
                 <span>{redeemFeedback.message}</span>
               </div>
               <button
@@ -1304,24 +1304,24 @@ export default function ConsumerView({
           {/* Two-Column Redemption Hub */}
           <div className="grid gap-6 md:grid-cols-12">
             {/* Left Column: Direct UPI / Bank Payout Card */}
-            <div className="md:col-span-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="md:col-span-6 rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-800">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#D8C99B]/30 text-[#BD632F]">
                   <Send size={18} />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-slate-900">Instant UPI &amp; Bank Transfer</h3>
+                  <h3 className="text-base font-bold text-[#273E47]">Instant UPI &amp; Bank Transfer</h3>
                   <p className="text-xs text-slate-500">Disburse money directly to Google Pay, PhonePe, Paytm, or IMPS</p>
                 </div>
               </div>
 
               <div className="mt-5 space-y-4">
-                <div className="flex rounded-xl bg-slate-100 p-1 border border-slate-200 text-xs font-bold">
+                <div className="flex rounded-xl bg-[#EFEAE1] p-1 border border-[#E0D7C6] text-xs font-bold">
                   <button
                     type="button"
                     onClick={() => setPayoutMethod("UPI")}
                     className={`flex-1 py-2 text-center rounded-lg transition cursor-pointer ${
-                      payoutMethod === "UPI" ? "bg-white text-slate-900 shadow-xs" : "text-slate-600 hover:text-slate-900"
+                      payoutMethod === "UPI" ? "bg-white text-[#273E47] shadow-xs" : "text-[#355070] hover:text-[#273E47]"
                     }`}
                   >
                     UPI ID (VPA)
@@ -1330,7 +1330,7 @@ export default function ConsumerView({
                     type="button"
                     onClick={() => setPayoutMethod("BANK_TRANSFER")}
                     className={`flex-1 py-2 text-center rounded-lg transition cursor-pointer ${
-                      payoutMethod === "BANK_TRANSFER" ? "bg-white text-slate-900 shadow-xs" : "text-slate-600 hover:text-slate-900"
+                      payoutMethod === "BANK_TRANSFER" ? "bg-white text-[#273E47] shadow-xs" : "text-[#355070] hover:text-[#273E47]"
                     }`}
                   >
                     Bank Account (IMPS)
@@ -1346,7 +1346,7 @@ export default function ConsumerView({
                     value={payoutTarget}
                     onChange={(e) => setPayoutTarget(e.target.value)}
                     placeholder={payoutMethod === "UPI" ? "e.g. mobile@upi or yourname@okhdfcbank" : "A/C: 1234567890, IFSC: HDFC0000123"}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600/30 transition font-mono"
+                    className="w-full rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] p-3 text-xs text-[#273E47] placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 transition font-mono"
                   />
                 </div>
 
@@ -1359,7 +1359,7 @@ export default function ConsumerView({
                     value={payoutAccountName}
                     onChange={(e) => setPayoutAccountName(e.target.value)}
                     placeholder={user?.name || "e.g. Aarav Sharma"}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600/30 transition"
+                    className="w-full rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] p-3 text-xs text-[#273E47] placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 transition"
                   />
                 </div>
 
@@ -1367,7 +1367,7 @@ export default function ConsumerView({
                   <div className="flex items-center justify-between mb-1">
                     <label className="text-xs font-bold text-slate-700">Withdrawal Amount (₹) *</label>
                     <span className="text-[11px] text-slate-500">
-                      Available: <span className="font-bold text-emerald-800">₹{walletData?.wallet?.balance_inr?.toFixed(2) || "0.00"}</span>
+                      Available: <span className="font-bold text-[#BD632F]">₹{walletData?.wallet?.balance_inr?.toFixed(2) || "0.00"}</span>
                     </span>
                   </div>
                   <input
@@ -1378,7 +1378,7 @@ export default function ConsumerView({
                     value={payoutAmount}
                     onChange={(e) => setPayoutAmount(e.target.value)}
                     placeholder="Enter amount (e.g. 10)"
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-bold text-slate-900 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600/30 font-mono transition"
+                    className="w-full rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] p-3 text-sm font-bold text-[#273E47] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 font-mono transition"
                   />
 
                   {/* Quick Preset Buttons */}
@@ -1388,7 +1388,7 @@ export default function ConsumerView({
                         key={preset}
                         type="button"
                         onClick={() => setPayoutAmount(String(preset))}
-                        className="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-100 cursor-pointer"
+                        className="rounded-lg border border-[#E0D7C6] bg-[#FAF8F5] px-2.5 py-1 text-[11px] font-bold text-[#273E47] hover:bg-[#EFEAE1] cursor-pointer"
                       >
                         ₹{preset}
                       </button>
@@ -1396,7 +1396,7 @@ export default function ConsumerView({
                     <button
                       type="button"
                       onClick={() => setPayoutAmount(String(walletData?.wallet?.balance_inr || 0))}
-                      className="rounded-lg border border-emerald-300 bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-900 hover:bg-emerald-100 cursor-pointer"
+                      className="rounded-lg border border-[#D8C99B] bg-[#D8C99B]/30 px-2.5 py-1 text-[11px] font-bold text-[#273E47] hover:bg-[#D8C99B]/50 cursor-pointer"
                     >
                       Max (All)
                     </button>
@@ -1413,7 +1413,7 @@ export default function ConsumerView({
                   type="button"
                   onClick={handleDisburseCashout}
                   disabled={payoutLoading || (walletData?.wallet?.balance_inr || 0) <= 0}
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 py-3.5 text-xs font-bold text-white shadow-xs transition active:scale-[0.98] disabled:opacity-40 cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#BD632F] hover:bg-[#a85527] py-3.5 text-xs font-bold text-white shadow-xs transition active:scale-[0.98] disabled:opacity-40 cursor-pointer"
                 >
                   {payoutLoading ? (
                     <>
@@ -1431,13 +1431,13 @@ export default function ConsumerView({
             </div>
 
             {/* Right Column: Convert to Brand Vouchers Card */}
-            <div className="md:col-span-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="md:col-span-6 rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-teal-100 text-teal-800">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#355070]/15 text-[#355070]">
                   <Gift size={18} />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-slate-900">Brand Digital Gift Vouchers</h3>
+                  <h3 className="text-base font-bold text-[#273E47]">Brand Digital Gift Vouchers</h3>
                   <p className="text-xs text-slate-500">Convert cashback balance into popular e-gift vouchers</p>
                 </div>
               </div>
@@ -1459,13 +1459,13 @@ export default function ConsumerView({
                         key={brand.name}
                         type="button"
                         onClick={() => setVoucherBrand(brand.name)}
-                        className={`rounded-xl p-2.5 text-left border transition ${
+                        className={`rounded-xl p-2.5 text-left border transition cursor-pointer ${
                           voucherBrand === brand.name
-                            ? "border-emerald-600 bg-emerald-50/70 shadow-xs ring-1 ring-emerald-500"
-                            : "border-slate-200 bg-white hover:bg-slate-50"
+                            ? "border-[#BD632F] bg-[#FAF8F5] shadow-xs ring-1 ring-[#BD632F]"
+                            : "border-[#E0D7C6] bg-white hover:bg-[#FAF8F5]"
                         }`}
                       >
-                        <div className="text-xs font-bold text-slate-900">{brand.name}</div>
+                        <div className="text-xs font-bold text-[#273E47]">{brand.name}</div>
                         <div className="text-[10px] text-slate-500 truncate">{brand.desc}</div>
                       </button>
                     ))}
@@ -1482,8 +1482,8 @@ export default function ConsumerView({
                         onClick={() => setVoucherAmount(amt)}
                         className={`rounded-xl py-2.5 text-center text-xs font-bold border transition cursor-pointer ${
                           voucherAmount === amt
-                            ? "border-emerald-600 bg-emerald-50 text-emerald-900 shadow-xs"
-                            : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
+                            ? "border-[#BD632F] bg-[#BD632F]/10 text-[#BD632F] shadow-xs"
+                            : "border-[#E0D7C6] bg-white text-slate-600 hover:bg-[#FAF8F5]"
                         }`}
                       >
                         ₹{amt}.00
@@ -1492,15 +1492,15 @@ export default function ConsumerView({
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-slate-100 bg-slate-50 p-3 text-xs text-slate-600">
-                  You are converting <strong className="text-slate-900">₹{voucherAmount}.00</strong> from your balance into an instant <strong className="text-emerald-800 font-semibold">{voucherBrand}</strong> gift card code.
+                <div className="rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] p-3 text-xs text-slate-600">
+                  You are converting <strong className="text-[#273E47]">₹{voucherAmount}.00</strong> from your balance into an instant <strong className="text-[#BD632F] font-semibold">{voucherBrand}</strong> gift card code.
                 </div>
 
                 <button
                   type="button"
                   onClick={handleIssueVoucher}
                   disabled={voucherIssuing || (walletData?.wallet?.balance_inr || 0) < voucherAmount}
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 py-3.5 text-xs font-bold text-white shadow-xs transition active:scale-[0.98] disabled:opacity-40 cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#BD632F] hover:bg-[#a85527] py-3.5 text-xs font-bold text-white shadow-xs transition active:scale-[0.98] disabled:opacity-40 cursor-pointer"
                 >
                   {voucherIssuing ? (
                     <>
@@ -1525,10 +1525,10 @@ export default function ConsumerView({
           </div>
 
           {/* Vouchers Inventory & Single-Use Redemption */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-slate-100 pb-4">
+          <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-[#EFEAE1] pb-4">
               <div>
-                <h3 className="text-base font-bold text-slate-900">My Issued Vouchers</h3>
+                <h3 className="text-base font-bold text-[#273E47]">My Issued Vouchers</h3>
                 <p className="text-xs text-slate-500">
                   Each voucher has a single-use server verified code. Copy to use or click "Redeem Now" to apply credit.
                 </p>
@@ -1551,20 +1551,20 @@ export default function ConsumerView({
                       key={vch.voucher_id}
                       className={`rounded-2xl border p-4 transition ${
                         isRedeemed
-                          ? "border-slate-200 bg-slate-50/70 opacity-75"
-                          : "border-slate-200 bg-white shadow-2xs hover:border-slate-300"
+                          ? "border-[#E0D7C6] bg-[#FAF8F5] opacity-75"
+                          : "border-[#E0D7C6] bg-white shadow-2xs hover:border-[#355070]"
                       }`}
                     >
                       <div className="flex items-start justify-between">
                         <div>
-                          <span className="text-xs font-bold text-slate-800">{vch.provider}</span>
+                          <span className="text-xs font-bold text-[#273E47]">{vch.provider}</span>
                           <div className="text-xs text-slate-500 mt-0.5">
-                            Amount: <strong className="text-slate-900 font-mono font-bold">₹{vch.amount_inr?.toFixed(2)}</strong>
+                            Amount: <strong className="text-[#273E47] font-mono font-bold">₹{vch.amount_inr?.toFixed(2)}</strong>
                           </div>
                         </div>
                         <span
                           className={`rounded-full px-2 py-0.5 text-[10px] font-extrabold uppercase ${
-                            isRedeemed ? "bg-slate-200 text-slate-600" : "bg-emerald-50 text-emerald-800 border border-emerald-200/80"
+                            isRedeemed ? "bg-[#EFEAE1] text-slate-600" : "bg-[#D8C99B]/30 text-[#273E47] border border-[#D8C99B]"
                           }`}
                         >
                           {vch.status}
@@ -1572,18 +1572,18 @@ export default function ConsumerView({
                       </div>
 
                       {/* Code Bar */}
-                      <div className="mt-3 flex items-center justify-between rounded-xl bg-slate-50 border border-slate-200 px-3 py-2">
-                        <span className="font-mono text-xs font-bold text-slate-900 tracking-wider">
+                      <div className="mt-3 flex items-center justify-between rounded-xl bg-[#FAF8F5] border border-[#E0D7C6] px-3 py-2">
+                        <span className="font-mono text-xs font-bold text-[#273E47] tracking-wider">
                           {vch.voucher_code}
                         </span>
                         <button
                           type="button"
                           onClick={() => handleCopyCode(vch.voucher_code)}
-                          className="text-slate-400 hover:text-emerald-700 transition p-1 cursor-pointer"
+                          className="text-slate-400 hover:text-[#BD632F] transition p-1 cursor-pointer"
                           title="Copy Code"
                         >
                           {copiedCode === vch.voucher_code ? (
-                            <Check size={14} className="text-emerald-600" />
+                            <Check size={14} className="text-[#BD632F]" />
                           ) : (
                             <Copy size={14} />
                           )}
@@ -1596,7 +1596,7 @@ export default function ConsumerView({
                             type="button"
                             onClick={() => handleRedeemVoucher(vch.voucher_code)}
                             disabled={redeemLoadingCode === vch.voucher_code}
-                            className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 py-2 text-xs font-bold text-white shadow-xs transition active:scale-95 disabled:opacity-50 cursor-pointer"
+                            className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-[#BD632F] hover:bg-[#a85527] py-2 text-xs font-bold text-white shadow-xs transition active:scale-95 disabled:opacity-50 cursor-pointer"
                           >
                             {redeemLoadingCode === vch.voucher_code ? "Verifying..." : "Redeem Now"}
                           </button>
@@ -1614,17 +1614,17 @@ export default function ConsumerView({
           </div>
 
           {/* Immutable Transaction Ledger History Table */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-slate-100 pb-4">
+          <div className="rounded-3xl border border-[#E0D7C6] bg-white p-6 shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-[#EFEAE1] pb-4">
               <div>
-                <h3 className="text-base font-bold text-slate-900">Immutable Ledger Transaction Trail</h3>
+                <h3 className="text-base font-bold text-[#273E47]">Immutable Ledger Transaction Trail</h3>
                 <p className="text-xs text-slate-500 mt-0.5">
                   Every deposit payment, refund disbursement, and cashout is recorded with SHA cryptographic anchors.
                 </p>
               </div>
 
               {/* Filter Pills */}
-              <div className="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-xl text-xs font-semibold">
+              <div className="flex flex-wrap gap-1 bg-[#EFEAE1] p-1 rounded-xl text-xs font-semibold">
                 {[
                   { id: "ALL", label: "All" },
                   { id: "REFUND", label: "Refunds" },
@@ -1637,8 +1637,8 @@ export default function ConsumerView({
                     onClick={() => setLedgerFilter(f.id)}
                     className={`rounded-lg px-2.5 py-1 transition cursor-pointer ${
                       ledgerFilter === f.id
-                        ? "bg-white text-slate-900 font-bold shadow-xs"
-                        : "text-slate-600 hover:text-slate-900"
+                        ? "bg-[#273E47] text-white font-bold shadow-xs"
+                        : "text-[#355070] hover:text-[#273E47]"
                     }`}
                   >
                     {f.label}
@@ -1650,7 +1650,7 @@ export default function ConsumerView({
             <div className="mt-4 overflow-x-auto">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-slate-100 text-slate-400 font-semibold uppercase text-[10px]">
+                  <tr className="border-b border-[#EFEAE1] text-slate-400 font-semibold uppercase text-[10px]">
                     <th className="py-2.5">Transaction ID</th>
                     <th className="py-2.5">Type</th>
                     <th className="py-2.5">Description</th>
@@ -1658,7 +1658,7 @@ export default function ConsumerView({
                     <th className="py-2.5 text-right">Amount</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-slate-700">
+                <tbody className="divide-y divide-[#EFEAE1] text-slate-700">
                   {filteredTransactions.length === 0 ? (
                     <tr>
                       <td colSpan={5} className="py-8 text-center text-slate-400">
@@ -1669,26 +1669,26 @@ export default function ConsumerView({
                     filteredTransactions.map((tx) => {
                       const isCredit = tx.type === "REFUND" || tx.type === "CREDIT";
                       return (
-                        <tr key={tx.transaction_id} className="hover:bg-slate-50/60 transition">
+                        <tr key={tx.transaction_id} className="hover:bg-[#FAF8F5] transition">
                           <td className="py-3 font-mono text-[11px] text-slate-500">{tx.transaction_id}</td>
                           <td className="py-3">
                             <span
                               className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
                                 isCredit
-                                  ? "bg-emerald-100 text-emerald-800"
+                                  ? "bg-[#D8C99B]/30 text-[#273E47] border border-[#D8C99B]"
                                   : tx.type === "CASH_WITHDRAWAL"
-                                  ? "bg-blue-100 text-blue-800"
-                                  : "bg-slate-100 text-slate-700"
+                                  ? "bg-[#355070]/15 text-[#355070]"
+                                  : "bg-[#EFEAE1] text-slate-700"
                               }`}
                             >
                               {tx.type}
                             </span>
                           </td>
-                          <td className="py-3 font-medium text-slate-900 max-w-xs truncate">{tx.description}</td>
+                          <td className="py-3 font-medium text-[#273E47] max-w-xs truncate">{tx.description}</td>
                           <td className="py-3 text-slate-500 text-[11px]">
                             {new Date(tx.created_at).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}
                           </td>
-                          <td className={`py-3 text-right font-bold font-mono ${isCredit ? "text-emerald-700" : "text-slate-800"}`}>
+                          <td className={`py-3 text-right font-bold font-mono ${isCredit ? "text-[#BD632F]" : "text-[#273E47]"}`}>
                             {isCredit ? "+" : ""}₹{Math.abs(tx.amount_inr).toFixed(2)}
                           </td>
                         </tr>
@@ -1741,9 +1741,9 @@ export default function ConsumerView({
       {/* 4. Instant Payout Receipt Modal */}
       {payoutReceipt && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4 animate-in fade-in duration-200">
-          <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl border border-slate-100">
-            <div className="bg-slate-900 border-b border-slate-800 px-6 py-6 text-white text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-400 mb-2">
+          <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl border border-[#E0D7C6]">
+            <div className="bg-[#273E47] border-b border-[#355070] px-6 py-6 text-white text-center">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-[#D8973C]/20 border border-[#D8973C]/40 text-[#D8973C] mb-2">
                 <CheckCheck size={26} />
               </div>
               <h3 className="text-lg font-bold text-white">Disbursement Successful!</h3>
@@ -1754,16 +1754,16 @@ export default function ConsumerView({
 
             <div className="p-6 space-y-4">
               <div className="text-center py-2">
-                <div className="text-3xl font-extrabold text-slate-900 font-mono">
+                <div className="text-3xl font-extrabold text-[#273E47] font-mono">
                   ₹{payoutReceipt.amount_inr?.toFixed(2)}
                 </div>
                 <div className="text-xs text-slate-500 mt-1">Disbursed to {payoutReceipt.payout_target}</div>
               </div>
 
-              <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 space-y-2 text-xs">
+              <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4 space-y-2 text-xs">
                 <div className="flex justify-between">
                   <span className="text-slate-500">UTR / Ref Number:</span>
-                  <span className="font-mono font-bold text-slate-900">{payoutReceipt.utr_number}</span>
+                  <span className="font-mono font-bold text-[#273E47]">{payoutReceipt.utr_number}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-500">Transaction ID:</span>
@@ -1773,16 +1773,16 @@ export default function ConsumerView({
                   <span className="text-slate-500">Timestamp:</span>
                   <span className="text-slate-700">{new Date(payoutReceipt.timestamp).toLocaleTimeString()}</span>
                 </div>
-                <div className="flex justify-between border-t border-slate-200 pt-2">
+                <div className="flex justify-between border-t border-[#E0D7C6] pt-2">
                   <span className="text-slate-500">New Wallet Balance:</span>
-                  <span className="font-bold text-emerald-800 font-mono">₹{payoutReceipt.new_balance_inr?.toFixed(2)}</span>
+                  <span className="font-bold text-[#BD632F] font-mono">₹{payoutReceipt.new_balance_inr?.toFixed(2)}</span>
                 </div>
               </div>
 
               <button
                 type="button"
                 onClick={() => setPayoutReceipt(null)}
-                className="w-full rounded-xl bg-emerald-700 hover:bg-emerald-800 py-3 text-xs font-bold text-white shadow-xs transition cursor-pointer"
+                className="w-full rounded-xl bg-[#BD632F] hover:bg-[#a85527] py-3 text-xs font-bold text-white shadow-xs transition cursor-pointer"
               >
                 Done
               </button>
@@ -1794,10 +1794,10 @@ export default function ConsumerView({
       {/* 5. Manual Product Catalog Registration Modal */}
       {showRegisterModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl">
-            <h3 className="text-lg font-bold text-slate-900">Register Product in Catalog</h3>
+          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl border border-[#E0D7C6]">
+            <h3 className="text-lg font-bold text-[#273E47]">Register Product in Catalog</h3>
             <p className="text-xs text-slate-500 mt-1">
-              Add packaging specifications for barcode <code className="font-mono font-bold text-emerald-900">{productResult?.gtin || gtin}</code>
+              Add packaging specifications for barcode <code className="font-mono font-bold text-[#BD632F]">{productResult?.gtin || gtin}</code>
             </p>
 
             <form onSubmit={handleRegisterProduct} className="mt-4 space-y-3 text-xs">
@@ -1809,7 +1809,7 @@ export default function ConsumerView({
                   value={regBrand}
                   onChange={(e) => setRegBrand(e.target.value)}
                   placeholder="e.g. Kinley, Tata Tea, Nestle"
-                  className="w-full rounded-xl border border-slate-200 p-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+                  className="w-full rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] p-2.5 text-xs text-[#273E47] focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20"
                 />
               </div>
 
@@ -1821,7 +1821,7 @@ export default function ConsumerView({
                   value={regName}
                   onChange={(e) => setRegName(e.target.value)}
                   placeholder="e.g. 500ml Bottled Water"
-                  className="w-full rounded-xl border border-slate-200 p-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+                  className="w-full rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] p-2.5 text-xs text-[#273E47] focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20"
                 />
               </div>
 
@@ -1830,7 +1830,7 @@ export default function ConsumerView({
                 <select
                   value={regMaterial}
                   onChange={(e) => setRegMaterial(e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 p-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-600/30"
+                  className="w-full rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] p-2.5 text-xs text-[#273E47] focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20"
                 >
                   <option value="PET">PET (Rigid Plastic)</option>
                   <option value="Aluminium">Aluminium (Can)</option>
@@ -1844,13 +1844,13 @@ export default function ConsumerView({
                 <button
                   type="button"
                   onClick={() => setShowRegisterModal(false)}
-                  className="flex-1 rounded-xl border border-slate-200 py-2.5 font-bold text-slate-600 hover:bg-slate-50 cursor-pointer"
+                  className="flex-1 rounded-xl border border-[#E0D7C6] py-2.5 font-bold text-slate-600 hover:bg-[#FAF8F5] cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-emerald-700 hover:bg-emerald-800 py-2.5 font-bold text-white shadow-xs transition cursor-pointer"
+                  className="flex-1 rounded-xl bg-[#BD632F] hover:bg-[#a85527] py-2.5 font-bold text-white shadow-xs transition cursor-pointer"
                 >
                   Save &amp; Verify
                 </button>

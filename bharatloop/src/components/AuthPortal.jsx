@@ -173,55 +173,55 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
   ];
 
   return (
-    <div className="relative min-h-screen bg-slate-50 text-slate-900 flex flex-col justify-between overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#FBF9F5] text-[#273E47] flex flex-col justify-between overflow-x-hidden">
       {/* Background Decorative Mesh */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full bg-slate-200/50 blur-[130px]" />
-        <div className="absolute top-1/2 -left-48 h-[550px] w-[550px] rounded-full bg-emerald-100/40 blur-[140px]" />
-        <div className="absolute -bottom-40 right-1/4 h-[500px] w-[500px] rounded-full bg-slate-200/40 blur-[120px]" />
+        <div className="absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full bg-[#D8C99B]/20 blur-[130px]" />
+        <div className="absolute top-1/2 -left-48 h-[550px] w-[550px] rounded-full bg-[#355070]/10 blur-[140px]" />
+        <div className="absolute -bottom-40 right-1/4 h-[500px] w-[500px] rounded-full bg-[#D8973C]/10 blur-[120px]" />
         {/* Subtle grid pattern overlay */}
         <div
           className="absolute inset-0 opacity-[0.035]"
           style={{
-            backgroundImage: `radial-gradient(#0f172a 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(#273E47 1px, transparent 1px)`,
             backgroundSize: "28px 28px",
           }}
         />
       </div>
 
       {/* Top Branding Navigation */}
-      <header className="relative z-10 w-full border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
+      <header className="relative z-10 w-full border-b border-[#E5DEC9] bg-[#FAF8F5]/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-emerald-400 shadow-sm">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#273E47] text-[#D8973C] shadow-sm">
               <Recycle size={22} className="animate-spin-slow" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-xl font-extrabold tracking-tight text-slate-900">
-                  Bharath<span className="text-emerald-700">Loop</span>
+                <span className="text-xl font-extrabold tracking-tight text-[#273E47]">
+                  Bharath<span className="text-[#BD632F]">Loop</span>
                 </span>
-                <span className="rounded-md bg-emerald-50 px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-emerald-800 border border-emerald-200/80">
+                <span className="rounded-md bg-[#D8C99B]/30 px-1.5 py-0.5 text-[9px] font-extrabold uppercase tracking-wider text-[#273E47] border border-[#D8C99B]">
                   DRS 2.0
                 </span>
               </div>
-              <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
                 Deposit-Return Intelligence &middot; Bengaluru Pilot
               </div>
             </div>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#E0D7C6] bg-white px-3 py-1 text-xs font-semibold text-[#273E47]">
+              <span className="h-2 w-2 rounded-full bg-[#D8973C] animate-pulse" />
               BBMP DWCC &amp; CPCB Aligned
             </span>
 
             <button
               onClick={() => handleQuickDemo("consumer")}
-              className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-800 transition-all active:scale-95 shadow-2xs cursor-pointer"
+              className="flex items-center gap-1.5 rounded-xl border border-[#E0D7C6] bg-white hover:bg-[#FAF8F5] px-3 py-1.5 text-xs font-bold text-[#273E47] transition-all active:scale-95 shadow-2xs cursor-pointer"
             >
-              <Play size={11} className="text-emerald-600 fill-emerald-600" />
+              <Play size={11} className="text-[#BD632F] fill-[#BD632F]" />
               <span>Instant Demo</span>
             </button>
           </div>
@@ -233,22 +233,22 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
         <div className="grid w-full grid-cols-1 items-stretch gap-8 lg:grid-cols-12 lg:gap-10">
           
           {/* Left Column: Visual Showcase & DRS Value Props (5 cols) */}
-          <div className="hidden lg:flex lg:col-span-5 flex-col justify-between rounded-[32px] bg-slate-900 p-8 text-white shadow-xl border border-slate-800 relative overflow-hidden">
+          <div className="hidden lg:flex lg:col-span-5 flex-col justify-between rounded-[32px] bg-[#273E47] p-8 text-white shadow-xl border border-[#355070] relative overflow-hidden">
             {/* Ambient glows inside card */}
-            <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-emerald-500/10 blur-[80px]" />
-            <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-slate-700/20 blur-[90px]" />
+            <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#BD632F]/10 blur-[80px]" />
+            <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-[#355070]/30 blur-[90px]" />
 
             {/* Top Showcase Content */}
             <div className="relative space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-slate-300">
-                <Leaf size={12} className="text-emerald-400" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#355070] bg-[#1e3037] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-slate-300">
+                <Leaf size={12} className="text-[#D8973C]" />
                 Urban Circular Economy Pilot
               </div>
 
               <div>
                 <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl leading-[1.18]">
                   India&apos;s Sovereign <br />
-                  <span className="text-emerald-400">
+                  <span className="text-[#D8C99B]">
                     Deposit-Return System
                   </span>
                 </h1>
@@ -259,37 +259,37 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
 
               {/* 3 Core Pillars */}
               <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3 rounded-2xl bg-slate-800/60 p-3.5 border border-slate-700/60 transition-all hover:bg-slate-800">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-800 text-emerald-400 border border-slate-700">
+                <div className="flex items-start gap-3 rounded-2xl bg-[#1e3037]/70 p-3.5 border border-[#355070]/60 transition-all hover:bg-[#1e3037]">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#355070] text-[#D8C99B] border border-[#355070]">
                     <Wallet size={18} />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-white">Guaranteed Deposit Refunds</div>
-                    <div className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                    <div className="text-[11px] text-slate-300 mt-0.5 leading-snug">
                       Claim ₹5.00 – ₹15.00 per item instantly to your UPI or bank wallet upon return verification.
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 rounded-2xl bg-slate-800/60 p-3.5 border border-slate-700/60 transition-all hover:bg-slate-800">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-800 text-emerald-400 border border-slate-700">
+                <div className="flex items-start gap-3 rounded-2xl bg-[#1e3037]/70 p-3.5 border border-[#355070]/60 transition-all hover:bg-[#1e3037]">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#355070] text-[#D8C99B] border border-[#355070]">
                     <QrCode size={18} />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-white">Anti-Fraud Dynamic QR</div>
-                    <div className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                    <div className="text-[11px] text-slate-300 mt-0.5 leading-snug">
                       Time-expiring single-use return tokens prevent duplicate redemption and grey-market leakage.
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 rounded-2xl bg-slate-800/60 p-3.5 border border-slate-700/60 transition-all hover:bg-slate-800">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-800 text-emerald-400 border border-slate-700">
+                <div className="flex items-start gap-3 rounded-2xl bg-[#1e3037]/70 p-3.5 border border-[#355070]/60 transition-all hover:bg-[#1e3037]">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#355070] text-[#D8C99B] border border-[#355070]">
                     <MapPin size={18} />
                   </div>
                   <div>
                     <div className="text-xs font-bold text-white">48+ BBMP Urban DWCC Hubs</div>
-                    <div className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+                    <div className="text-[11px] text-slate-300 mt-0.5 leading-snug">
                       Geo-anchored collection centres across Indiranagar, Koramangala, Whitefield &amp; HSR Layout.
                     </div>
                   </div>
@@ -299,21 +299,21 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
 
             {/* Bottom Metrics Bar */}
             <div className="relative mt-8 rounded-2xl bg-black/25 p-4 border border-white/10">
-              <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-300/80 mb-2.5">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-[#D8C99B] mb-2.5">
                 Pilot Live Performance (Karnataka)
               </div>
               <div className="grid grid-cols-3 gap-2 text-center">
                 <div>
                   <div className="text-lg font-black text-white font-mono">4,820+</div>
-                  <div className="text-[10px] text-emerald-200/70">Units Recycled</div>
+                  <div className="text-[10px] text-slate-300">Units Recycled</div>
                 </div>
                 <div className="border-x border-white/10">
-                  <div className="text-lg font-black text-emerald-300 font-mono">₹38,560</div>
-                  <div className="text-[10px] text-emerald-200/70">Refunds Paid</div>
+                  <div className="text-lg font-black text-[#D8973C] font-mono">₹38,560</div>
+                  <div className="text-[10px] text-slate-300">Refunds Paid</div>
                 </div>
                 <div>
-                  <div className="text-lg font-black text-teal-300 font-mono">99.4%</div>
-                  <div className="text-[10px] text-emerald-200/70">Flake Purity</div>
+                  <div className="text-lg font-black text-[#D8C99B] font-mono">99.4%</div>
+                  <div className="text-[10px] text-slate-300">Flake Purity</div>
                 </div>
               </div>
             </div>
@@ -321,22 +321,21 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
 
           {/* Right Column: Interactive Auth Form (7 cols) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <div className="relative overflow-hidden rounded-[32px] bg-white p-6 sm:p-9 shadow-[0_20px_50px_rgba(23,61,43,0.08)] border border-[#dfe9e2]">
-              
+            <div className="relative overflow-hidden rounded-[32px] bg-white p-6 sm:p-9 shadow-lg border border-[#E0D7C6]">
               {/* Success Transition Overlay */}
               {successData && (
                 <div className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-white/95 backdrop-blur-md p-6 text-center animate-in fade-in zoom-in-95 duration-200">
-                  <div className="flex h-18 w-18 items-center justify-center rounded-3xl bg-emerald-100 text-emerald-700 shadow-lg shadow-emerald-700/15 mb-4 animate-bounce">
+                  <div className="flex h-18 w-18 items-center justify-center rounded-3xl bg-[#D8C99B]/30 text-[#BD632F] shadow-lg mb-4 animate-bounce">
                     <CheckCircle2 size={38} />
                   </div>
-                  <h3 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+                  <h3 className="text-2xl font-extrabold text-[#273E47] tracking-tight">
                     {mode === "signup" ? "Account Activated!" : "Welcome Back!"}
                   </h3>
                   <p className="mt-1 text-sm text-slate-600 max-w-sm">
-                    Authenticated as <strong className="text-emerald-900 font-semibold">{successData.name}</strong>. Entering BharathLoop DRS workspace...
+                    Authenticated as <strong className="text-[#273E47] font-semibold">{successData.name}</strong>. Entering BharathLoop DRS workspace...
                   </p>
-                  <div className="mt-5 flex items-center gap-2 text-xs font-semibold text-emerald-800 bg-emerald-50 px-4 py-2 rounded-xl border border-emerald-200">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
+                  <div className="mt-5 flex items-center gap-2 text-xs font-semibold text-[#273E47] bg-[#FAF8F5] px-4 py-2 rounded-xl border border-[#E0D7C6]">
+                    <span className="h-2 w-2 rounded-full bg-[#D8973C] animate-ping" />
                     <span>Synchronizing wallet &amp; collection network...</span>
                   </div>
                 </div>
@@ -345,7 +344,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
               {/* Form Header */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                 <div>
-                  <h2 className="text-2xl font-extrabold tracking-tight text-slate-900">
+                  <h2 className="text-2xl font-extrabold tracking-tight text-[#273E47]">
                     {mode === "signup" ? "Create your account" : "Sign in to BharathLoop"}
                   </h2>
                   <p className="mt-1 text-xs text-slate-500">
@@ -356,7 +355,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                 </div>
 
                 {/* Mode Toggle Switcher */}
-                <div className="inline-flex self-start sm:self-auto rounded-2xl bg-slate-100 p-1 border border-slate-200/80">
+                <div className="inline-flex self-start sm:self-auto rounded-2xl bg-[#EFEAE1] p-1 border border-[#E0D7C6]">
                   <button
                     type="button"
                     onClick={() => {
@@ -365,8 +364,8 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                     }}
                     className={`rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
                       mode === "signup"
-                        ? "bg-slate-900 text-white shadow-xs"
-                        : "text-slate-600 hover:text-slate-900"
+                        ? "bg-[#273E47] text-white shadow-xs"
+                        : "text-[#355070] hover:text-[#273E47]"
                     }`}
                   >
                     Sign Up
@@ -379,8 +378,8 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                     }}
                     className={`rounded-xl px-4 py-2 text-xs font-bold transition-all cursor-pointer ${
                       mode === "login"
-                        ? "bg-slate-900 text-white shadow-xs"
-                        : "text-slate-600 hover:text-slate-900"
+                        ? "bg-[#273E47] text-white shadow-xs"
+                        : "text-[#355070] hover:text-[#273E47]"
                     }`}
                   >
                     Sign In
@@ -389,13 +388,13 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
               </div>
 
               {/* Fast 1-Click Demo Evaluation Banner */}
-              <div className="mb-6 rounded-2xl bg-slate-50 p-3.5 border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="mb-6 rounded-2xl bg-[#FAF8F5] p-3.5 border border-[#E0D7C6] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-slate-800 text-emerald-400 shadow-xs">
-                    <Play size={13} className="fill-emerald-400" />
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#355070] text-[#D8C99B] shadow-xs">
+                    <Play size={13} className="fill-[#D8C99B]" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-slate-900">
+                    <div className="text-xs font-bold text-[#273E47]">
                       Evaluating BharathLoop?
                     </div>
                     <div className="text-[11px] text-slate-500">
@@ -408,14 +407,14 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                   <button
                     type="button"
                     onClick={() => handleQuickDemo("consumer")}
-                    className="rounded-xl bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 text-xs font-bold transition shadow-xs active:scale-95 flex items-center gap-1 cursor-pointer"
+                    className="rounded-xl bg-[#273E47] hover:bg-[#1e3037] text-white px-3 py-1.5 text-xs font-bold transition shadow-xs active:scale-95 flex items-center gap-1 cursor-pointer"
                   >
                     <span>Citizen Demo</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => handleQuickDemo("agent")}
-                    className="rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 px-3 py-1.5 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer"
+                    className="rounded-xl bg-white hover:bg-[#FAF8F5] border border-[#E0D7C6] text-[#273E47] px-3 py-1.5 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer"
                     title="Collection Agent View"
                   >
                     Agent
@@ -423,7 +422,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                   <button
                     type="button"
                     onClick={() => handleQuickDemo("admin")}
-                    className="rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 px-3 py-1.5 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer"
+                    className="rounded-xl bg-white hover:bg-[#FAF8F5] border border-[#E0D7C6] text-[#273E47] px-3 py-1.5 text-xs font-bold transition shadow-2xs active:scale-95 cursor-pointer"
                     title="Producer / Admin View"
                   >
                     Admin
@@ -468,29 +467,29 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                             key={r.id}
                             type="button"
                             onClick={() => setSelectedRole(r.id)}
-                            className={`flex flex-col text-left p-3 rounded-2xl border transition-all ${
+                            className={`flex flex-col text-left p-3 rounded-2xl border transition-all cursor-pointer ${
                               isSelected
-                                ? "border-emerald-700 bg-emerald-50/70 shadow-xs ring-1 ring-emerald-700/40"
-                                : "border-slate-200 bg-slate-50/60 hover:bg-slate-100/60 hover:border-slate-300"
+                                ? "border-[#BD632F] bg-[#FAF8F5] shadow-xs ring-1 ring-[#BD632F]/40"
+                                : "border-[#E0D7C6] bg-white hover:bg-[#FAF8F5] hover:border-[#355070]"
                             }`}
                           >
                             <div className="flex items-center justify-between w-full mb-1">
                               <div
                                 className={`flex h-7 w-7 items-center justify-center rounded-lg ${
                                   isSelected
-                                    ? "bg-slate-900 text-white"
-                                    : "bg-white text-slate-600 border border-slate-200"
+                                    ? "bg-[#273E47] text-white"
+                                    : "bg-[#FAF8F5] text-[#355070] border border-[#E0D7C6]"
                                 }`}
                               >
                                 <Icon size={14} />
                               </div>
                               {isSelected && (
-                                <div className="h-4 w-4 rounded-full bg-emerald-600 text-white flex items-center justify-center">
+                                <div className="h-4 w-4 rounded-full bg-[#BD632F] text-white flex items-center justify-center">
                                   <Check size={10} strokeWidth={3} />
                                 </div>
                               )}
                             </div>
-                            <span className="text-xs font-bold text-slate-900">{r.title}</span>
+                            <span className="text-xs font-bold text-[#273E47]">{r.title}</span>
                             <span className="text-[10px] text-slate-500 mt-0.5 line-clamp-2 leading-tight">
                               {r.desc}
                             </span>
@@ -520,7 +519,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder="e.g. Aarav Sharma"
-                          className="w-full rounded-xl border border-slate-200 bg-slate-50/70 py-2.5 pl-10 pr-3.5 text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-700/20 focus:border-emerald-600 transition"
+                          className="w-full rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] py-2.5 pl-10 pr-3.5 text-xs text-[#273E47] placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 focus:border-[#BD632F] transition"
                         />
                       </div>
                     </div>
@@ -539,7 +538,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
                           placeholder="+91 98450 12345"
-                          className="w-full rounded-xl border border-slate-200 bg-slate-50/70 py-2.5 pl-10 pr-3.5 text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-700/20 focus:border-emerald-600 transition"
+                          className="w-full rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] py-2.5 pl-10 pr-3.5 text-xs text-[#273E47] placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 focus:border-[#BD632F] transition"
                         />
                       </div>
                     </div>
@@ -562,7 +561,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder={mode === "signup" ? "you@example.com" : "aarav.sharma@example.in"}
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50/70 py-2.5 pl-10 pr-3.5 text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-700/20 focus:border-emerald-600 transition"
+                      className="w-full rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] py-2.5 pl-10 pr-3.5 text-xs text-[#273E47] placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 focus:border-[#BD632F] transition"
                     />
                   </div>
                 </div>
@@ -577,7 +576,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                       <button
                         type="button"
                         onClick={handleFillDemoCreds}
-                        className="text-[11px] font-semibold text-emerald-800 hover:text-emerald-950 transition"
+                        className="text-[11px] font-semibold text-[#BD632F] hover:underline transition cursor-pointer"
                       >
                         Use Demo Password
                       </button>
@@ -593,12 +592,12 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder={mode === "signup" ? "Create a strong password (6+ chars)" : "Enter your password"}
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50/70 py-2.5 pl-10 pr-10 text-xs text-slate-900 placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-700/20 focus:border-emerald-600 transition"
+                      className="w-full rounded-xl border border-[#E0D7C6] bg-[#FAF8F5] py-2.5 pl-10 pr-10 text-xs text-[#273E47] placeholder:text-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#BD632F]/20 focus:border-[#BD632F] transition"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400 hover:text-slate-700 transition"
+                      className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400 hover:text-slate-700 transition cursor-pointer"
                       tabIndex={-1}
                       aria-label="Toggle password visibility"
                     >
@@ -615,10 +614,10 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                         type="checkbox"
                         checked={agreeTerms}
                         onChange={(e) => setAgreeTerms(e.target.checked)}
-                        className="h-4 w-4 rounded border-slate-300 text-emerald-700 focus:ring-emerald-600"
+                        className="h-4 w-4 rounded border-slate-300 text-[#BD632F] focus:ring-[#BD632F]"
                       />
                       <span className="text-[11px] text-slate-600">
-                        I agree to the <strong className="text-slate-800 font-semibold">DRS Deposit Guidelines</strong> &amp; BBMP Recycling Charter
+                        I agree to the <strong className="text-[#273E47] font-semibold">DRS Deposit Guidelines</strong> &amp; BBMP Recycling Charter
                       </span>
                     </label>
                   ) : (
@@ -627,7 +626,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                         type="checkbox"
                         checked={rememberMe}
                         onChange={(e) => setRememberMe(e.target.checked)}
-                        className="h-4 w-4 rounded border-slate-300 text-emerald-700 focus:ring-emerald-600"
+                        className="h-4 w-4 rounded border-slate-300 text-[#BD632F] focus:ring-[#BD632F]"
                       />
                       <span className="text-[11px] text-slate-600">
                         Remember this device for 30 days
@@ -640,7 +639,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                 <button
                   type="submit"
                   disabled={loading || !!successData}
-                  className="w-full mt-2 flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 hover:bg-emerald-800 py-3.5 px-4 text-xs font-bold text-white shadow-xs transition-all active:scale-[0.99] disabled:opacity-50 cursor-pointer"
+                  className="w-full mt-2 flex items-center justify-center gap-2 rounded-2xl bg-[#BD632F] hover:bg-[#a85527] py-3.5 px-4 text-xs font-bold text-white shadow-xs transition-all active:scale-[0.99] disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? (
                     <span className="flex items-center gap-2">
@@ -657,7 +656,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
               </form>
 
               {/* Mode Switch Helper Footer */}
-              <div className="mt-6 pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+              <div className="mt-6 pt-5 border-t border-[#EFEAE1] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
                 <div>
                   {mode === "signup" ? (
                     <span>
@@ -668,7 +667,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                           setMode("login");
                           setError("");
                         }}
-                        className="font-bold text-emerald-800 hover:text-emerald-950 transition underline"
+                        className="font-bold text-[#BD632F] hover:underline transition cursor-pointer"
                       >
                         Sign In here
                       </button>
@@ -682,7 +681,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                           setMode("signup");
                           setError("");
                         }}
-                        className="font-bold text-emerald-800 hover:text-emerald-950 transition underline"
+                        className="font-bold text-[#BD632F] hover:underline transition cursor-pointer"
                       >
                         Create an account
                       </button>
@@ -691,7 +690,7 @@ export default function AuthPortal({ onAuthenticated, initialMode = "signup" }) 
                 </div>
 
                 <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
-                  <ShieldCheck size={14} className="text-emerald-700" />
+                  <ShieldCheck size={14} className="text-[#355070]" />
                   <span>256-Bit Encrypted &middot; Zero Tracking</span>
                 </div>
               </div>

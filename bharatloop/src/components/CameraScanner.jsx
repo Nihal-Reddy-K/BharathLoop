@@ -110,64 +110,64 @@ export default function CameraScanner({ onScan, onClose, title = "Scan Barcode o
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
-      <div className="relative w-full max-w-md overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 p-6 text-white shadow-2xl">
+      <div className="relative w-full max-w-md overflow-hidden rounded-3xl border border-[#355070]/60 bg-[#273E47] p-6 text-white shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div className="flex items-center justify-between pb-4 border-b border-[#355070]/60">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-800 text-slate-200 border border-slate-700">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#355070] text-[#D8973C] border border-[#355070]/80">
               <Camera size={18} />
             </div>
             <div>
               <h3 className="font-bold text-base text-white">{title}</h3>
-              <p className="text-xs text-slate-400">Point at product barcode or return QR</p>
+              <p className="text-xs text-[#D8C99B]">Point at product barcode or return QR</p>
             </div>
           </div>
           <button
             onClick={handleClose}
-            className="rounded-full bg-slate-800 p-2 text-slate-400 hover:bg-slate-700 hover:text-white transition"
+            className="rounded-full bg-[#355070] p-2 text-[#D8C99B] hover:bg-[#1e3037] hover:text-white transition cursor-pointer"
           >
             <X size={18} />
           </button>
         </div>
 
         {/* Video Viewport */}
-        <div className="relative mt-4 overflow-hidden rounded-2xl bg-black border border-slate-800 aspect-square flex items-center justify-center">
+        <div className="relative mt-4 overflow-hidden rounded-2xl bg-black border border-[#355070] aspect-square flex items-center justify-center">
           <div id="bharatloop-camera-reader" className="w-full h-full" />
 
           {/* Scanner Overlay Guide */}
           {!errorMessage && (
             <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-              <div className="relative w-64 h-48 border-2 border-emerald-400/80 rounded-2xl shadow-[0_0_25px_rgba(16,185,129,0.3)]">
+              <div className="relative w-64 h-48 border-2 border-[#D8973C]/80 rounded-2xl shadow-[0_0_25px_rgba(216,151,60,0.3)]">
                 {/* Laser animation */}
-                <div className="absolute left-2 right-2 top-0 h-0.5 bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_10px_#10b981] animate-[scan_2s_ease-in-out_infinite]" />
+                <div className="absolute left-2 right-2 top-0 h-0.5 bg-gradient-to-r from-transparent via-[#BD632F] to-transparent shadow-[0_0_10px_#BD632F] animate-[scan_2s_ease-in-out_infinite]" />
                 
                 {/* Corner Accents */}
-                <span className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-emerald-300 rounded-tl" />
-                <span className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-emerald-300 rounded-tr" />
-                <span className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-emerald-300 rounded-bl" />
-                <span className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-emerald-300 rounded-br" />
+                <span className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-[#D8973C] rounded-tl" />
+                <span className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-[#D8973C] rounded-tr" />
+                <span className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-[#D8973C] rounded-bl" />
+                <span className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-[#D8973C] rounded-br" />
               </div>
-              <p className="mt-4 text-xs font-medium text-emerald-300/80 bg-slate-900/80 px-3 py-1 rounded-full border border-emerald-500/20">
+              <p className="mt-4 text-xs font-medium text-[#D8C99B] bg-[#273E47]/90 px-3 py-1 rounded-full border border-[#355070]">
                 Align barcode or QR within frame
               </p>
             </div>
           )}
 
           {isStarting && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/90 text-center p-6">
-              <RefreshCw className="animate-spin text-emerald-400 mb-3" size={28} />
-              <p className="text-sm font-medium text-slate-200">Starting optical scanner...</p>
-              <p className="text-xs text-slate-400 mt-1">Requesting high-resolution camera stream</p>
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#273E47]/95 text-center p-6">
+              <RefreshCw className="animate-spin text-[#D8973C] mb-3" size={28} />
+              <p className="text-sm font-medium text-slate-100">Starting optical scanner...</p>
+              <p className="text-xs text-[#D8C99B] mt-1">Requesting high-resolution camera stream</p>
             </div>
           )}
 
           {errorMessage && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-950 p-6 text-center">
-              <AlertCircle size={32} className="text-amber-400 mb-2" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#1e3037] p-6 text-center">
+              <AlertCircle size={32} className="text-[#D8973C] mb-2" />
               <p className="text-sm font-semibold text-slate-200">{errorMessage}</p>
               <button
                 onClick={handleClose}
-                className="mt-4 rounded-xl bg-emerald-600 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-500 transition"
+                className="mt-4 rounded-xl bg-[#BD632F] hover:bg-[#a85527] px-4 py-2 text-xs font-bold text-white transition shadow-sm cursor-pointer"
               >
                 Switch to Manual Code Entry
               </button>
@@ -176,14 +176,14 @@ export default function CameraScanner({ onScan, onClose, title = "Scan Barcode o
         </div>
 
         {/* Footer info */}
-        <div className="mt-4 flex items-center justify-between text-xs text-slate-400">
+        <div className="mt-4 flex items-center justify-between text-xs text-[#D8C99B]">
           <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+            <span className="h-2 w-2 rounded-full bg-[#D8973C] animate-ping" />
             EAN-13, UPC-A &amp; QR Compatible
           </span>
           <button
             onClick={handleClose}
-            className="text-emerald-400 hover:underline font-medium"
+            className="text-[#D8973C] hover:text-white hover:underline font-medium cursor-pointer"
           >
             Enter code manually
           </button>
