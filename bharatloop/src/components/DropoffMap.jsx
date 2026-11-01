@@ -90,26 +90,29 @@ export default function DropoffMap({ dropoff, allCenters = [], onSelectCenter, o
       maxZoom: 19,
     }).addTo(map);
 
-    // Custom Collection Center Marker (Terracotta with SVG icon)
+    // Custom Collection Center Marker (Brand Petrol Teal & Warm Amber with Complete SVG Recycle Icon)
     const centerIcon = L.divIcon({
       className: "custom-center-marker",
       html: `
         <div style="
-          width: 36px; height: 36px; border-radius: 50%;
-          background: linear-gradient(135deg, #BD632F, #a85527);
-          border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(189, 99, 47, 0.45);
+          width: 38px; height: 38px; border-radius: 50%;
+          background: #273E47;
+          border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(39, 62, 71, 0.45);
           display: flex; align-items: center; justify-content: center;
-          color: white;
+          color: #D8973C;
         ">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D8973C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/>
-            <path d="M11 19h8.2a1.8 1.8 0 0 0 1.558-.89 1.78 1.78 0 0 0-.008-1.782l-3.95-6.828"/>
-            <path d="m14 12 3-6-6-3"/>
+            <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/>
+            <path d="m14 16-3 3 3 3"/>
+            <path d="M8.293 13.596 7.196 9.5 3.1 10.598"/>
+            <path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"/>
+            <path d="m13.378 9.633 4.096 1.098 1.097-4.096"/>
           </svg>
         </div>
       `,
-      iconSize: [36, 36],
-      iconAnchor: [18, 18],
+      iconSize: [38, 38],
+      iconAnchor: [19, 19],
     });
 
     const marker = L.marker([centerLat, centerLng], { icon: centerIcon })

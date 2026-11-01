@@ -211,12 +211,15 @@ export default function ConsumerView({
         (c.address && c.address.toLowerCase().includes(centerSearchQuery.toLowerCase())) ||
         (c.type && c.type.toLowerCase().includes(centerSearchQuery.toLowerCase()));
 
+      const cType = (c.type || "").toLowerCase();
+      const cName = (c.name || "").toLowerCase();
+
       const matchesType =
         centerFilterType === "ALL" ||
-        (centerFilterType === "DWCC" && (c.type === "DWCC" || c.name.includes("Dry Waste"))) ||
-        (centerFilterType === "RVM" && (c.type === "RVM" || c.name.includes("Vending"))) ||
-        (centerFilterType === "BRAND" && (c.type === "Brand Takeback" || c.name.includes("Brand"))) ||
-        (centerFilterType === "SCRAP" && (c.type === "Kabadiwala" || c.name.includes("Scrap")));
+        (centerFilterType === "DWCC" && (cType.includes("dwcc") || cName.includes("dry waste") || cType.includes("recycling"))) ||
+        (centerFilterType === "RVM" && (cType.includes("rvm") || cName.includes("vending") || cName.includes("rvm") || cType.includes("reverse"))) ||
+        (centerFilterType === "BRAND" && (cType.includes("brand") || cName.includes("brand") || cType.includes("takeback") || cName.includes("takeback"))) ||
+        (centerFilterType === "SCRAP" && (cType.includes("kabadiwala") || cType.includes("scrap") || cName.includes("scrap") || cName.includes("kabadiwala")));
 
       return matchesSearch && matchesType;
     });
