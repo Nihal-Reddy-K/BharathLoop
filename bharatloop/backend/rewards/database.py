@@ -410,13 +410,26 @@ def get_all_products(limit: int = 100):
     conn.close()
     return [dict(r) for r in rows]
 
-def get_deposit_rule(gtin: str, material: str = None, category: str = None):
+def get_deposit_rule(gtin: str, material: str = None, category: str = None, weight_g: float = None):
     conn = get_connection()
+    gtin_clean = str(gtin).strip()
+
     # 1. Exact GTIN rule
     row = conn.execute(
         "SELECT * FROM deposit_rules WHERE gtin = ? AND active = 1",
-        (str(gtin).strip(),)
+        (gtin_clean,)
     ).fetchone()
+
+    # Look up product metadata from database if missing
+    if not material or weight_g is None:
+        prod_row = conn.execute("SELECT * FROM products WHERE gtin = ?", (gtin_clean,)).fetchone()
+        if prod_row:
+            material = material or prod_row["material"]
+            category = category or prod_row["category"]
+            try:
+                weight_g = weight_g if weight_g is not None else float(prod_row["weight_g"])
+            except Exception:
+                pass
 
     # 2. Material + Category rule
     if not row and material and category:
@@ -452,47 +465,68 @@ def get_deposit_rule(gtin: str, material: str = None, category: str = None):
             "source": f"BharatLoop Deposit Rule ({row['id']})",
         }
 
-    # Sensible fallback for recognized packaging materials
+    # Dynamic packaging economics matrix (reflects container size, material scrap value, & refill loop)
     mat_lower = (material or "").lower()
-    if any(m in mat_lower for m in ["pet", "glass", "hdpe", "pp"]):
-        return {
-            "eligible": True,
-            "rule_id": "FALLBACK-R1",
-            "deposit_inr": 5.0,
-            "deposit_minor": 500,
-            "currency": "INR",
-            "notes": "Standard rigid container refundable deposit",
-            "source": "BharatLoop Standard Pilot Deposit",
-        }
-    elif any(m in mat_lower for m in ["aluminium", "aluminum"]):
-        return {
-            "eligible": True,
-            "rule_id": "FALLBACK-AL",
-            "deposit_inr": 10.0,
-            "deposit_minor": 1000,
-            "currency": "INR",
-            "notes": "Aluminium can high-recovery deposit",
-            "source": "BharatLoop Standard Pilot Deposit",
-        }
-    elif any(m in mat_lower for m in ["ldpe", "multilayer", "paper"]):
-        return {
-            "eligible": True,
-            "rule_id": "FALLBACK-FLEX",
-            "deposit_inr": 2.0,
-            "deposit_minor": 200,
-            "currency": "INR",
-            "notes": "Flexible packaging take-back incentive",
-            "source": "BharatLoop Standard Pilot Deposit",
-        }
+    cat_lower = (category or "").lower()
+    w = float(weight_g) if weight_g is not None else 25.0
+
+    if any(m in mat_lower for m in ["aluminium", "aluminum"]):
+        dep = 8.0 if w <= 15.0 else 10.0
+        notes = "Aluminium beverage can high-circularity deposit"
+    elif "glass" in mat_lower:
+        dep = 7.0 if w >= 200 else 6.0
+        notes = "Returnable glass bottle refill deposit"
+    elif "hdpe" in mat_lower:
+        if w >= 80 or "oil" in cat_lower or "jar" in cat_lower:
+            dep = 15.0  # Large 5L bulk jars
+            notes = "Bulk HDPE commercial container deposit"
+        elif w >= 35 or "clean" in cat_lower or "shampoo" in cat_lower:
+            dep = 6.0   # Household & shampoo bottles
+            notes = "Rigid HDPE personal care / household bottle deposit"
+        else:
+            dep = 4.0   # Milk & dairy bottles
+            notes = "Standard HDPE dairy bottle deposit"
+    elif "pet" in mat_lower:
+        if w >= 32 or "oil" in cat_lower:
+            dep = 7.0   # Cooking oil or large 2L PET
+            notes = "Large PET cooking oil / bulk container deposit"
+        elif w <= 18:
+            dep = 3.0   # Small 250ml - 500ml bottle
+            notes = "Small 250ml-500ml PET bottle deposit"
+        else:
+            dep = 5.0   # Standard 600ml - 1L PET bottle
+            notes = "Standard 750ml-1L PET beverage bottle deposit"
+    elif "pp" in mat_lower:
+        dep = 3.0
+        notes = "PP rigid container & curd cup deposit"
+    elif any(m in mat_lower for m in ["paper", "cardboard"]):
+        dep = 2.0
+        notes = "Recyclable paperboard / soap carton incentive"
+    elif any(m in mat_lower for m in ["ldpe", "multilayer"]):
+        if w >= 10:
+            dep = 3.0  # Detergent & bulk pouches
+            notes = "Heavy flexible pouch deposit"
+        elif w <= 2:
+            dep = 0.5  # Sachet
+            notes = "Micro-sachet return incentive"
+        else:
+            dep = 1.5  # Snacks & milk pouches
+            notes = "Flexible snack & dairy pouch incentive"
+    elif "compost" in mat_lower:
+        dep = 1.0
+        notes = "Compostable packaging verification deposit"
+    else:
+        dep = 5.0
+        notes = "Standard packaging pilot deposit"
 
     return {
-        "eligible": False,
-        "rule_id": None,
-        "deposit_inr": 0.0,
-        "deposit_minor": 0,
+        "eligible": True,
+        "rule_id": "DR-DYN-TIER",
+        "deposit_inr": float(dep),
+        "deposit_minor": int(round(dep * 100)),
         "currency": "INR",
-        "notes": "Material not covered by current deposit scheme",
-        "source": "No deposit rule",
+        "notes": notes,
+        "source": "BharatLoop Dynamic Packaging Economics Tier",
     }
 
 def get_all_deposit_rules():

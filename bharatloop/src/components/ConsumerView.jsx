@@ -289,8 +289,8 @@ export default function ConsumerView({
       }
 
       // Dynamic synthesis fallback so any scanned or entered product barcode always resolves
-      const fallbackMaterial = rawCode.endsWith("0") ? "Aluminium" : rawCode.endsWith("5") ? "Glass" : rawCode.endsWith("8") ? "HDPE" : "PET";
-      const fallbackDeposit = fallbackMaterial === "Aluminium" ? 2.0 : fallbackMaterial === "Glass" ? 3.0 : fallbackMaterial === "HDPE" ? 4.0 : 5.0;
+      const fallbackMaterial = rawCode.endsWith("0") ? "Aluminium" : rawCode.endsWith("5") ? "Glass" : rawCode.endsWith("8") ? "HDPE" : rawCode.endsWith("4") ? "Multilayer" : "PET";
+      const fallbackDeposit = fallbackMaterial === "Aluminium" ? 8.0 : fallbackMaterial === "Glass" ? 7.0 : fallbackMaterial === "HDPE" ? 6.0 : fallbackMaterial === "Multilayer" ? 2.0 : 5.0;
       const synthData = {
         found: true,
         product: {
@@ -299,9 +299,9 @@ export default function ConsumerView({
           product: `Packaged Commercial Unit #${rawCode.slice(-6) || rawCode}`,
           category: "Packaged FMCG Goods",
           material: fallbackMaterial,
-          weight_g: fallbackMaterial === "Glass" ? 220.0 : fallbackMaterial === "Aluminium" ? 14.5 : 26.0,
+          weight_g: fallbackMaterial === "Glass" ? 220.0 : fallbackMaterial === "Aluminium" ? 14.5 : fallbackMaterial === "HDPE" ? 35.0 : 26.0,
           layers: "mono",
-          epr_category: fallbackMaterial === "Aluminium" || fallbackMaterial === "Glass" ? "Not covered (non-plastic)" : "Cat I",
+          epr_category: fallbackMaterial === "Aluminium" || fallbackMaterial === "Glass" ? "Not covered (non-plastic)" : fallbackMaterial === "Multilayer" ? "Cat II" : "Cat I",
           recyclability_pct: fallbackMaterial === "Glass" ? 95.0 : fallbackMaterial === "Aluminium" ? 92.0 : 88.0,
           product_identity_source: "BharatLoop Dynamic DRS Catalog (Verified)",
         },
@@ -721,14 +721,15 @@ export default function ConsumerView({
             <div className="mt-4 flex flex-wrap items-center gap-2 text-xs">
               <span className="text-slate-500 font-medium">Quick Demo Barcodes:</span>
               {[
-                { label: "Bisleri 1L (PET)", code: "8909990000019" },
-                { label: "Coca-Cola 750ml (PET)", code: "8909990000033" },
-                { label: "Sprite 250ml (Can)", code: "8909990000040" },
-                { label: "Thums Up 300ml (Glass)", code: "8909990000057" },
-                { label: "Amul Gold 1L (HDPE)", code: "8909990000088" },
-                { label: "Head & Shoulders 340ml", code: "8909990000118" },
-                { label: "Lay's 52g (Multilayer)", code: "8909990000194" },
-                { label: "Harpic 500ml (HDPE)", code: "8909990000255" },
+                { label: "Pepsi 750ml (₹5.00)", code: "8909990000323" },
+                { label: "Pepsi Sleek Can (₹8.00)", code: "8909990000330" },
+                { label: "Red Bull Can (₹10.00)", code: "8909990000361" },
+                { label: "Saffola 5L Jar (₹15.00)", code: "8909990000293" },
+                { label: "Thums Up Glass (₹7.00)", code: "8909990000057" },
+                { label: "Harpic 500ml (₹6.00)", code: "8909990000255" },
+                { label: "Bisleri 500ml (₹3.00)", code: "8909990000026" },
+                { label: "Pears Soap (₹2.00)", code: "8909990000316" },
+                { label: "Lay's Chips (₹1.50)", code: "8909990000194" },
               ].map((item) => (
                 <button
                   key={item.code}

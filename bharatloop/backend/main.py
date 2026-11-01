@@ -225,7 +225,7 @@ def consumer_verdict(
     result["reward"] = reward
 
     # Attach Deposit Rule
-    rule = get_deposit_rule(gtin, material, result["product"].get("category"))
+    rule = get_deposit_rule(gtin, material, result["product"].get("category"), weight_g=weight_g)
     result["pfand_deposit"] = rule
 
     return result

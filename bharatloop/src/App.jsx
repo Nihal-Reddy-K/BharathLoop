@@ -117,8 +117,8 @@ export default function App() {
       />
 
       {/* 2. Top Navigation Bar */}
-      <header className="sticky top-0 z-40 border-b border-[#E5DEC9] bg-[#FAF8F5]/95 backdrop-blur-md shadow-2xs">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 overflow-x-auto scrollbar-none">
+      <header className="sticky top-0 z-50 border-b border-[#E5DEC9] bg-[#FAF8F5]/95 backdrop-blur-md shadow-2xs">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 sm:gap-4 px-3 sm:px-6">
           {/* Brand Logo */}
           <button
             onClick={() => {
@@ -227,8 +227,8 @@ export default function App() {
 
               {showUserMenu && (
                 <>
-                  <div className="fixed inset-0 z-40" onClick={() => setShowUserMenu(false)} />
-                  <div className="absolute right-0 top-full mt-2 z-50 w-64 rounded-2xl border border-[#E0D7C6] bg-white py-2 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
+                  <div className="fixed inset-0 z-[60]" onClick={() => setShowUserMenu(false)} />
+                  <div className="absolute right-0 top-full mt-2 z-[70] w-64 rounded-2xl border border-[#E0D7C6] bg-white py-2 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
                     <div className="px-4 py-3 border-b border-[#EFEAE1]">
                       <div className="flex items-center justify-between gap-2">
                         <div className="text-sm font-bold text-[#273E47] truncate">{user?.name}</div>

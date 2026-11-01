@@ -15,10 +15,10 @@ export default function ReturnQrModal({ packaging, onClose, onTestInAgentMode, o
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#273E47]/70 backdrop-blur-md p-4 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-sm overflow-hidden rounded-[2rem] border border-[#E5DEC9] bg-[#FAF8F5] p-6 shadow-2xl text-[#273E47]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#273E47]/70 backdrop-blur-md p-3 sm:p-4 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-sm max-h-[92vh] overflow-y-auto scrollbar-thin rounded-[2rem] border border-[#E5DEC9] bg-[#FAF8F5] p-5 shadow-2xl text-[#273E47]">
         {/* Top bar */}
-        <div className="flex items-center justify-between pb-3 border-b border-[#E5DEC9]">
+        <div className="flex items-center justify-between pb-2.5 border-b border-[#E5DEC9]">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#273E47]">
             <QrCode size={16} className="text-[#BD632F]" />
             BharathLoop Return Pass
@@ -32,11 +32,11 @@ export default function ReturnQrModal({ packaging, onClose, onTestInAgentMode, o
         </div>
 
         {/* Product Details Header */}
-        <div className="mt-4 text-center">
-          <span className="inline-block rounded-full bg-[#D8C99B]/30 px-3 py-1 text-xs font-bold text-[#BD632F] border border-[#D8C99B]">
+        <div className="mt-3 text-center">
+          <span className="inline-block rounded-full bg-[#D8C99B]/30 px-3 py-0.5 text-xs font-bold text-[#BD632F] border border-[#D8C99B]">
             Deposit: ₹{packaging.deposit_inr.toFixed(2)} Refundable
           </span>
-          <h3 className="mt-2 text-xl font-bold text-[#273E47] leading-tight">
+          <h3 className="mt-1.5 text-lg sm:text-xl font-bold text-[#273E47] leading-tight">
             {packaging.brand} {packaging.product_name}
           </h3>
           <p className="text-xs text-[#355070] mt-0.5">
@@ -45,18 +45,18 @@ export default function ReturnQrModal({ packaging, onClose, onTestInAgentMode, o
         </div>
 
         {/* QR Code Container */}
-        <div className="mt-5 flex flex-col items-center justify-center rounded-2xl bg-white border border-[#E5DEC9] p-5 shadow-xs">
-          <div className="rounded-xl bg-[#FAF8F5] p-3 shadow-inner border border-[#E5DEC9]">
+        <div className="mt-3.5 flex flex-col items-center justify-center rounded-2xl bg-white border border-[#E5DEC9] p-3.5 shadow-xs">
+          <div className="rounded-xl bg-[#FAF8F5] p-2.5 shadow-inner border border-[#E5DEC9]">
             <QRCodeSVG
               value={packaging.public_token}
-              size={180}
+              size={140}
               level="H"
               includeMargin={false}
               fgColor="#273E47"
             />
           </div>
 
-          <div className="mt-3 flex items-center gap-2">
+          <div className="mt-2.5 flex items-center gap-2">
             <code className="text-xs font-mono font-bold tracking-wider text-[#273E47] bg-[#EFEAE1] px-3 py-1 rounded-lg">
               {packaging.public_token}
             </code>
@@ -72,13 +72,13 @@ export default function ReturnQrModal({ packaging, onClose, onTestInAgentMode, o
         </div>
 
         {/* Verification Instructions */}
-        <div className="mt-4 rounded-xl bg-[#EFEAE1]/60 p-3 text-xs text-[#355070] border border-[#E5DEC9] space-y-1">
+        <div className="mt-3 rounded-xl bg-[#EFEAE1]/60 p-2.5 text-xs text-[#355070] border border-[#E5DEC9] space-y-0.5">
           <div className="flex items-center gap-1.5 font-bold text-[#273E47]">
             <ShieldCheck size={14} className="text-[#BD632F]" />
             Collection Instructions
           </div>
           <p className="text-[11px] text-[#355070] leading-relaxed">
-            Present this unique token to any BBMP Dry Waste Collection Centre (DWCC) or partner kiosk. Upon scanning, your ₹{packaging.deposit_inr.toFixed(2)} refund is instantly credited.
+            Present this token to any DWCC or partner kiosk. Upon scanning, your ₹{packaging.deposit_inr.toFixed(2)} refund is instantly credited.
           </p>
         </div>
 
@@ -89,7 +89,7 @@ export default function ReturnQrModal({ packaging, onClose, onTestInAgentMode, o
               onClose();
               handleAgentSwitch(packaging.public_token);
             }}
-            className="mt-4 w-full flex items-center justify-center gap-2 rounded-xl bg-[#BD632F] hover:bg-[#a85527] px-4 py-3 font-semibold text-white shadow-xs transition active:scale-[0.98] cursor-pointer"
+            className="mt-3.5 w-full flex items-center justify-center gap-2 rounded-xl bg-[#BD632F] hover:bg-[#a85527] px-4 py-2.5 font-semibold text-white shadow-xs transition active:scale-[0.98] cursor-pointer"
           >
             <span>Verify in Collection Agent Mode</span>
             <ArrowRight size={16} />
