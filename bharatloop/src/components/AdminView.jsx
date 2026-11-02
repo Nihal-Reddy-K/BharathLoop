@@ -448,6 +448,7 @@ export default function AdminView({ apiUrl }) {
                     <th className="py-2.5">Weight</th>
                     <th className="py-2.5">EPR Category</th>
                     <th className="py-2.5">Source</th>
+                    <th className="py-2.5 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#EFEAE1] text-slate-700">
@@ -463,6 +464,18 @@ export default function AdminView({ apiUrl }) {
                         <span className="rounded-full bg-[#EFEAE1] px-2 py-0.5 text-[10px] font-medium text-slate-600">
                           {p.product_identity_source}
                         </span>
+                      </td>
+                      <td className="py-3 text-right">
+                        <button
+                          onClick={() => {
+                            setAnalyzeGtin(p.gtin);
+                            runAnalysis(p.gtin);
+                            setActiveTab("epr");
+                          }}
+                          className="text-[10px] font-bold text-[#BD632F] hover:underline cursor-pointer"
+                        >
+                          Analyze EPR →
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -484,6 +497,34 @@ export default function AdminView({ apiUrl }) {
               CPCB PWM Framework compliance rules, penalty risks, and sustainable material alternatives.
             </p>
 
+            {/* Quick Demo Chips */}
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {[
+                { label: "Pepsi 750ml", gtin: "8909990000323" },
+                { label: "Pepsi Can", gtin: "8909990000330" },
+                { label: "Saffola 5L", gtin: "8909990000293" },
+                { label: "Bisleri 1L", gtin: "8909990000019" },
+                { label: "Lay's Chips", gtin: "8909990000194" },
+                { label: "Pears Soap", gtin: "8909990000316" },
+                { label: "Coca-Cola 750ml", gtin: "8909990000033" },
+              ].map((chip) => (
+                <button
+                  key={chip.gtin}
+                  onClick={() => {
+                    setAnalyzeGtin(chip.gtin);
+                    runAnalysis(chip.gtin);
+                  }}
+                  className={`rounded-full px-3 py-1 text-[10px] font-bold border transition cursor-pointer ${
+                    analyzeGtin === chip.gtin
+                      ? "bg-[#BD632F] text-white border-[#BD632F]"
+                      : "bg-[#FAF8F5] text-[#273E47] border-[#E0D7C6] hover:bg-[#EFEAE1]"
+                  }`}
+                >
+                  {chip.label}
+                </button>
+              ))}
+            </div>
+
             <div className="mt-4 flex gap-2">
               <input
                 type="text"
@@ -494,39 +535,120 @@ export default function AdminView({ apiUrl }) {
               />
               <button
                 onClick={() => runAnalysis(analyzeGtin)}
-                className="rounded-xl bg-[#BD632F] hover:bg-[#a85527] px-4 py-2 text-xs font-bold text-white shadow-xs transition cursor-pointer"
+                disabled={analysisLoading}
+                className="rounded-xl bg-[#BD632F] hover:bg-[#a85527] px-4 py-2 text-xs font-bold text-white shadow-xs transition cursor-pointer disabled:opacity-60"
               >
-                Analyze EPR
+                {analysisLoading ? (
+                  <span className="flex items-center gap-1.5">
+                    <Loader2 size={13} className="animate-spin" /> Analyzing…
+                  </span>
+                ) : (
+                  "Analyze EPR"
+                )}
               </button>
             </div>
 
-            {analysisResult && (
-              <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
-                  <span className="text-xs font-semibold text-slate-500">EPR Category</span>
-                  <div className="text-xl font-bold text-[#273E47] mt-1">
-                    {analysisResult.epr?.category || "Category I"}
+            {/* Loading State */}
+            {analysisLoading && (
+              <div className="mt-6 flex items-center justify-center gap-2 py-8 text-sm text-slate-500">
+                <Loader2 size={18} className="animate-spin text-[#BD632F]" />
+                Running EPR compliance analysis…
+              </div>
+            )}
+
+            {/* Results */}
+            {!analysisLoading && analysisResult && (
+              <div className="mt-6 space-y-5">
+                {/* Product Identity Banner */}
+                {analysisResult.product && (
+                  <div className="rounded-2xl border border-[#D8C99B]/50 bg-[#FAF8F5] p-4 flex flex-wrap items-center gap-4">
+                    <div className="flex-1 min-w-[200px]">
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Product Under Analysis</div>
+                      <div className="text-base font-bold text-[#273E47] mt-0.5">
+                        {analysisResult.product.brand} — {analysisResult.product.product}
+                      </div>
+                      <div className="text-xs text-slate-500 mt-1 flex flex-wrap gap-3">
+                        <span>GTIN: <span className="font-mono font-bold text-[#273E47]">{analysisResult.product.gtin}</span></span>
+                        <span>Material: <span className="font-bold text-[#355070]">{analysisResult.product.material}</span></span>
+                        <span>Weight: <span className="font-bold">{analysisResult.product.weight_g}g</span></span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-xs text-slate-500 mt-1">
-                    Recyclability: {analysisResult.epr?.recyclability_pct || "85"}%
+                )}
+
+                {/* EPR Metrics Cards */}
+                <div className="grid gap-4 sm:grid-cols-3">
+                  <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
+                    <span className="text-xs font-semibold text-slate-500">EPR Category</span>
+                    <div className="text-xl font-bold text-[#273E47] mt-1">
+                      {analysisResult.current_state?.epr_category || analysisResult.epr?.category || "Category I"}
+                    </div>
+                    <div className="text-xs text-slate-500 mt-1">
+                      Recyclability: {analysisResult.current_state?.recyclability_pct || analysisResult.epr?.recyclability_pct || "85"}%
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
+                    <span className="text-xs font-semibold text-slate-500">Non-Compliance Penalty</span>
+                    <div className="text-xl font-bold text-red-800 mt-1">
+                      ₹{(analysisResult.current_state?.penalty_per_tonne || analysisResult.epr?.penalty_per_tonne || 5000).toLocaleString()} / tonne
+                    </div>
+                    <div className="text-xs text-slate-500 mt-1">CPCB PWM regulatory rate</div>
+                  </div>
+
+                  <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
+                    <span className="text-xs font-semibold text-slate-500">Recommended Alternative</span>
+                    <div className="text-xl font-bold text-[#355070] mt-1">
+                      {analysisResult.substitute?.name || "100% rPET / Aluminium"}
+                    </div>
+                    <div className="text-xs text-slate-500 mt-1">Lower EPR liability</div>
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
-                  <span className="text-xs font-semibold text-slate-500">Non-Compliance Penalty</span>
-                  <div className="text-xl font-bold text-red-800 mt-1">
-                    ₹{analysisResult.epr?.penalty_per_tonne?.toLocaleString() || "5,000"} / tonne
+                {/* Alternatives Grid */}
+                {analysisResult.alternatives && analysisResult.alternatives.length > 0 && (
+                  <div className="rounded-2xl border border-[#E0D7C6] bg-white p-4">
+                    <h4 className="text-sm font-bold text-[#273E47] mb-3">Material Alternatives — LCA Comparison</h4>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-left text-xs">
+                        <thead>
+                          <tr className="border-b border-[#EFEAE1] text-slate-400 font-semibold uppercase text-[10px]">
+                            <th className="py-2">Replacement Material</th>
+                            <th className="py-2">CO₂e Saved / kg</th>
+                            <th className="py-2">Cost Delta</th>
+                            <th className="py-2">Barrier OK</th>
+                            <th className="py-2">Recyclability</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-[#EFEAE1] text-slate-700">
+                          {analysisResult.alternatives.map((alt, idx) => (
+                            <tr key={idx} className="hover:bg-[#FAF8F5] transition">
+                              <td className="py-2.5 font-bold text-[#355070]">{alt.material}</td>
+                              <td className="py-2.5 font-bold text-green-700">{alt.co2_saved_per_kg} kg</td>
+                              <td className="py-2.5 text-slate-600">{alt.cost_delta_pct > 0 ? "+" : ""}{alt.cost_delta_pct}%</td>
+                              <td className="py-2.5">
+                                <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                                  alt.barrier_ok === "Yes" ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"
+                                }`}>
+                                  {alt.barrier_ok}
+                                </span>
+                              </td>
+                              <td className="py-2.5 font-bold">{alt.recyclability_pct != null ? `${alt.recyclability_pct}%` : "—"}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                  <div className="text-xs text-slate-500 mt-1">CPCB PWM regulatory rate</div>
-                </div>
+                )}
+              </div>
+            )}
 
-                <div className="rounded-2xl border border-[#E0D7C6] bg-[#FAF8F5] p-4">
-                  <span className="text-xs font-semibold text-slate-500">Recommended Alternative</span>
-                  <div className="text-xl font-bold text-[#355070] mt-1">
-                    {analysisResult.substitute?.name || "100% rPET / Aluminium"}
-                  </div>
-                  <div className="text-xs text-slate-500 mt-1">Lower EPR liability</div>
-                </div>
+            {/* No result / not found */}
+            {!analysisLoading && analysisResult && !analysisResult.found && (
+              <div className="mt-6 rounded-2xl border border-yellow-200 bg-yellow-50 p-4 flex items-center gap-2 text-xs text-yellow-800">
+                <AlertCircle size={14} />
+                Product not found for GTIN <span className="font-mono font-bold">{analyzeGtin}</span>. Try a different barcode.
               </div>
             )}
           </div>

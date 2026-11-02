@@ -233,7 +233,32 @@ def consumer_verdict(
 
 @app.get("/api/manufacturer/analyze/{gtin}")
 def manufacturer_analysis(gtin: str):
-    return manufacturer_analyze(gtin)
+    data = manufacturer_analyze(gtin)
+    if data and data.get("found"):
+        cur = data.get("current_state", {})
+        alts = data.get("alternatives", [])
+        data["epr"] = {
+            "category": cur.get("epr_category", "Cat I"),
+            "recyclability_pct": cur.get("recyclability_pct", 85.0),
+            "penalty_per_tonne": cur.get("penalty_per_tonne", 5000.0),
+            "material": cur.get("material", "PET"),
+        }
+        if alts:
+            first_alt = alts[0]
+            data["substitute"] = {
+                "name": f"Circular {first_alt.get('material', 'rPET')} Alternative",
+                "material": first_alt.get("material", "rPET"),
+                "co2_saved_per_kg": first_alt.get("co2_saved_per_kg", 1.4),
+                "cost_delta_pct": first_alt.get("cost_delta_pct", 5.0),
+            }
+        else:
+            data["substitute"] = {
+                "name": "100% rPET / Aluminium Recycled",
+                "material": "Recycled Mono-Material",
+                "co2_saved_per_kg": 1.2,
+                "cost_delta_pct": 5.0,
+            }
+    return data
 
 
 # =========================================================
